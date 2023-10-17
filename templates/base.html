@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    {% load static %}
+    {% load crispy_forms_tags %}
+    <meta charset="utf-8">
+    <title>{%block title%}{%endblock%}</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/master_css.css' %}">
+    <link rel="stylesheet" href="{% static 'css/home_css.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+
+  </head>
+  {% if user.is_authenticated %}
+  <body>    
+              <nav  class="navbar navbar-expand-lg  navbar-light bg-light fixed-top scrolling-navbar" style="background-color:  #1f2020;">
+                <div style="width: 4% ;height: 100%;margin-left: 10px;background-color:  #1f2020;" class=" row d-flex  justify-content-center">
+                  <div>
+                    <a class="nav-link color_encabezado row d-flex  justify-content-end" style=" pointer-events: none; opacity: 0;background-color width: 100%; height: 100%" href="{% url 'user_logout' %}"><img class="logos-nav2" src="https://cdn-icons-png.flaticon.com/512/339/339737.png" alt="cerrar"></a>
+                  </div>
+                </div>
+                <div class="container " style="width: 92%;">
+                  <div class="collapse navbar-collapse " id="basicExampleNav" >
+                      
+                        <ul class=" navbar-nav  mr-auto smooth-scroll d-flex col justify-content-center "  >
+                          <a class="navbar-brand color_encabezado" href="{% url 'index' %}"  ><img class="logos-nav" src="https://img2.freepng.es/20180411/ike/kisspng-computer-icons-home-house-home-5ace88fc2001a1.3041062815234849241311.jpg" alt="home"><p style="text-align: center;">Inicio</p></a>
+                          
+                         
+                          <a type="button" class=" navbar-brand  color_encabezado"  data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                            <img class="logos-nav" src='https://c0.klipartz.com/pngpicture/831/88/gratis-png-perfil-de-usuario-iconos-de-la-computadora-interfaz-de-usuario-mistica.png' alt="perfil">
+                            <p style="text-align: center;">Perfil</p>
+                          </a>
+
+                          <a class="navbar-brand color_encabezado" href="{% url 'curriculum:standard_list' %}"  ><img class="logos-nav" src="https://thetreeschool.org/wp-content/uploads/2015/05/icono-talleres.png" alt="Niveles"><p style="text-align: center;">Niveles</p></a> 
+                          {% if user.is_superuser %}
+  
+                          <a class="navbar-brand color_encabezado" href="{% url 'register' %}"  ><img class="logos-nav" src="https://cdn-icons-png.flaticon.com/512/3534/3534139.png" alt="registrar"><p style="text-align: center;">Registrar estudiante</p></a> 
+                          <a class="navbar-brand color_encabezado" href="{% url 'admin:index' %}"  ><img class="logos-nav" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTl7sdO_sTN4pi5bZE8M7ZzMYMH4RovSb4wJFrVh2Bu4GRAQCYuHZt256lIR7O_H20sC-s&usqp=CAU" alt="ajustes admin"><p style="text-align: center;">administrador</p></a> 
+                            
+                          {%endif%}
+                          <a class="navbar-brand color_encabezado" href="{% url 'contact' %}"  ><img class="logos-nav" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTYjzWEaMnT0s1MZ6EqMNbbix5iAGg7sgv74rm5n8wZkNVAmn3ABxDyIq4WzmfINHcqqh8&usqp=CAU" alt="contactanos"><p style="text-align: center;">contactanos</p></a>
+
+
+                          <a class="navbar-brand color_encabezado" href=""  ><img class="logos-nav" src="https://i.pinimg.com/564x/d7/e7/6d/d7e76d00808386204d7b56f08969b78e.jpg" alt="contactanos"><p style="text-align: center;">directorio</p></a>
+
+
+                          <a class="navbar-brand color_encabezado" href="{% url 'user_logout' %}"  ><img class="logos-nav" src="https://cdn-icons-png.flaticon.com/512/339/339737.png" alt="cerrar"><p style="text-align: center;">cerrar sesion</p></a>
+                        </ul> 
+                      </div>                      
+                    </div>
+                    <div style="width: 4% ;height: 100%;margin-right: 10px" class=" row d-flex  justify-content-center">                      
+                        <a class="navbar-brand color_encabezado" href="{% url 'user_logout' %}"  ><img class="logos-nav" src="https://cdn-icons-png.flaticon.com/512/339/339737.png" alt="cerrar"><p>cerrar sesion</p></a>
+                    </div>
+                </nav>                      
+                      {% block image_block %}
+                      {% endblock %}           
+                          <div class="d-flex row justify-content-center"  style="width: 100%">                            
+                              {%block content%}
+                              
+                              {%endblock%}                              
+                          </div>
+                          <footer class="page-footer" style="background-color: #1f2020">
+                            <div class="container">
+                              <div class="row  ">         
+                                        <div class="container mt-3"  style="color:white">
+                                          <div class="row">
+                                            <div class="col-sm-12 col-md-6">
+                                              <h6>Contenido</h6>
+                                              <p class="text-justify">Cursos online es un proyecto que de fin de curso de practicas pre profesionales 2</p>
+                                            </div>                                  
+                                            <div class="col-xs-6 col-md-3 ">
+                                              <h6>Categorias</h6>
+                                              <ul class="footer-links ">
+                                                <li><a href="http://scanfcode.com/category/c-language/">C</a></li>
+                                                <li><a href="http://scanfcode.com/category/front-end-development/">UI Design</a></li>
+                                                <li><a href="http://scanfcode.com/category/back-end-development/">PHP</a></li>
+                                                <li><a href="http://scanfcode.com/category/java-programming-language/">Java</a></li>
+                                                <li><a href="http://scanfcode.com/category/android/">Android</a></li>
+                                                <li><a href="http://scanfcode.com/category/templates/">Javascript</a></li>
+                                              </ul>
+                                            </div>                                  
+                                            <div class="col-xs-6 col-md-3">
+                                              <h6>Links</h6>
+                                              <ul class="footer-links">
+                                                <li><a href="http://scanfcode.com/about/"></a></li>
+                                                <li><a href="http://scanfcode.com/contact/">A</a></li>
+                                                <li><a href="http://scanfcode.com/contribute-at-scanfcode/">B</a></li>
+                                                <li><a href="http://scanfcode.com/privacy-policy/">C</a></li>
+                                                <li><a href="http://scanfcode.com/sitemap/">D</a></li>
+                                              </ul>
+                                            </div>
+                                          </div>
+                                          <hr>
+                                        </div>
+                                        <div class="container">
+                                          <div class="row">
+                                            <div class="col-md-8 col-sm-6 col-xs-12">
+                                              <p style="color:white" class="copyright-text">Copyright &copy; 2023 All Rights Reserved                                            
+                                              </p>
+                                            </div>                                  
+                                            <div class="col-md-4 col-sm-6 col-xs-12">
+                                              <ul class="social-icons">
+                                                <li><a class="facebook" href="#"><i class="fa fa-facebook"></i></a></li>
+                                                <li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>
+                                                <li><a class="dribbble" href="#"><i class="fa fa-dribbble"></i></a></li>
+                                                <li><a class="linkedin" href="#"><i class="fa fa-linkedin"></i></a></li>   
+                                              </ul>
+                                            </div>
+                                          </div>
+                                        </div>                                        
+                              </div>
+                            </div>
+                          </footer>
+                        {% else %}
+                            <body style="background-image: url('https://w0.peakpx.com/wallpaper/161/556/HD-wallpaper-abstract-background-for-mac-green-abstract-mac-blue.jpg') ">
+                              <div class="row d-flex align-items-center justify-content-center mt-5 " style="justify-self: center;">
+                                <section class="text-center " style=" display: flex;align-items: center; justify-content: center;justify-items: center; margin-top: 25vh;">
+  
+                                  <div class="row d-flex justify-content-center  " >
+                                    <form  style="width: 55%;height: 350px; background: white;border-radius: 0%;  border:4px double black" class="row d-flex align-content-center" action="{% url 'user_login' %}" method="post">
+                                      <div class="form-group" >
+                   
+                                          
+                                        <img style="width: 150px;height:150px;align-self:center;border-radius: 1000px;" src="https://www.nicepng.com/png/detail/144-1446162_pin-businessman-clipart-png-flat-user-icon.png" alt="login">
+                                          {% csrf_token %}
+                                          <div class="col-md-12">
+                                            <div class="row">
+                        
+                                              <label for="username" style="color: white;">Usuario:</label>
+                                              <input type="text" name="username" placeholder="Username" class="form-control">
+                            
+                                              <label for="password" style="color: white;">Contraseña:</label>
+                                              <input type="password" name="password" class="form-control">
+                                            </div>
+                                            <div class="row justify-content-center">
+                                              <input type="submit" value="Login" class="btn btn-success btn-lg mt-3">
+                                            </div>
+                                          </div>
+                                      </div>
+                                    </form>
+                                  </div>
+                                </section>  
+                                <footer class="page-footer" style="padding: auto;margin: 0;" >
+                                  <div class="container">
+                                    <div class="row">                  
+                                    <div class="footer-copyright text-center py-3">
+                                        <p >© 2023 Copyright All Rights Reserved</p>
+                                    </div>
+                                  </div>
+                                </footer>   
+                              </div>
+                            
+                      {% endif %}                                                                                              
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="{% static 'js/index.js' %}"></script>
+
+    <!-- Modal -->
+    <div class=" modal-dialog modal-l modal fade modal-dialog modal-dialog-centered modal-dialog-scrollable " id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" style="display: none;">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header bg-primary-subtle">
+            <h1 class="modal-title fs-5" style="color:black ;" id="staticBackdropLabel">Mi perfil</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body bg-warning-subtle">
+
+            <div class="d-flex col align-items-center justify-content-center mr-10">
+              <div style="color: black;">
+
+                <h1>Mis datos </h1>
+                <p><strong>usuario:</strong>{{user.username}}</p>
+                <p><strong>nombre:</strong>{{user.first_name}}</p>
+                <p><strong>apellido:</strong> {{user.last_name}}</p>
+                <p><strong>correo:</strong> {{user.email}}</p>
+                <p><strong>tipo de usuario:</strong> {{user.userprofileinfo.user_type | default:"admin"}}</p>
+                <p><strong>informacion:</strong> {{user.userprofileinfo.bio | default:"soy sadministrador"}}</p>
+
+              </div>
+              <div >
+                <img  style="width: 200px;height: 200px; opacity: 0.9;border-radius: 1000px;"src='../../media/{{user.userprofileinfo.profile_pic | default:"Images/User_Profile_Pictures/None.jpg"}}' alt="">                  
+              </div>          
+            </div>   
+            <div class="gap-3 mt-3 icons d-flex flex-row justify-content-center align-items-center"> 
+              <span><i class="fa fa-twitter"></i></span> 
+              <span><i class="fa fa-facebook-f"></i></span> 
+              <span><i class="fa fa-instagram"></i></span> 
+              <span><i class="fa fa-linkedin"></i></span> 
+            </div>   
+          </div>
+          <div class="modal-footer">        
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

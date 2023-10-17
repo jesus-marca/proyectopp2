@@ -1,0 +1,421 @@
+.color_encabezado{
+    color:white;
+    font-size: 1.5rem;
+    width: 4%
+    
+}
+.color_encabezado:hover{
+    color:rgb(240, 241, 245);        
+}
+.color_encabezado>p{
+  display: none;
+  /* transition: all .5s; */
+  transition: all ease-in-out 0.5s;
+
+}
+
+.color_encabezado img:hover +p {
+  display:block;
+  transition: all .7s;
+  text-align: center;
+}
+
+
+
+
+
+.titulo{
+    color:white;
+    font-size: 4.5rem;
+}
+.teacher{
+  width:120px;
+  height: 120px;
+}
+.teacher:hover{
+    opacity: 0.7;
+}
+.teacher-info:hover{
+    background-color: rgb(231, 231, 140);
+    border-radius: 10px;
+}
+.tabla-encabezado tr th{
+    background-color: aliceblue;
+    width: 1%;
+    /* margin-left: 1000px;
+    margin-right: 1000px; */
+}
+.logos-nav{
+    width: 100%;
+    transition: 0.4s;
+    border-radius: 30px;
+    transition: all ease-in-out 0.5s;
+    opacity: 0.7;
+    
+}
+.logos-nav2{
+    width: 100%;
+    transition: 0.4s;
+    
+    
+}
+
+.niveles:hover{
+  opacity: 1.0;
+}
+.niveles{
+  opacity: 0.9;
+}
+
+.logos-nav:hover{
+    opacity: 1.0;
+    /* transition: 0.4s; */
+    filter: saturate(200%);
+    /* width: 90%; */
+    
+}
+
+.curso-11{
+    background-color: rgb(66, 133, 8);
+}
+.curso-12{
+    background-color: aqua;
+}
+.curso-13{
+    background-color: rgb(200, 212, 22);
+}
+.curso-14{
+    background-color: rgb(121, 110, 226);
+}
+.curso-15{
+    background-color: rgb(224, 127, 181);
+}
+
+.curso-21{
+    background-color: rgb(66, 133, 8);
+}
+.curso-22{
+    background-color: aqua;
+}
+.curso-23{
+    background-color: rgb(200, 212, 22);
+}
+.curso-24{
+    background-color: rgb(121, 110, 226);
+}
+.curso-25{
+    background-color: rgb(224, 127, 181);
+}
+
+.curso-31{
+    background-color: rgb(66, 133, 8);
+}
+.curso-32{
+    background-color: aqua;
+}
+.curso-33{
+    background-color: rgb(200, 212, 22);
+}
+.curso-34{
+    background-color: rgb(121, 110, 226);
+}
+.curso-35{
+    background-color: rgb(224, 127, 181);
+}
+
+.curso-41{
+    background-color: rgb(66, 133, 8);
+}
+.curso-42{
+    background-color: aqua;
+}
+.curso-43{
+    background-color: rgb(200, 212, 22);
+}
+.curso-44{
+    background-color: rgb(121, 110, 226);
+}
+.curso-45{
+    background-color: rgb(224, 127, 181);
+}
+
+.curso-51{
+    background-color: rgb(66, 133, 8);
+}
+.curso-52{
+    background-color: aqua;
+}
+.curso-53{
+    background-color: rgb(200, 212, 22);
+}
+.curso-54{
+    background-color: rgb(121, 110, 226);
+}
+.curso-55{
+    background-color: rgb(224, 127, 181);
+}
+
+
+/* mision visio */
+
+.site-footer
+{
+  background-color:#26272b;
+  padding:45px 0 20px;
+  font-size:15px;
+  line-height:24px;
+  color:#737373;
+}
+.site-footer hr
+{
+  border-top-color:#bbb;
+  opacity:0.5
+}
+.site-footer hr.small
+{
+  margin:20px 0
+}
+.site-footer h6
+{
+  color:#fff;
+  font-size:16px;
+  text-transform:uppercase;
+  margin-top:5px;
+  letter-spacing:2px
+}
+.site-footer a
+{
+  color:#737373;
+}
+.site-footer a:hover
+{
+  color:#3366cc;
+  text-decoration:none;
+}
+.footer-links
+{
+  padding-left:0;
+  list-style:none
+}
+.footer-links li
+{
+  display:block
+}
+.footer-links a
+{
+  color:#737373
+}
+.footer-links a:active,.footer-links a:focus,.footer-links a:hover
+{
+  color:#3366cc;
+  text-decoration:none;
+}
+.footer-links.inline li
+{
+  display:inline-block
+}
+.site-footer .social-icons
+{
+  text-align:right
+}
+.site-footer .social-icons a
+{
+  width:40px;
+  height:40px;
+  line-height:40px;
+  margin-left:6px;
+  margin-right:0;
+  border-radius:100%;
+  background-color:#33353d
+}
+.copyright-text
+{
+  margin:0
+}
+@media (max-width:991px)
+{
+  .site-footer [class^=col-]
+  {
+    margin-bottom:30px
+  }
+}
+@media (max-width:767px)
+{
+  .site-footer
+  {
+    padding-bottom:0
+  }
+  .site-footer .copyright-text,.site-footer .social-icons
+  {
+    text-align:center
+  }
+}
+.social-icons
+{
+  padding-left:0;
+  margin-bottom:0;
+  list-style:none
+}
+.social-icons li
+{
+  display:inline-block;
+  margin-bottom:4px
+}
+.social-icons li.title
+{
+  margin-right:15px;
+  text-transform:uppercase;
+  color:#96a2b2;
+  font-weight:700;
+  font-size:13px
+}
+.social-icons a{
+  background-color:#eceeef;
+  color:#818a91;
+  font-size:16px;
+  display:inline-block;
+  line-height:44px;
+  width:44px;
+  height:44px;
+  text-align:center;
+  margin-right:8px;
+  border-radius:100%;
+  -webkit-transition:all .2s linear;
+  -o-transition:all .2s linear;
+  transition:all .2s linear
+}
+.social-icons a:active,.social-icons a:focus,.social-icons a:hover
+{
+  color:#fff;
+  background-color:#29aafe
+}
+.social-icons.size-sm a
+{
+  line-height:34px;
+  height:34px;
+  width:34px;
+  font-size:14px
+}
+.social-icons a.facebook:hover
+{
+  background-color:#3b5998
+}
+.social-icons a.twitter:hover
+{
+  background-color:#00aced
+}
+.social-icons a.linkedin:hover
+{
+  background-color:#007bb6
+}
+.social-icons a.dribbble:hover
+{
+  background-color:#ea4c89
+}
+@media (max-width:767px)
+{
+  .social-icons li.title
+  {
+    display:block;
+    margin-right:0;
+    font-weight:600
+  }
+}
+
+.cursos li a:hover{
+  background-color: gray
+}
+
+
+.panel {
+  border: 1px solid #1e33f4;
+  border-radius:0;
+  transition: box-shadow 0.5s;
+}
+
+.panel:hover {
+  box-shadow: 5px 0px 40px rgba(0,0,0, .2);
+}
+
+.panel-footer .btn:hover {
+  border: 1px solid #f4511e;
+  background-color: #fff !important;
+  color: #f4511e;
+}
+
+.panel-heading {
+  color: #fff !important;
+  background-color: #3e4863 !important;
+  padding: 25px;
+  border-bottom: 1px solid transparent;
+  border-top-left-radius: 0px;
+  border-top-right-radius: 0px;
+  border-bottom-left-radius: 0px;
+  border-bottom-right-radius: 0px;
+}
+
+.panel-footer {
+  background-color: #fff !important;
+}
+
+.panel-footer h3 {
+  font-size: 32px;
+}
+
+.panel-footer h4 {
+  color: #aaa;
+  font-size: 14px;
+}
+
+.panel-footer .btn {
+  margin: 15px 0;
+  background-color: #10410c;
+  color: #fff;
+}
+
+.mision-vision{
+  background:linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("https://us.123rf.com/450wm/iimages/iimages1502/iimages150200945/36769904-ilustraci%C3%B3n-de-un-aula-vac%C3%ADa-con-una-tabla.jpg")no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+
+/* estilo de niveles */
+.tablero :hover{
+
+  transition: 0.8;  
+
+ 
+  opacity: 0.7;
+}
+.tablero{
+  width: 200px;
+  height:200px
+  ;margin-bottom: 0;
+  border-radius: 1000px;
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+.letras{
+  text-align: center;
+  color: white;
+  font-size: 1.7rem
+}
+.numero{
+color:white;
+font-size: 3.5rem;
+text-align: center;
+
+}
+
+.contenedor-niveles{
+  display:flex;
+  flex-direction:column;
+  align-content: center;
+  align-items: center;
+  margin-top: 5rem; 
+  width: 80%;
+}

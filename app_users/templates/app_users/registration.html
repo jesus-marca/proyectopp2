@@ -1,0 +1,94 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block title %}Registro{% endblock %}
+
+{% block image_block %}
+{% comment %} <header class="info-header">
+  <div id="page-intro" class="container-fluid d-flex align-items-center justify-content-center ">   
+  </div>
+</header> {% endcomment %}
+{% endblock %}
+
+{% block content %}
+
+  {% comment %} <h2 class="mb-5 mt-4 font-weight-bold text-center" style="color:black;font-size: 2.5rem;">Registro</h2> {% endcomment %}
+{% comment %} 
+  {% if registered %}
+    <h1>Gracias por registrarte </h1>
+  {% else %} {% endcomment %}
+  {% comment %} <div class="d-flex row justify-content-center mb-4" >
+    <div class="d-flex row justify-content-center" style="background-color:white;width: 50%;border-radius: 25px">
+      <h3 style="text-align: center;">Completa el formulario: </h3>
+      <form method="post" style="width: 90%;" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ user_form|crispy }}
+        {{ profile_form|crispy }}
+        <div class="row justify-content-center">
+        <div class="col-md-2" style="color:red">
+        <input type="submit" value="Registrar etudiante"  class="btn btn-primary btn-block">
+        </div>
+        </div>
+      </form>
+    </div>
+  </div> {% endcomment %}
+  {% comment %} {% endif %} {% endcomment %}
+
+
+  <div id="intro2" style="   width: 100%; display:flex;flex-direction:row;justify-content:center;align-items:center" >
+      
+    <div style="display: flex; justify-content: center;margin-top: 7rem;opacity:0.9;width: 60%;border-radius: 0rem;border:10px double  white;">
+      
+        <div style="width: 40%; display:flex;flex-direction:column;justify-content:center;align-items:center;background-color: bisque; ">
+          <h1 class="text-center">Registro de estudiante</h1>
+          <img src="https://static.vecteezy.com/system/resources/previews/000/560/029/non_2x/customer-service-woman-with-headphones-and-microphone-with-laptop-concept-illustration-for-support-call-center-vector.jpg" style="width: 240px;height: 240px;border-radius: 1000px;"alt="">  
+          <div style="height: 1rem;"></div>
+          <div class="d-flex">
+            <div class="d-flex flex-column align-items-center">
+              <img src="https://vanacco.com/wp-content/uploads/2020/06/Form-1.jpg" style="width: 70px;height: 70px;border-radius: 1000px;"alt="">  
+              <p style=" text-align:center;color: black;font-size: 0.8rem;">
+                Rellene correctamente
+              </p >  
+            </div>    
+            <div class="d-flex flex-column align-items-center">
+              <img src="https://vanacco.com/wp-content/uploads/2020/06/Form-1.jpg" style="width: 70px;height: 70px;border-radius: 1000px;"alt="">  
+              <p style="color: black;font-size: 0.8rem;text-align:center;">
+                Revisaremos sus preguntas
+              </p >  
+            </div>  
+            <div class="d-flex flex-column align-items-center">
+              <img src="https://vanacco.com/wp-content/uploads/2020/06/Form-1.jpg" style="width: 70px;height: 70px;border-radius: 1000px;"alt="">  
+              <p style="color: black;font-size: 0.8rem;text-align:center;">
+                Revisaremos sus preguntas
+              </p >  
+            </div>                              
+          </div>
+          <p style="color: black;">
+            Nuestra central telefonica:
+          </p >  
+          {% comment %} <p style="color: black;font-size: 1.5rem;text-align: center;">+51 994993394</p>          {% endcomment %}
+        </div>
+
+        <div class="" style="width:75% ;background-color: white;">
+          <div class="d-flex row justify-content-center mb-4" >
+            <div class="d-flex row justify-content-center" style="background-color:white;width: 80%;border-radius: 25px">
+              <h3 style="text-align: center;">Completa el formulario: </h3>
+              <form method="post" style="width: 100%;" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ user_form|crispy }}
+                {{ profile_form|crispy }}
+                <div class="row justify-content-center">
+                <div class="d-flex justify-content-end" style="color:red">
+                  <input type="submit" value="Registrar etudiante"  class="btn btn-primary btn-block">
+                </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>  
+    </div>
+</div>
+
+
+
+{%endblock%}

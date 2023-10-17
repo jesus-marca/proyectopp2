@@ -180,7 +180,7 @@
                     <div class="d-flex justify-content-start" style=";">
                       <li style="display: flex;" style="width: 400px;"><a style="width: 200px;align-self: center"class="dropdown-item" >{{subject.name}} </a>
                         {% if user.userprofileinfo.user_type == 'teacher' or user.is_superuser %}
-                          <a  class="btn btn-success" style="align-self: center;width: 100px;"class="dropdown-item" >agregar</a>
+                          <a  class="btn btn-success" href="{% url 'curriculum:lesson_create' standard=subject.standard.slug slug=subject.slug %}" style="align-self: center;width: 100px;"class="dropdown-item" >agregar</a>
                         {%endif%}
                         <span style="width: 20px;"></span>
                         {% for lesson in lessonsAll  %}

@@ -59,25 +59,41 @@
     <div  class="tablero bg-info d-flex flex-column justify-content-center align-items-center ">
       <div>
         <p class="letras">niveles</p>
-        <p class="numero">{{numeroNiveles}}</p>
+        {%for numero in numeroNiveles.all %}
+          {%if forloop.last %} 
+            <p class="numero">{{forloop.counter}}</p>
+          {%endif%}
+        {%endfor%}
       </div>  
     </div>
     <div  class="bg-success tablero d-flex flex-column justify-content-center align-items-center">
       <div>
         <p class="letras" >cursos</p>
-        <p class="numero">{{numeroCursos}}</p>
+        {%for numero in numeroCursos.all %}
+          {%if forloop.last %} 
+            <p class="numero">{{forloop.counter}}</p>
+          {%endif%}
+        {%endfor%}
       </div>
     </div>
     <div  class="bg-danger tablero d-flex flex-column justify-content-center align-items-center">
       <div>
-        <p class="letras">temas</p>
-        <p class="numero">{{numeroCapitulos}}</p>
+        <p class="letras">capitulos</p>
+        {%for numero in numeroCapitulos.all %}
+          {%if forloop.last %} 
+            <p class="numero">{{forloop.counter}}</p>
+          {%endif%}
+        {%endfor%}
       </div>
     </div>
     <div  class="bg-dark tablero d-flex flex-column justify-content-center align-items-center">
       <div>
         <p class="letras">Comentarios</p>
-        <p class="numero">{{numeroComentarios}}</p>
+        {%for numero in numeroComentarios.all %}
+          {%if forloop.last %} 
+            <p class="numero">{{forloop.counter}}</p>
+          {%endif%}
+        {%endfor%}
       </div>
     </div>
   </div>
@@ -174,25 +190,30 @@
                 </div>
                   
               </section>
-              <ul class="cursos" style=" text-decoration: none;list-style:none">
+              <ul class="cursos" style=" width:100%; text-decoration: none;list-style:none">
                 {% for subject in cursos.all %}
                     {%if subject.standard|parseada == a.name|parseada  %}  
-                    <div class="d-flex justify-content-start" style=";">
-                      <li style="display: flex;" style="width: 400px;"><a style="width: 200px;align-self: center"class="dropdown-item" >{{subject.name}} </a>
+                    <div class="d-flex justify-content-start flex-wrap align-items-center" style=";">
+                      <li style="display: flex;" style="width: 200px;"><a style="width: 150px;align-self: center"class="dropdown-item" >{{subject.name}} </a><span style="width: 10px;"> </span></li>  
                         {% if user.userprofileinfo.user_type == 'teacher' or user.is_superuser %}
-                          <a  class="btn btn-success"href="{% url 'curriculum:lesson_create' standard=subject.standard.slug slug=subject.slug %}" style="align-self: center;width: 100px;"class="dropdown-item" >agregar</a>
+                        <li><a  class="btn btn-success"href="{% url 'curriculum:lesson_create' standard=subject.standard.slug slug=subject.slug %}" style="align-self: center;width: 100px;"class="dropdown-item" >agregar</a></li>
                         {%endif%}
-                        <span style="width: 20px;"></span>
+                        <span style="width: 10px;"></span>
+                        
+                        <div class="d-flex justify-content-start align-items-center">
                         {% for lesson in lessonsAll.all  %}
                           {%if lesson.Standard|parseada == a.name|parseada%}
-                            {%if lesson.subject|parseada == subject.name|parseada %}
-                                    <a href="{% url 'curriculum:lesson_detail' slug=lesson.slug subject=subject.slug standard=lesson.Standard.slug %}" style="width100;" class="btn btn-outline-primary">
-                                      Capitulo-{{lesson.position}}: {{lesson.name}}
-                                    </a><span style="width: 5px;"></span>
+                            {%if lesson.subject|parseada == subject.name|parseada %}      
+                                    <li  class=""style="width:167px"><a style="width: 100%;"   href="{% url 'curriculum:lesson_detail' slug=lesson.slug subject=subject.slug standard=lesson.Standard.slug %}"  class="btn btn-outline-primary">
+                                      Cap-{{lesson.position}}:{{lesson.name}}</a>
+                                    </li><span style="width: 5px;"></span>
+                                    
                             {%endif%}
                           {%endif%}
                         {% endfor %}
-                      </li>                      
+                      </div>
+                    
+                                          
                     </div>
                       
                       <li><hr ></li>  

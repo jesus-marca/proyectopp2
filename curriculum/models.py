@@ -58,12 +58,12 @@ class Lesson(models.Model):
     created_by = models.ForeignKey(User,on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
     subject = models.ForeignKey(Subject, on_delete=models.CASCADE,related_name='lessons')
-    name = models.CharField(max_length=250)
-    position = models.PositiveSmallIntegerField(verbose_name="Chapter no.")
+    name = models.CharField(max_length=250,verbose_name="Nombre del capitulo")
+    position = models.PositiveSmallIntegerField(verbose_name="Numero del capitulo")
     slug = models.SlugField(null=True, blank=True)
     video = models.FileField(upload_to=save_lesson_files,verbose_name="Video", blank=True, null=True)
-    ppt = models.FileField(upload_to=save_lesson_files,verbose_name="Presentations", blank=True)
-    Notes = models.FileField(upload_to=save_lesson_files,verbose_name="Notes", blank=True)
+    ppt = models.FileField(upload_to=save_lesson_files,verbose_name="Pdf", blank=True)
+    Notes = models.FileField(upload_to=save_lesson_files,verbose_name="Anotaciones", blank=True)
 
     class Meta:
         ordering = ['position']

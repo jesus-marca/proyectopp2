@@ -25,11 +25,11 @@ from django.template.loader import render_to_string
 class StandardListView(ListView):
     context_object_name = 'standards'
     extra_context = {
-        "numeroNiveles":Standard.objects.count(),
-        "numeroCursos":Subject.objects.count(),
-        "numeroCapitulos":Lesson.objects.count(),
+        "numeroNiveles":Standard.objects.all(),
+        "numeroCursos":Subject.objects.all(),
+        "numeroCapitulos":Lesson.objects.all(),
         "subjectsAll":SlotSubject.objects.all(),
-        "numeroComentarios":Comment.objects.count(),
+        "numeroComentarios":Comment.objects.all(),
         
         #de prueba
         "subjectslot1":SlotSubject.objects.filter(standard=1),
@@ -153,9 +153,9 @@ class LessonCreateView(CreateView):
     def get_success_url(self):
         self.object = self.get_object()
         standard = self.object.standard
-        return render(request ,'curriculum:standard_list') 
-        # return reverse_lazy('curriculum:lesson_list',kwargs={'standard':standard.slug,
-        #                                                      'slug':self.object.slug}) 
+  
+        return reverse_lazy('curriculum:lesson_list',kwargs={'standard':standard.slug,
+                                                             'slug':self.object.slug}) 
  
  
     def form_valid(self, form, *args, **kwargs):

@@ -5,6 +5,15 @@ class LessonForm(forms.ModelForm):
     class Meta:
         model = Lesson
         fields = ('lesson_id','name','position','video','ppt','Notes')
+        
+        labels = {
+        'lesson_id':'numero de capitulo',
+        'name':"nombre del capitulo",
+        'position':"numero de capitulo",
+        'video':"video sobre el capitulo",      
+        'ppt':'pdf',
+        'Notes':'anotaciones'        
+        }
 
 class CommentForm(forms.ModelForm):
     class Meta:

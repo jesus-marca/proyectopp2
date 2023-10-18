@@ -58,7 +58,7 @@ class Lesson(models.Model):
     created_by = models.ForeignKey(User,on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
     subject = models.ForeignKey(Subject, on_delete=models.CASCADE,related_name='lessons')
-    name = models.CharField(max_length=250,verbose_name="Nombre del capitulo")
+    name = models.CharField(max_length=250,verbose_name="ombre del capitulo")
     position = models.PositiveSmallIntegerField(verbose_name="Numero del capitulo")
     slug = models.SlugField(null=True, blank=True)
     video = models.FileField(upload_to=save_lesson_files,verbose_name="Video", blank=True, null=True)
@@ -76,7 +76,9 @@ class Lesson(models.Model):
         super().save(*args, **kwargs)
 
     def get_absolute_url(self):
-        return reverse('curriculum:lesson_list', kwargs={'slug':self.subject.slug, 'standard':self.Standard.slug})
+        # return reverse('curriculum:lesson_list', kwargs={'slug':self.subject.slug, 'standard':self.Standard.slug})
+        return reverse('curriculum:lesson_detail', kwargs={'slug':self.slug, 'standard':self.Standard.slug,'subject':self.subject.slug})
+
 
 class WorkingDays(models.Model):
     standard = models.ForeignKey(Standard, on_delete=models.CASCADE,related_name='standard_days')

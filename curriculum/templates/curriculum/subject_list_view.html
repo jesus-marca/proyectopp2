@@ -32,13 +32,13 @@
     <div id="page-intro" class="container-fluid d-flex align-items-center justify-content-center">
       <div class="row d-flex justify-content-center text-center " style="width: 20%; justify-self: center;align-self: center;margin-top: 5rem;">
         <div id="carouselExample" class="carousel slide" style=" margin-left:0px;width: 100%;">
-          {% comment %} <h1 style="color: white;font-size:3rem;margin-top: 10rem;margin-bottom: -2rem;">Bienvenidos a escuela online</h1> {% endcomment %}
+          {% comment %} <h1 style="color: white;font-size:3rem;margin-top: 10rem;margin-bottom: -2rem;">Bienvenidos a escuela online</h1> {% endcomment %} 
           <div class="carousel-inner " style="width: 100%;">
             {% for subject in standards.subjects.all %}
-              {%if forloop.first%}
+              {%if forloop.first%} 
                 <div class="carousel-item active">
                   <img style="width:250px;height: 250px;"src="{{subject.image.url|default_if_none:'#'}}"  alt="nueva">
-                  <p style="color: white;font-size: 1.5rem ;">{{subject.name}}</p>
+                  <p style="color: white;font-size: 1.5rem ;">{{subject.name}}</p> 
                 </div>
               {%else%}
                 <div class="carousel-item">

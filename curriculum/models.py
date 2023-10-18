@@ -124,6 +124,7 @@ class Reply(models.Model):
     reply_body = models.TextField(max_length=500)
     author = models.ForeignKey(User,on_delete=models.CASCADE)
     date_added = models.DateTimeField(auto_now_add=True)
-
+ 
     def __str__(self):
         return "reply to " + str(self.comment_name.comm_name)
+   

@@ -85,7 +85,7 @@
 
 <div class="d-flex justify-content-center">
   <div class="contenedor-niveles">
-    {%for a in standards%}
+    {%for a in standards.all%}
       
       <p style="width: 90%;">
         <button class="btn btn-primary" style="width: 100%;" type="button" data-bs-toggle="collapse" data-bs-target={{a.slug|combinacion}} aria-expanded="false" aria-controls={{a.slug|parseada}}>
@@ -175,15 +175,15 @@
                   
               </section>
               <ul class="cursos" style=" text-decoration: none;list-style:none">
-                {% for subject in cursos %}
+                {% for subject in cursos.all %}
                     {%if subject.standard|parseada == a.name|parseada  %}  
                     <div class="d-flex justify-content-start" style=";">
                       <li style="display: flex;" style="width: 400px;"><a style="width: 200px;align-self: center"class="dropdown-item" >{{subject.name}} </a>
                         {% if user.userprofileinfo.user_type == 'teacher' or user.is_superuser %}
-                          <a  class="btn btn-success" href="{% url 'curriculum:lesson_create' standard=subject.standard.slug slug=subject.slug %}" style="align-self: center;width: 100px;"class="dropdown-item" >agregar</a>
+                          <a  class="btn btn-success"href="{% url 'curriculum:lesson_create' standard=subject.standard.slug slug=subject.slug %}" style="align-self: center;width: 100px;"class="dropdown-item" >agregar</a>
                         {%endif%}
                         <span style="width: 20px;"></span>
-                        {% for lesson in lessonsAll  %}
+                        {% for lesson in lessonsAll.all  %}
                           {%if lesson.Standard|parseada == a.name|parseada%}
                             {%if lesson.subject|parseada == subject.name|parseada %}
                                     <a href="{% url 'curriculum:lesson_detail' slug=lesson.slug subject=subject.slug standard=lesson.Standard.slug %}" style="width100;" class="btn btn-outline-primary">

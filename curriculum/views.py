@@ -1,3 +1,4 @@
+from urllib import request
 from django.shortcuts import render 
 from django.views.generic import (TemplateView, DetailView,
                                     ListView, CreateView,
@@ -147,21 +148,22 @@ class LessonCreateView(CreateView):
     form_class = LessonForm
     context_object_name = 'subject'
     model= Subject
-    template_name = 'curriculum/lesson_create.html'
+    template_name = 'curriculum/lesson_create.html' 
 
     def get_success_url(self):
         self.object = self.get_object()
         standard = self.object.standard
-        return reverse_lazy('curriculum:lesson_list',kwargs={'standard':standard.slug,
-                                                             'slug':self.object.slug})
-
-
+        return render(request ,'curriculum:standard_list') 
+        # return reverse_lazy('curriculum:lesson_list',kwargs={'standard':standard.slug,
+        #                                                      'slug':self.object.slug}) 
+ 
+ 
     def form_valid(self, form, *args, **kwargs):
         self.object = self.get_object()
         fm = form.save(commit=False)
         fm.created_by = self.request.user
         fm.Standard = self.object.standard
-        fm.subject = self.object
+        fm.subject = self.object 
         fm.save()
         return HttpResponseRedirect(self.get_success_url())
 
@@ -170,6 +172,7 @@ class LessonUpdateView(UpdateView):
     model= Lesson
     template_name = 'curriculum/lesson_update.html'
     context_object_name = 'lessons'
+    
 
 class LessonDeleteView(DeleteView):
     model= Lesson

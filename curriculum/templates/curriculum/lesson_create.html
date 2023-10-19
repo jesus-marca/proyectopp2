@@ -8,132 +8,19 @@
 
 {% block image_block %}
 <header class="info-header">
-  <div id="page-intro" class="container-fluid d-flex align-items-center justify-content-center ">
-    {% comment %} <div class="row d-flex justify-content-center text-center">
-      <div class="col-md-10 text-white">
-        <!-- heading -->
-        <h2 class="display-4 font-weight-bold  p-5 " style="color:#ff5722;" > Capitulo Creado </h2>
-        <div class="row d-flex justify-content-center text-center">
-          <ul class="breadcrumb">
-            <li><a href="{% url 'index' %}">Inico</a></li>
-            <li><a href="{% url 'curriculum:standard_list' %}">Curriculum</a></li>
-            <li class="disabled-text" >Capitulo Creado</li>
-          </ul>
-        </div>
-
-        <!-- divider -->
-        <hr style="color:#ff5722;">
-
-        <!-- description -->
-        <h4 class="white-text my-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                  Deleniti
-                  consequuntur.</h4>
-      </div>
-    </div> {% endcomment %}
+  <div id="page-intro" class="container-fluid d-flex align-items-center justify-content-center ">   
   </div>
 </header>
 {% endblock %}
 
 {% block content %}
-
-
-
-<div style="width: 90%;" class="d-flex flex-column  align-items-center">
-  <div style="width: 100% ;height: 100%; margin-top: 2rem;margin-bottom: -4.4rem;" class=" row d-flex  justify-content-center mb-2">
-    <div style="width: 100%; " class="d-flex justify-content-start">
-      <a class="navbar-brand color_encabezado" href="{% url 'curriculum:standard_list' %}" ><img class="logos-nav" style="width: 100px" src="https://cdn-icons-png.flaticon.com/512/5093/5093116.png" alt="Niveles"></a> 
-    </div>
-   
-  </div>
-
-
-  {% comment %} <div style="width: 70%;flex-direction: row;display:flex;justify-content: center;" class="mt-5">
-    <div style="width: 90%;flex-direction: row;display:flex;justify-content: center;" class="">
-      <section class="text-center" style="width: 100%;">
-          <div class="d-flex col align-items-center" >
-            <div class="d-flex row " style="text-align: starttemas;background-color: white;padding: 2rem; border-color: blue;width: 60%;">
-              <h2 >Nivel Academico:{{lessons.Standard.name}}</h2>
-              <h2 >Curso:{{lessons.subject.name}}</h2>
-              <h2 >Capitulo:{{lessons.position}}</h2>
-              <h2 >Tema:{{lessons.name}}</h2>
-            </div>
-        
-
-            <div class="row d-flex justify-content-end" style="width:70%;">
-              <div id="player-overlay">
-                    <video controls >
-                        <source style="width: 100%;" src="{{lessons.video.url}}"  type="video/mp4">
-                    </video>
-              </div>
-            </div>
-          </div>
   
-          <div class="row d-flex justify-content-center mb-3 mt-3">
-            <!-- download presentations -->
-                      <div class="col-md-4 mb-4 mt-4">
-                        <div class="card box-shadow-hover">
-                          <div class="card-body">
-                            <h5 class="card-title">Descargar Presentacion </h5>
-                            {% if lessons.ppt %}
-                            <p class="card-text">Descargar Presentacion del Capitulo</p>
-                            <a href="{{lessons.ppt.url}}" download>
-                            <button type="button" class="button-les"><span>Descargar</span></button>
-                            </a>
-                            {% else %}
-                            <p class="card-text" > No existe el PPT</p>
-                            {% endif %}
-
-                          </div>
-                        </div>
-                      </div>
-
-                      <div class="col-md-4 mb-4 mt-4">
-                        <div class="card box-shadow-hover">
-                          <div class="card-body">
-                            <h5 class="card-title">Descargar Notas</h5>
-                            {% if lessons.Notes %}
-                            <p class="card-text">Descargar Notas del capitulo</p>
-                            <a href="{{lessons.Notes.url}}" download>
-                            <button type="button" class="button-les"><span>Descargar</span></button>
-                            </a>
-                            {% else %}
-                            <p class="card-text">Notas no disponibles</p>
-                            {%endif%}
-
-                          </div>
-                        </div>
-                      </div>
-
-
-                      <div class="col-md-4 mb-4 mt-4">
-                        <div class="card box-shadow-hover">
-                          <div class="card-body">
-                            <h5 class="card-title">Descargar Video</h5>
-                            <p class="card-text">Descargar Video del capitulo</p>
-                            <a style:"width:40px"href="{{lessons.video.url}}" download>
-                            <button type="button" class="button-les"><span>Descargar</span></button>
-                            </a>
-                          </div>
-                        </div>
-                      </div>
-          </div>
-        
-
-          <div class="row d-flex justify-content-center mb-3 mt-3">
-              {% if user.userprofileinfo.user_type == 'teacher' or user.is_superuser %}
-              <div class="col-md-6 mb-3 text-center">
-                  <a href="{% url 'curriculum:lesson_update' standard=lessons.Standard.slug subject=lessons.subject.slug slug=lessons.slug %}" class="btn btn-info btn-lg mr-4 btn-block">Actualizar Capitulo</a>
-              </div>
-              <div class="col-md-6">
-                  <a href="{% url 'curriculum:lesson_delete' standard=lessons.Standard.slug subject=lessons.subject.slug slug=lessons.slug %}" class="btn btn-danger btn-lg mr-4 btn-block">Eliminar Capitulo </a>
-              </div>
-              {% endif %}
-            </div>
-      </section>
-    </div>
-  </div> {% endcomment %}
-
-
+  <div style="width: 100% ;height: 10%; margin-top: 2rem;margin-bottom: -4.4rem;" class="d-flex  justify-content-center mb-2">
+    <div style="width: 90%; " class="d-flex justify-content-start">
+      <a class="navbar-brand color_encabezado" href="{% url 'curriculum:standard_list' %}" ><img class="logos-nav" style="width: 100px" src="https://cdn-icons-png.flaticon.com/512/5093/5093116.png" alt="Niveles"></a>         
+    </div>    
+  </div>
+  <p class="text-center">Agregar un nuevo capitulo</p>
   <section class="gradient-custom w-100" style="">
     <div class="container my-5 py-5">
       <div class="row d-flex justify-content-center">
@@ -153,17 +40,6 @@
       </div>
     </div>
   </section>
-</div>
 
-
-{% comment %} <div class="d-flex row justify-content-center">
-  <form method="post" enctype="multipart/form-data" style="width: 50%;">
-    <div class="form-group d-flex row justify-content-center">
-    {% csrf_token %}
-    {{form|crispy}}
-    <input class="btn btn-success btn-lg btn-block "  style="width: 20%;"type="submit" value="Crear">
-    </div>
-  </form>
-</div> {% endcomment %}
 
 {% endblock %}

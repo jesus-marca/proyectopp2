@@ -209,7 +209,7 @@
                               {% if subject.lessons.all.count == 0 %}
                               <tr style="width: 100%;">  
                                 <td style="width: 20%;">{{subject.name}}</td>
-                                <td style="width: 15%;" ><a  class="btn btn-success"href="{% url 'curriculum:lesson_create' standard=subject.standard.slug slug=subject.slug %}" style="align-self: center;width: 100%;"class="dropdown-item" >agregar capitulo</a></td>
+                                <td style="width: 15%;" ><a  class="btn btn-success" href="{% url 'curriculum:lesson_create' standard=subject.standard.slug slug=subject.slug %}"  style="align-self: center;width: 100%;"class="dropdown-item" >agregar capitulo</a></td>
                                 <td style="width: 5%;" >-</td>
                                 <td style="width: 30%;">-</td>
                                 <td style="width: 30%;">-</a>
@@ -219,16 +219,16 @@
                                 {% if forloop.first or subject.lessons.all.count == 1  %}
                                   <tr style="width: 100%;">                    
                                     <td rowspan="{{subject.lessons.all.count}}" style="width:20%;"  >{{subject.name}}</a></td>
-                                    <td style="width: 15%;" rowspan="{{subject.lessons.all.count}}" ><a  class="btn btn-success"href="{% url 'curriculum:lesson_create' standard=subject.standard.slug slug=subject.slug %}" style="align-self: center;width: 100%;"class="dropdown-item" >agregar capitulo</a></td>
+                                    <td style="width: 15%;" rowspan="{{subject.lessons.all.count}}" ><a  class="btn btn-success" href="{% url 'curriculum:lesson_create' standard=subject.standard.slug slug=subject.slug %}"  style="align-self: center;width: 100%;"class="dropdown-item" >agregar capitulo</a></td>
                                     <td style="width: 5%;" >{{lesson.position}}</td>
                                     <td style="width: 30%;" >{{lesson.name}}</td>
-                                    <td style="width: 30%;" ><a style="width: 30%;"   href="{% url 'curriculum:lesson_detail' slug=lesson.slug subject=subject.slug standard=lesson.Standard.slug %}"  class="btn btn-outline-primary">Ver</a><span style="width: 4%;"></span> <a style="width: 30%;"   href=""  class="btn btn-outline-success">Editar</a><span style="width: 4%;"> </span><a style="width: 30%;"   href=""  class="btn btn-outline-danger">Eliminar</a></td>
+                                    <td style="width: 30%;" ><a style="width: 30%;"   href="{% url 'curriculum:lesson_detail' slug=lesson.slug subject=subject.slug standard=lesson.Standard.slug %}"  class="btn btn-outline-primary">Ver</a><span style="width: 4%;"></span> <a style="width: 30%;"   href=""  class="btn btn-outline-success">Editar</a><span style="width: 4%;"> </span><a style="width: 30%;" class="btn btn-outline-danger">Eliminar</a></td>
                                   </tr>
                                 {% else %}
                                   <tr style="width: 100%;">                    
                                     <td style="width: 5%;" >{{lesson.position}}</td>                          
                                     <td style="width: 30%;" >{{lesson.name}}</td>
-                                    <td style="width: 30%;" ><a style="width: 30%;"   href="{% url 'curriculum:lesson_detail' slug=lesson.slug subject=subject.slug standard=lesson.Standard.slug %}"  class="btn btn-outline-primary">Ver</a><span style="width: 4%;"></span> <a style="width: 30%;"   href=""  class="btn btn-outline-success">Editar</a><span style="width: 4%;"> </span><a style="width: 30%;"   href=""  class="btn btn-outline-danger">Eliminar</a></td>
+                                    <td style="width: 30%;" ><a style="width: 30%;"   href="{% url 'curriculum:lesson_detail' slug=lesson.slug subject=subject.slug standard=lesson.Standard.slug %}"  class="btn btn-outline-primary">Ver</a><span style="width: 4%;"></span> <a style="width: 30%;"      class="btn btn-outline-success">Editar</a><span style="width: 4%;"> </span><a style="width: 30%;"   href=""  class="btn btn-outline-danger">Eliminar</a></td>
                                   </tr> 
                                 {% endif %}
                               {% endfor %}

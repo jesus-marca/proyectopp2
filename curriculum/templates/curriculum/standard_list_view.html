@@ -52,741 +52,773 @@
 {% endblock %}
 
 {% block content %}
-
-<h2 class="text-center mt-5 mb-4" style="font-size: 3rem;">Nuestros niveles de educacion</h2>
-<div class="d-flex row justify-content-center" style="height: auto">
-  <div class=" d-flex  justify-content-center align-items-center" style="width: 73%;">
-    <div  class="tablero bg-info d-flex flex-column justify-content-center align-items-center ">
-      <div>
-        <p class="letras">niveles</p>
-        {%for numero in numeroNiveles.all %}
-          {%if forloop.last %} 
-            <p class="numero">{{forloop.counter}}</p>
-          {%endif%}
-        {%endfor%}
-      </div>  
-    </div>
-    <div  class="bg-success tablero d-flex flex-column justify-content-center align-items-center">
-      <div>
-        <p class="letras" >cursos</p>
-        {%for numero in numeroCursos.all %}
-          {%if forloop.last %} 
-            <p class="numero">{{forloop.counter}}</p>
-          {%endif%}
-        {%endfor%}
-      </div>
-    </div>
-    <div  class="bg-danger tablero d-flex flex-column justify-content-center align-items-center">
-      <div>
-        <p class="letras">capitulos</p>
-        {%for numero in numeroCapitulos.all %}
-          {%if forloop.last %} 
-            <p class="numero">{{forloop.counter}}</p>
-          {%endif%}
-        {%endfor%}
-      </div>
-    </div>
-    <div  class="bg-dark tablero d-flex flex-column justify-content-center align-items-center">
-      <div>
-        <p class="letras">Comentarios</p>
-        {%for numero in numeroComentarios.all %}
-          {%if forloop.last %} 
-            <p class="numero">{{forloop.counter}}</p>
-          {%endif%}
-        {%endfor%}
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="d-flex justify-content-center">
-  <div class="contenedor-niveles">
-    {%for a in standards.all%}
-      
-      <p style="width: 90%;">
-        <button class="btn btn-primary" style="width: 100%;" type="button" data-bs-toggle="collapse" data-bs-target={{a.slug|combinacion}} aria-expanded="false" aria-controls={{a.slug|parseada}}>
-        {{a.slug}}
-        </button>
-      </p>
-      
-          <div class="collapse " id="{{a.slug|parseada}}" style="margin-top: -1rem;width: 90%;">
-            <div class="card card-body d-flex justify-content-center ">
-              <section id="best-features" class="text-center" style=" width: 100%;justify-self: center;">                    
-                <div class="col-md-12 justify-content-center mb-5">
-              
-                      <table id="class-time-table" class="tabla-encabezado">
-                        <tr>
-                          <th></th>
-              
-                          <th scope="row">8 a.m.</th>
-                          <th scope="row">9 a.m.</th>
-                          <th scope="row">10 a.m.</th>
-                          <th scope="row">11 a.m.</th>
-                          <th scope="row">12 m.</th>
-                          <th scope="row">1 p.m.</th>
-                          <th scope="row">2 p.m.</th>
-                        </tr>
-                        <tr>
-                          
-                          <th>Lunes</th>
-                        
-                          {%for slot in subjectsAll%}
-                        
-                              {%if slot.day.id == 1 %}  
-                            
-                                  {%if slot.standard|parseada == a.name|parseada %}   
-                                  
-                              
-                                  <td  style="background-color: hsl({{slot.slot_subject.id | multiplicar }}, 71%, 82%);" >{{slot.slot_subject}}</td>                                                {%endif%}                                     
-                              {% endif %}    
-                          {% endfor %}
-                        </tr>
-                        <tr>
-                          <th>Martes</th>
-                          {%for slot in subjectsAll%}
-                        
-                            {%if slot.day.id == 2 %}  
-                          
-                                {%if slot.standard|parseada == a.name|parseada %}   
-                                
-                            
-                                <td  style="background-color: hsl({{slot.slot_subject.id | multiplicar }}, 71%, 82%);" >{{slot.slot_subject}}</td>                                                {%endif%}                                     
-                            {% endif %}    
-                          {% endfor %}
-                        </tr>
-                        <tr>
-                          <th>Miercoles</th>
-                          {%for slot in subjectsAll%}
-                        
-                            {%if slot.day.id == 3 %}                          
-                              {%if slot.standard|parseada == a.name|parseada %}                                                           
-                                <td  style="background-color: hsl({{slot.slot_subject.id | multiplicar }}, 71%, 82%);" >{{slot.slot_subject}}</td>                                                {%endif%}                                     
-                            {% endif %}    
-                          {% endfor %}
-                        </tr>
-                        <tr>
-                          <th>Jueves</th>
-                          {%for slot in subjectsAll%}
-                        
-                            {%if slot.day.id == 4 %}                          
-                              {%if slot.standard|parseada == a.name|parseada %}                                                           
-                                <td  style="background-color: hsl({{slot.slot_subject.id | multiplicar }}, 71%, 82%);" >{{slot.slot_subject}}</td>                                                {%endif%}                                     
-                            {% endif %}    
-                          {% endfor %}
-                        </tr>
-                        <tr>
-                          <th>Viernes</th>
-                          {%for slot in subjectsAll%}
-                        
-                            {%if slot.day.id == 5 %}                          
-                              {%if slot.standard|parseada == a.name|parseada %}                                                           
-                                <td  style="background-color: hsl({{slot.slot_subject.id | multiplicar }}, 71%, 82%);" >{{slot.slot_subject}}</td>                                                {%endif%}                                     
-                            {% endif %}    
-                          {% endfor %}
-                          
-                        </tr>
-                      </table>
-                      
-                </div>
-                  
-              </section>
-              <ul class="cursos" style=" width:100%; text-decoration: none;list-style:none">
-                {% for subject in cursos.all %}
-                    {%if subject.standard|parseada == a.name|parseada  %}  
-                    <div class="d-flex justify-content-start flex-wrap align-items-center" style=";">
-                      <li style="display: flex;" style="width: 200px;"><a style="width: 150px;align-self: center"class="dropdown-item" >{{subject.name}} </a><span style="width: 10px;"> </span></li>  
-                        {% if user.userprofileinfo.user_type == 'teacher' or user.is_superuser %}
-                        <li><a  class="btn btn-success"href="{% url 'curriculum:lesson_create' standard=subject.standard.slug slug=subject.slug %}" style="align-self: center;width: 100px;"class="dropdown-item" >agregar</a></li>
-                        {%endif%}
-                        <span style="width: 10px;"></span>
-                        
-                        <div class="d-flex justify-content-start align-items-center">
-                        {% for lesson in lessonsAll.all  %}
-                          {%if lesson.Standard|parseada == a.name|parseada%}
-                            {%if lesson.subject|parseada == subject.name|parseada %}      
-                                    <li  class=""style="width:167px"><a style="width: 100%;"   href="{% url 'curriculum:lesson_detail' slug=lesson.slug subject=subject.slug standard=lesson.Standard.slug %}"  class="btn btn-outline-primary">
-                                      Cap-{{lesson.position}}:{{lesson.name}}</a>
-                                    </li><span style="width: 5px;"></span>
-                                    
-                            {%endif%}
-                          {%endif%}
-                        {% endfor %}
-                      </div>
-                    
-                                          
-                    </div>
-                      
-                      <li><hr ></li>  
-                      {% comment %} {% if forloop.first %}
-                        <li style="display: flex;"><a style="width: 300px;"class="dropdown-item" >{{subject.name}} </a>
-
-                        
-                          {% for lesson in lessonAll  %}
-                            {%if lesson.subject|parseada == subject.name%}
-                
-                                    <a href="{% url 'curriculum:lesson_detail' slug=lesson.slug subject=subject.slug standard=lesson.Standard.slug %}" style="width: 100px;" class="btn btn-outline-primary">
-                                      Capitulllo-{{lesson.position}}: {{lesson.name}}
-                                    </a>
-                            {%endif%}
-                          {% endfor %}
-                        
-                        </li>
-                      {%endif%} {% endcomment %}
-                      {% endif %} 
-                    {% comment %} {% else %}
-                     <div class="d-flex justify-content-start" style=";">
-                      <li style="display: flex;" style="width: 400px;"><a style="width: 200px;"class="dropdown-item" >{{subject.name}} </a>
-                        {% if user.userprofileinfo.user_type == 'teacher' or user.is_superuser %}
-                          <a  class="btn btn-success" style="width: 100px;"class="dropdown-item" >agregar</a>
-                        {%endif%}
-                        <span style="width: 20px;"></span>
-                        {% for lesson in lessonAll  %}
-                          {%if lesson.subject|parseada == subject.name%}
-              
-                                  <a href="{% url 'curriculum:lesson_detail' slug=lesson.slug subject=subject.slug standard=lesson.Standard.slug %}" style="width100;" class="btn btn-outline-primary">
-                                    Capitulo-{{lesson.position}}: {{lesson.name}}
-                                  </a>
-                          {%endif%}
-                        {% endfor %}
-                      </li>                      
-                    </div>
-                      
-                      <li><hr ></li>   
-                   
-                    {% endif %}  {% endcomment %}
-                    
-                {% endfor %}
-              </ul>
-            </div>        
-          </div>         
-          <div style="margin-top: 1rem;">      
+  <div class="d-flex row justify-content-center"  style="width: 100% ;margin-left: 0.2%;">
+      <h2 class="text-center mt-5 mb-4" style="font-size: 3rem;">Nuestros niveles de educacion</h2>
+      <div class="d-flex row justify-content-center" style="height: auto">
+        <div class=" d-flex  justify-content-center align-items-center" style="width: 73%;">
+          <div  class="tablero bg-info d-flex flex-column justify-content-center align-items-center ">
+            <div>
+              <p class="letras">niveles</p>
+              {%for numero in numeroNiveles.all %}
+                {%if forloop.last %} 
+                  <p class="numero">{{forloop.counter}}</p>
+                {%endif%}
+              {%endfor%}
+            </div>  
           </div>
-      
-        {%endfor%}  
-  </div>
-</div>
-{% comment %} <div class="" style="display:flex;flex-direction:column;align-content: center;align-items: center;margin-top: 5rem;">
-  <p style="width: 90%;">
-    <button class="btn btn-primary" style="width: 100%;" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample1" aria-expanded="false" aria-controls="collapseExample1">
-      Primero de secundaria
-    </button>
-  </p>
-  <div class="collapse" id="collapseExample1" style="margin-top: -1rem;width: 90%;">
-    <div class="card card-body d-flex justify-content-center ">
-      <section id="best-features" class="text-center" style=" width: 100%;justify-self: center;">          
-    
-        <div class="col-md-12 justify-content-center mb-5">
-          
-          <table id="class-time-table" class="tabla-encabezado">
-            <tr>
-              <th></th>
-      
-              <th scope="row">8 a.m.</th>
-              <th scope="row">9 a.m.</th>
-              <th scope="row">10 a.m.</th>
-              <th scope="row">11 a.m.</th>
-              <th scope="row">12 m.</th>
-              <th scope="row">1 p.m.</th>
-              <th scope="row">2 p.m.</th>
-            </tr>
-            <tr>
-              <th>Lunes</th>
-              
-              {%for slot in subjectslot1%}
-                      
-        
-                  {%if slot.day.id == 1  %}   
-                                              
-                      <td  style="background-color: hsl({{slot.slot_subject.id | multiplicar }}, 71%, 82%);" >{{slot.slot_subject}}</td>                                                                                     
-                  {% endif %}    
-              {% endfor %}
-            </tr>
-            <tr>
-              <th>Martes</th>
-              {%for slot in subjectslot1%}
-                {%if slot.day.id == 2 %}
-                
-                  <td  style="background-color: hsl({{slot.slot_subject.id | multiplicar }}, 71%, 82%);" >{{slot.slot_subject}}</td>
-                {% endif %}
-                {% endfor %}
-            </tr>
-            <tr>
-              <th>Miercoles</th>
-              {%for slot in subjectslot1%}
-              {%if slot.day.id == 3 %}
-            
-                <td  style="background-color: hsl({{slot.slot_subject.id | multiplicar }}, 71%, 82%);" >{{slot.slot_subject}}</td>
-              {% endif %}
-              {% endfor %}
-            </tr>
-            <tr>
-              <th>Jueves</th>
-              {%for slot in subjectslot1%}
-              {%if slot.day.id == 4 %}
-
-                <td  style="background-color: hsl({{slot.slot_subject.id | multiplicar }}, 71%, 82%);" >{{slot.slot_subject}}</td>
-              {% endif %}
-              {% endfor %}
-            </tr>
-            <tr>
-              <th>Viernes</th>
-              {%for slot in subjectslot1%}
-              
-              {%if slot.day.id == 5 %}
-      
-                <td  style="background-color: hsl({{slot.slot_subject.id | multiplicar }}, 71%, 82%);" >{{slot.slot_subject}}</td>
-              {% endif %}
-              {% endfor %}
-            </tr>
-          </table>
+          <div  class="bg-success tablero d-flex flex-column justify-content-center align-items-center">
+            <div>
+              <p class="letras" >cursos</p>
+              {%for numero in numeroCursos.all %}
+                {%if forloop.last %} 
+                  <p class="numero">{{forloop.counter}}</p>
+                {%endif%}
+              {%endfor%}
+            </div>
+          </div>
+          <div  class="bg-danger tablero d-flex flex-column justify-content-center align-items-center">
+            <div>
+              <p class="letras">capitulos</p>
+              {%for numero in numeroCapitulos.all %}
+                {%if forloop.last %} 
+                  <p class="numero">{{forloop.counter}}</p>
+                {%endif%}
+              {%endfor%}
+            </div>
+          </div>
+          <div  class="bg-dark tablero d-flex flex-column justify-content-center align-items-center">
+            <div>
+              <p class="letras">Comentarios</p>
+              {%for numero in numeroComentarios.all %}
+                {%if forloop.last %} 
+                  <p class="numero">{{forloop.counter}}</p>
+                {%endif%}
+              {%endfor%}
+            </div>
+          </div>
         </div>
-        
-      </section>
-      <ul class="cursos" style=" text-decoration: none;list-style:none">
-        {% for subject in cursos1 %}
-          {% if forloop.last %}
-          <li style="display: flex;"><a style="width: 300px;"class="dropdown-item" >{{subject.name}} </a>
+      </div>
+
+      <div class="d-flex justify-content-center">
+        <div class="contenedor-niveles">
+          {%for a in standards.all%}
             
-            {% for lesson in lesson1  %}
-              {%if lesson.subject|parseada == subject.name%}
-  
-                      <a href="{% url 'curriculum:lesson_detail' slug=lesson.slug subject=subject.slug standard=lesson.Standard.slug %}" style="width: 290px;" class="btn btn-outline-primary">
-                        Capitulo-{{lesson.position}}: {{lesson.name}}
-                      </a>
-              {%endif%}
-            {% endfor %}
-  
-          
-          </li>
-          {% else %}
-          <li style="display: flex;"><a style="width: 300px;"class="dropdown-item" >{{subject.name}} </a>
+                <p style="width: 90%;">
+                  <button class="btn btn-primary" style="width: 100%;" type="button" data-bs-toggle="collapse" data-bs-target={{a.slug|combinacion}} aria-expanded="false" aria-controls={{a.slug|parseada}}>
+                  {{a.slug}}
+                  </button>
+                </p>
             
-            {% for lesson in lesson1  %}
-              {%if lesson.subject|parseada == subject.name%}
-  
-                      <a href="{% url 'curriculum:lesson_detail' slug=lesson.slug subject=subject.slug standard=lesson.Standard.slug %}" style="width: 290px;" class="btn btn-outline-primary">
-                        Capitulo-{{lesson.position}}: {{lesson.name}}
-                      </a>
-              {%endif%}
-            {% endfor %}
-
-          </li>
-            <li><hr ></li>  
-          {% endif %}                         
-        {% endfor %}
-      </ul>
-    </div>
-
-  </div> 
-
-  <div style="margin-top: 1rem;">      
-  </div>
-
-  <p style="width: 90%;">
-    <button class="btn btn-primary" style="width: 100%;" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample2" aria-expanded="false" aria-controls="collapseExample2">
-      Segundo de secundaria
-    </button>
-  </p>
-  <div class="collapse" id="collapseExample2" style="margin-top: -1rem;width: 90%;">
-    <div class="card card-body d-flex justify-content-center ">
-      <section id="best-features" class="text-center" style=" width: 100%;justify-self: center;">
-        
-        <div class="col-md-12 justify-content-center mb-5">
-          
-          <table id="class-time-table" class="tabla-encabezado">
-            <tr>
-              <th></th>
-    
-              <th scope="row">8 a.m.</th>
-              <th scope="row">9 a.m.</th>
-              <th scope="row">10 a.m.</th>
-              <th scope="row">11 a.m.</th>
-              <th scope="row">12 m.</th>
-              <th scope="row">1 p.m.</th>
-              <th scope="row">2 p.m.</th>
-            </tr>
-            <tr>
-              <th>Lunes</th>
-              
-              {%for slot in subjectslot2%}
-                      
-                  {%if slot.day.id == 1  %}   
-                                              
-                      <td  style="background-color: hsl({{slot.slot_subject.id | multiplicar }}, 71%, 82%);" >{{slot.slot_subject}}</td>                        
-                                                                      
-                  {% endif %}    
-              {% endfor %}
-            </tr>
-            <tr>
-              <th>Martes</th>
-              {%for slot in subjectslot2%}
-                {%if slot.day.id == 2 %}
-            
-                  <td  style="background-color: hsl({{slot.slot_subject.id | multiplicar }}, 71%, 82%);" >{{slot.slot_subject}}</td>
-                {% endif %}
-                {% endfor %}
-            </tr>
-            <tr>
-              <th>Miercoles</th>
-              {%for slot in subjectslot2%}
-              {%if slot.day.id == 3 %}
-
-                <td  style="background-color: hsl({{slot.slot_subject.id | multiplicar }}, 71%, 82%);" >{{slot.slot_subject}}</td>
-              {% endif %}
-              {% endfor %}
-            </tr>
-            <tr>
-              <th>Jueves</th>
-              {%for slot in subjectslot2%}
-              {%if slot.day.id == 4 %}
-
-                <td  style="background-color: hsl({{slot.slot_subject.id | multiplicar }}, 71%, 82%);" >{{slot.slot_subject}}</td>
-              {% endif %}
-              {% endfor %}
-            </tr>
-            <tr>
-              <th>Viernes</th>
-              {%for slot in subjectslot2%}
-              
-              {%if slot.day.id == 5 %}
-
-                <td  style="background-color: hsl({{slot.slot_subject.id | multiplicar }}, 71%, 82%);" >{{slot.slot_subject}}</td>
-              {% endif %}
-              {% endfor %}
-            </tr>
-          </table>
-        </div>
-        
-      </section>
-        <ul class="cursos" style=" text-decoration: none;list-style:none">
-        {% for subject in cursos2 %}
-          {% if forloop.last %}
-          <li style="display: flex;"><a style="width: 300px;"class="dropdown-item" >{{subject.name}} </a>
-            
-            {% for lesson in lesson2  %}
-              {%if lesson.subject|parseada == subject.name%}
-  
-                      <a href="{% url 'curriculum:lesson_detail' slug=lesson.slug subject=subject.slug standard=lesson.Standard.slug %}" style="width: 290px;" class="btn btn-outline-primary">
-                        Capitulo-{{lesson.position}}: {{lesson.name}}
-                      </a>
-              {%endif%}
-            {% endfor %}
-          
-          </li>
-          {% else %}
-          <li style="display: flex;"><a style="width: 300px;"class="dropdown-item" >{{subject.name}} </a>
-            
-            {% for lesson in lesson1  %}
-              {%if lesson.subject|parseada == subject.name%}
-  
-                      <a href="{% url 'curriculum:lesson_detail' slug=lesson.slug subject=subject.slug standard=lesson.Standard.slug %}" style="width: 290px;" class="btn btn-outline-primary">
-                        Capitulo-{{lesson.position}}: {{lesson.name}}
-                      </a>
-              {%endif%}
-            {% endfor %}
-          
-          </li>
-            <li><hr ></li>  
-          {% endif %}                         
-        {% endfor %}
-        </ul>
-    </div>
-
-  </div> 
-
-  <div style="margin-top: 1rem;">      
-  </div>
-
-  <p style="width: 90%;">
-    <button class="btn btn-primary" style="width: 100%;" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample3" aria-expanded="false" aria-controls="collapseExample3">
-      Tercero de secundaria
-    </button>
-  </p>
-  <div class="collapse" id="collapseExample3" style="margin-top: -1rem;width: 90%;">
-    <div class="card card-body d-flex justify-content-center ">
-      <section id="best-features" class="text-center" style=" width: 100%;justify-self: center;">
-        
-
-        <div class="col-md-12 justify-content-center mb-5">
-          
-          <table id="class-time-table" class="tabla-encabezado">
-            <tr>
-              <th></th>
-
-              <th scope="row">8 a.m.</th>
-              <th scope="row">9 a.m.</th>
-              <th scope="row">10 a.m.</th>
-              <th scope="row">11 a.m.</th>
-              <th scope="row">12 m.</th>
-              <th scope="row">1 p.m.</th>
-              <th scope="row">2 p.m.</th>
-            </tr>
-            <tr>
-              <th>Lunes</th>
-              
-              {%for slot in subjectslot3%}
-        
-              
-        
-                  {%if slot.day.id == 1  %}   
-                                              
-                      <td  style="background-color: hsl({{slot.slot_subject.id | multiplicar }}, 71%, 82%);" >{{slot.slot_subject}}</td>                        
-                              
+                <div class="collapse " id="{{a.slug|parseada}}" style="margin-top: -1rem;width: 90%;">
+                  <div class="card card-body d-flex justify-content-center ">
+                    <section id="best-features" class="text-center" style=" width: 100%;justify-self: center;">                    
+                      <div class="col-md-12 justify-content-center mb-5">
                     
-                
-                  {% endif %}    
-              {% endfor %}
-            </tr>
-            <tr>
-              <th>Martes</th>
-              {%for slot in subjectslot3%}
-                {%if slot.day.id == 2 %}
-
-                  <td  style="background-color: hsl({{slot.slot_subject.id | multiplicar }}, 71%, 82%);" >{{slot.slot_subject}}</td>
-                {% endif %}
-                {% endfor %}
-            </tr>
-            <tr>
-              <th>Miercoles</th>
-              {%for slot in subjectslot3%}
-              {%if slot.day.id == 3 %}
-  
-                <td  style="background-color: hsl({{slot.slot_subject.id | multiplicar }}, 71%, 82%);" >{{slot.slot_subject}}</td>
-              {% endif %}
-              {% endfor %}
-            </tr>
-            <tr>
-              <th>Jueves</th>
-              {%for slot in subjectslot3%}
-              {%if slot.day.id == 4 %}
-                
-                <td  style="background-color: hsl({{slot.slot_subject.id | multiplicar }}, 71%, 82%);" >{{slot.slot_subject}}</td>
-              {% endif %}
-              {% endfor %}
-            </tr>
-            <tr>
-              <th>Viernes</th>
-              {%for slot in subjectslot3%}
-              
-              {%if slot.day.id == 5 %}
-                
-                <td  style="background-color: hsl({{slot.slot_subject.id | multiplicar }}, 71%, 82%);" >{{slot.slot_subject}}</td>
-              {% endif %}
-              {% endfor %}
-            </tr>
-          </table>
-        </div>
-        
-      </section>
-      <ul class="cursos" style=" text-decoration: none;list-style:none">
-        {% for subject in cursos3 %}
-          {% if forloop.last %}
-          <li style="display: flex;"><a style="width: 70%;"class="dropdown-item" >{{subject.name}} </a><a href="{% url 'curriculum:lesson_list' slug=subject.slug standard="primero-secundaria" %}" style="width: 30%;justify-self: end;" class="btn btn-success">detalles</a></li>
-          {% else %}
-          <li style="display: flex;"><a style="width: 70%;"class="dropdown-item" >{{subject.name}} </a><a href="{% url 'curriculum:lesson_list' slug=subject.slug standard="primero-secundaria" %}" style="width: 30%;justify-self: end;" class="btn btn-success">detalles</a></li>
-            <li><hr ></li>  
-          {% endif %}                         
-        {% endfor %}
-      </ul>
-    </div>
-  </div> 
-
-  <div style="margin-top: 1rem;">      
-  </div>
-
-  <p style="width: 90%;">
-    <button class="btn btn-primary" style="width: 100%;" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample4" aria-expanded="false" aria-controls="collapseExample4">
-      Cuarto de secundaria
-    </button>
-  </p>
-  <div class="collapse" id="collapseExample4" style="margin-top: -1rem;width: 90%;">
-    <div class="card card-body d-flex justify-content-center ">
-      <section id="best-features" class="text-center" style=" width: 100%;justify-self: center;">
-        
-        <div class="col-md-12 justify-content-center mb-5">
-          
-          <table id="class-time-table" class="tabla-encabezado">
-            <tr>
-              <th></th>
-
-              <th scope="row">8 a.m.</th>
-              <th scope="row">9 a.m.</th>
-              <th scope="row">10 a.m.</th>
-              <th scope="row">11 a.m.</th>
-              <th scope="row">12 m.</th>
-              <th scope="row">1 p.m.</th>
-              <th scope="row">2 p.m.</th>
-            </tr>
-            <tr>
-              <th>Lunes</th>
-              
-              {%for slot in subjectslot4%}
-              
-              
-        
-                  {%if slot.day.id == 1  %}   
-                                              
-                      <td  style="background-color: hsl({{slot.slot_subject.id | multiplicar }}, 71%, 82%);" >{{slot.slot_subject}}</td>                        
-                              
+                            <table id="class-time-table" class="tabla-encabezado">
+                              <tr>
+                                <th></th>
                     
-                
-                  {% endif %}    
-              {% endfor %}
-            </tr>
-            <tr>
-              <th>Martes</th>
-              {%for slot in subjectslot4%}
-                {%if slot.day.id == 2 %}
+                                <th scope="row">8 a.m.</th>
+                                <th scope="row">9 a.m.</th>
+                                <th scope="row">10 a.m.</th>
+                                <th scope="row">11 a.m.</th>
+                                <th scope="row">12 m.</th>
+                                <th scope="row">1 p.m.</th>
+                                <th scope="row">2 p.m.</th>
+                              </tr>
+                              <tr>
+                                
+                                <th>Lunes</th>
+                              
+                                {%for slot in subjectsAll%}
+                              
+                                    {%if slot.day.id == 1 %}  
+                                  
+                                        {%if slot.standard|parseada == a.name|parseada %}   
+                                        
+                                    
+                                        <td  style="background-color: hsl({{slot.slot_subject.id | multiplicar }}, 71%, 82%);" >{{slot.slot_subject}}</td>                                                {%endif%}                                     
+                                    {% endif %}    
+                                {% endfor %}
+                              </tr>
+                              <tr>
+                                <th>Martes</th>
+                                {%for slot in subjectsAll%}
+                              
+                                  {%if slot.day.id == 2 %}  
+                                
+                                      {%if slot.standard|parseada == a.name|parseada %}   
+                                      
+                                  
+                                      <td  style="background-color: hsl({{slot.slot_subject.id | multiplicar }}, 71%, 82%);" >{{slot.slot_subject}}</td>                                                {%endif%}                                     
+                                  {% endif %}    
+                                {% endfor %}
+                              </tr>
+                              <tr>
+                                <th>Miercoles</th>
+                                {%for slot in subjectsAll%}
+                              
+                                  {%if slot.day.id == 3 %}                          
+                                    {%if slot.standard|parseada == a.name|parseada %}                                                           
+                                      <td  style="background-color: hsl({{slot.slot_subject.id | multiplicar }}, 71%, 82%);" >{{slot.slot_subject}}</td>                                                {%endif%}                                     
+                                  {% endif %}    
+                                {% endfor %}
+                              </tr>
+                              <tr>
+                                <th>Jueves</th>
+                                {%for slot in subjectsAll%}
+                              
+                                  {%if slot.day.id == 4 %}                          
+                                    {%if slot.standard|parseada == a.name|parseada %}                                                           
+                                      <td  style="background-color: hsl({{slot.slot_subject.id | multiplicar }}, 71%, 82%);" >{{slot.slot_subject}}</td>                                                {%endif%}                                     
+                                  {% endif %}    
+                                {% endfor %}
+                              </tr>
+                              <tr>
+                                <th>Viernes</th>
+                                {%for slot in subjectsAll%}
+                              
+                                  {%if slot.day.id == 5 %}                          
+                                    {%if slot.standard|parseada == a.name|parseada %}                                                           
+                                      <td  style="background-color: hsl({{slot.slot_subject.id | multiplicar }}, 71%, 82%);" >{{slot.slot_subject}}</td>                                                {%endif%}                                     
+                                  {% endif %}    
+                                {% endfor %}
+                                
+                              </tr>
+                            </table>
+                            
+                      </div>
+                        
+                    </section>
+
+                    <div style="width: 100%;" class="d-flex justify-content-center ">
+                      <table class="table table-hover">
+                        <thead>
+                          <tr>
+                            
+                            <th style="width: 21%;" scope="col">Curso</th>
+                            <th style="width: 14%;" scope="col"></th>
+                            <th style="width: 5%;" scope="col">Cap</th>
+                            <th style="width: 30%;" scope="col">Nombre Capitulo</th>
+                            <th style="width: 30%;" scope="col">Acciones</th>
+                          </tr>
+                        </thead>
+                        <tbody style="width: 100%;">
+                          {% for subject in cursos.all %}
+                            {%if subject.standard|parseada == a.name|parseada  %}
+                              {% if subject.lessons.all.count == 0 %}
+                              <tr style="width: 100%;">  
+                                <td style="width: 20%;">{{subject.name}}</td>
+                                <td style="width: 15%;" ><a  class="btn btn-success"href="{% url 'curriculum:lesson_create' standard=subject.standard.slug slug=subject.slug %}" style="align-self: center;width: 100%;"class="dropdown-item" >agregar capitulo</a></td>
+                                <td style="width: 5%;" >-</td>
+                                <td style="width: 30%;">-</td>
+                                <td style="width: 30%;">-</a>
+                              </tr>                  
+                              {% endif %}
+                              {% for lesson in subject.lessons.all  %}
+                                {% if forloop.first or subject.lessons.all.count == 1  %}
+                                  <tr style="width: 100%;">                    
+                                    <td rowspan="{{subject.lessons.all.count}}" style="width:20%;"  >{{subject.name}}</a></td>
+                                    <td style="width: 15%;" rowspan="{{subject.lessons.all.count}}" ><a  class="btn btn-success"href="{% url 'curriculum:lesson_create' standard=subject.standard.slug slug=subject.slug %}" style="align-self: center;width: 100%;"class="dropdown-item" >agregar capitulo</a></td>
+                                    <td style="width: 5%;" >{{lesson.position}}</td>
+                                    <td style="width: 30%;" >{{lesson.name}}</td>
+                                    <td style="width: 30%;" ><a style="width: 30%;"   href="{% url 'curriculum:lesson_detail' slug=lesson.slug subject=subject.slug standard=lesson.Standard.slug %}"  class="btn btn-outline-primary">Ver</a><span style="width: 4%;"></span> <a style="width: 30%;"   href=""  class="btn btn-outline-success">Editar</a><span style="width: 4%;"> </span><a style="width: 30%;"   href=""  class="btn btn-outline-danger">Eliminar</a></td>
+                                  </tr>
+                                {% else %}
+                                  <tr style="width: 100%;">                    
+                                    <td style="width: 5%;" >{{lesson.position}}</td>                          
+                                    <td style="width: 30%;" >{{lesson.name}}</td>
+                                    <td style="width: 30%;" ><a style="width: 30%;"   href="{% url 'curriculum:lesson_detail' slug=lesson.slug subject=subject.slug standard=lesson.Standard.slug %}"  class="btn btn-outline-primary">Ver</a><span style="width: 4%;"></span> <a style="width: 30%;"   href=""  class="btn btn-outline-success">Editar</a><span style="width: 4%;"> </span><a style="width: 30%;"   href=""  class="btn btn-outline-danger">Eliminar</a></td>
+                                  </tr> 
+                                {% endif %}
+                              {% endfor %}
+                            {%endif%}
+                          {%endfor%} 
+                        </tbody>
+                      </table>
+                    </div>  
+                  </div>        
+                </div>         
+              <div style="margin-top: 1rem;">      
+            </div>        
+          {%endfor%}  
+        </div>
+      </div>
+
+        {% comment %} {%for a in standards.all%}    
+          <div style="width: 72%;" class="d-flex justify-content-center ">
+            <table class="table table-hover">
+              <thead>
+                <tr>
                   
-                  <td  style="background-color: hsl({{slot.slot_subject.id | multiplicar }}, 71%, 82%);" >{{slot.slot_subject}}</td>
-                {% endif %}
-                {% endfor %}
-            </tr>
-            <tr>
-              <th>Miercoles</th>
-              {%for slot in subjectslot4%}
-              {%if slot.day.id == 3 %}
-                
-                <td  style="background-color: hsl({{slot.slot_subject.id | multiplicar }}, 71%, 82%);" >{{slot.slot_subject}}</td>
-              {% endif %}
-              {% endfor %}
-            </tr>
-            <tr>
-              <th>Jueves</th>
-              {%for slot in subjectslot4%}
-              {%if slot.day.id == 4 %}
-                
-                <td  style="background-color: hsl({{slot.slot_subject.id | multiplicar }}, 71%, 82%);" >{{slot.slot_subject}}</td>
-              {% endif %}
-              {% endfor %}
-            </tr>
-            <tr>
-              <th>Viernes</th>
-              {%for slot in subjectslot4%}
-              
-              {%if slot.day.id == 5 %}
-                
-                <td  style="background-color: hsl({{slot.slot_subject.id | multiplicar }}, 71%, 82%);" >{{slot.slot_subject}}</td>
-              {% endif %}
-              {% endfor %}
-            </tr>
-          </table>
-        </div>
+                  <th style="width: 21%;" scope="col">Curso</th>
+                  <th style="width: 14%;" scope="col"></th>
+                  <th style="width: 5%;" scope="col">Cap</th>
+                  <th style="width: 30%;" scope="col">Nombre Capitulo</th>
+                  <th style="width: 30%;" scope="col">Acciones</th>
+                </tr>
+              </thead>
+              <tbody style="width: 100%;">
+                  {% for subject in cursos.all %}
+                    {%if subject.standard|parseada == a.name|parseada  %}
+                      {% if subject.lessons.all.count == 0 %}
+                      <tr style="width: 100%;">  
+                        <td style="width: 20%;">{{subject.name}}</td>
+                        <td style="width: 15%;" ><a  class="btn btn-success"href="{% url 'curriculum:lesson_create' standard=subject.standard.slug slug=subject.slug %}" style="align-self: center;width: 100%;"class="dropdown-item" >agregar capitulo</a></td>
+                        <td style="width: 5%;" >-</td>
+                        <td style="width: 30%;">-</td>
+                        <td style="width: 30%;">-</a>
+                      </tr>                  
+                      {% endif %}
+                      {% for lesson in subject.lessons.all  %}
+                        {% if forloop.first or subject.lessons.all.count == 1  %}
+                          <tr style="width: 100%;">                    
+                            <td rowspan="{{subject.lessons.all.count}}" style="width:20%;"  >{{subject.name}}</a></td>
+                            <td style="width: 15%;" rowspan="{{subject.lessons.all.count}}" ><a  class="btn btn-success"href="{% url 'curriculum:lesson_create' standard=subject.standard.slug slug=subject.slug %}" style="align-self: center;width: 100%;"class="dropdown-item" >agregar capitulo</a></td>
+                            <td style="width: 5%;" >{{lesson.position}}</td>
+                            <td style="width: 30%;" >{{lesson.name}}</td>
+                            <td style="width: 30%;" ><a style="width: 30%;"   href="{% url 'curriculum:lesson_detail' slug=lesson.slug subject=subject.slug standard=lesson.Standard.slug %}"  class="btn btn-outline-primary">Ver</a><span style="width: 4%;"></span> <a style="width: 30%;"   href=""  class="btn btn-outline-success">Editar</a><span style="width: 4%;"> </span><a style="width: 30%;"   href=""  class="btn btn-outline-danger">Eliminar</a></td>
+                          </tr>
+                        {% else %}
+                          <tr style="width: 100%;">                    
+                            <td style="width: 5%;" >{{lesson.position}}</td>                          
+                            <td style="width: 30%;" >{{lesson.name}}</td>
+                            <td style="width: 30%;" ><a style="width: 30%;"   href="{% url 'curriculum:lesson_detail' slug=lesson.slug subject=subject.slug standard=lesson.Standard.slug %}"  class="btn btn-outline-primary">Ver</a><span style="width: 4%;"></span> <a style="width: 30%;"   href=""  class="btn btn-outline-success">Editar</a><span style="width: 4%;"> </span><a style="width: 30%;"   href=""  class="btn btn-outline-danger">Eliminar</a></td>
+                          </tr> 
+                        {% endif %}
+                      {% endfor %}
+                    {%endif%}
+                  {%endfor%} 
+              </tbody>
+            </table>
+          </div>     
+        {%endfor%}   {% endcomment %}
+
         
-      </section>
-      <ul class="cursos" style=" text-decoration: none;list-style:none">
-        {% for subject in cursos4 %}
-          {% if forloop.last %}
-          <li style="display: flex;"><a style="width: 70%;"class="dropdown-item" >{{subject.name}} </a><a href="{% url 'curriculum:lesson_list' slug=subject.slug standard="primero-secundaria" %}" style="width: 30%;justify-self: end;" class="btn btn-success">detalles</a></li>
-          {% else %}
-          <li style="display: flex;"><a style="width: 70%;"class="dropdown-item" >{{subject.name}} </a><a href="{% url 'curriculum:lesson_list' slug=subject.slug standard="primero-secundaria" %}" style="width: 30%;justify-self: end;" class="btn btn-success">detalles</a></li>
-            <li><hr ></li>  
-          {% endif %}                         
-        {% endfor %}
-      </ul>
-    </div>
-
-  </div> 
-
-  <div style="margin-top: 1rem;">      
-  </div>
-  <p style="width: 90%;">
-    <button class="btn btn-primary" style="width: 100%;" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample5" aria-expanded="false" aria-controls="collapseExample5">
-      Quinto de secundaria
-    </button>
-  </p>
-  <div class="collapse" id="collapseExample5" style="margin-top: -1rem;width: 90%;">
-    <div class="card card-body d-flex justify-content-center ">
-      <section id="best-features" class="text-center" style=" width: 100%;justify-self: center;">
-          
-        <div class="col-md-12 justify-content-center mb-5">
-          
-          <table id="class-time-table" class="tabla-encabezado">
-            <tr>
-              <th></th>
-
-              <th scope="row">8 a.m.</th>
-              <th scope="row">9 a.m.</th>
-              <th scope="row">10 a.m.</th>
-              <th scope="row">11 a.m.</th>
-              <th scope="row">12 m.</th>
-              <th scope="row">1 p.m.</th>
-              <th scope="row">2 p.m.</th>
-            </tr>
-            <tr>
-              <th>Lunes</th>
+          {% comment %} <div class="" style="display:flex;flex-direction:column;align-content: center;align-items: center;margin-top: 5rem;">
+            <p style="width: 90%;">
+              <button class="btn btn-primary" style="width: 100%;" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample1" aria-expanded="false" aria-controls="collapseExample1">
+                Primero de secundaria
+              </button>
+            </p>
+            <div class="collapse" id="collapseExample1" style="margin-top: -1rem;width: 90%;">
+              <div class="card card-body d-flex justify-content-center ">
+                <section id="best-features" class="text-center" style=" width: 100%;justify-self: center;">          
               
-              {%for slot in subjectslot5%}                
-        
-                  {%if slot.day.id == 1  %}   
-                                              
-                      <td  style="background-color: hsl({{slot.slot_subject.id | multiplicar }}, 71%, 82%);" >{{slot.slot_subject}}</td>                        
-                              
+                  <div class="col-md-12 justify-content-center mb-5">
                     
+                    <table id="class-time-table" class="tabla-encabezado">
+                      <tr>
+                        <th></th>
                 
-                  {% endif %}    
-              {% endfor %}
-            </tr>
-            <tr>
-              <th>Martes</th>
-              {%for slot in subjectslot5%}
-                {%if slot.day.id == 2 %}
+                        <th scope="row">8 a.m.</th>
+                        <th scope="row">9 a.m.</th>
+                        <th scope="row">10 a.m.</th>
+                        <th scope="row">11 a.m.</th>
+                        <th scope="row">12 m.</th>
+                        <th scope="row">1 p.m.</th>
+                        <th scope="row">2 p.m.</th>
+                      </tr>
+                      <tr>
+                        <th>Lunes</th>
+                        
+                        {%for slot in subjectslot1%}
+                                
+                  
+                            {%if slot.day.id == 1  %}   
+                                                        
+                                <td  style="background-color: hsl({{slot.slot_subject.id | multiplicar }}, 71%, 82%);" >{{slot.slot_subject}}</td>                                                                                     
+                            {% endif %}    
+                        {% endfor %}
+                      </tr>
+                      <tr>
+                        <th>Martes</th>
+                        {%for slot in subjectslot1%}
+                          {%if slot.day.id == 2 %}
+                          
+                            <td  style="background-color: hsl({{slot.slot_subject.id | multiplicar }}, 71%, 82%);" >{{slot.slot_subject}}</td>
+                          {% endif %}
+                          {% endfor %}
+                      </tr>
+                      <tr>
+                        <th>Miercoles</th>
+                        {%for slot in subjectslot1%}
+                        {%if slot.day.id == 3 %}
+                      
+                          <td  style="background-color: hsl({{slot.slot_subject.id | multiplicar }}, 71%, 82%);" >{{slot.slot_subject}}</td>
+                        {% endif %}
+                        {% endfor %}
+                      </tr>
+                      <tr>
+                        <th>Jueves</th>
+                        {%for slot in subjectslot1%}
+                        {%if slot.day.id == 4 %}
 
-                  <td  style="background-color: hsl({{slot.slot_subject.id | multiplicar }}, 71%, 82%);" >{{slot.slot_subject}}</td>
-                {% endif %}
-                {% endfor %}
-            </tr>
-            <tr>
-              <th>Miercoles</th>
-              {%for slot in subjectslot5%}
-              {%if slot.day.id == 3 %}
+                          <td  style="background-color: hsl({{slot.slot_subject.id | multiplicar }}, 71%, 82%);" >{{slot.slot_subject}}</td>
+                        {% endif %}
+                        {% endfor %}
+                      </tr>
+                      <tr>
+                        <th>Viernes</th>
+                        {%for slot in subjectslot1%}
+                        
+                        {%if slot.day.id == 5 %}
+                
+                          <td  style="background-color: hsl({{slot.slot_subject.id | multiplicar }}, 71%, 82%);" >{{slot.slot_subject}}</td>
+                        {% endif %}
+                        {% endfor %}
+                      </tr>
+                    </table>
+                  </div>
+                  
+                </section>
+                <ul class="cursos" style=" text-decoration: none;list-style:none">
+                  {% for subject in cursos1 %}
+                    {% if forloop.last %}
+                    <li style="display: flex;"><a style="width: 300px;"class="dropdown-item" >{{subject.name}} </a>
+                      
+                      {% for lesson in lesson1  %}
+                        {%if lesson.subject|parseada == subject.name%}
+            
+                                <a href="{% url 'curriculum:lesson_detail' slug=lesson.slug subject=subject.slug standard=lesson.Standard.slug %}" style="width: 290px;" class="btn btn-outline-primary">
+                                  Capitulo-{{lesson.position}}: {{lesson.name}}
+                                </a>
+                        {%endif%}
+                      {% endfor %}
+            
+                    
+                    </li>
+                    {% else %}
+                    <li style="display: flex;"><a style="width: 300px;"class="dropdown-item" >{{subject.name}} </a>
+                      
+                      {% for lesson in lesson1  %}
+                        {%if lesson.subject|parseada == subject.name%}
+            
+                                <a href="{% url 'curriculum:lesson_detail' slug=lesson.slug subject=subject.slug standard=lesson.Standard.slug %}" style="width: 290px;" class="btn btn-outline-primary">
+                                  Capitulo-{{lesson.position}}: {{lesson.name}}
+                                </a>
+                        {%endif%}
+                      {% endfor %}
 
-                <td  style="background-color: hsl({{slot.slot_subject.id | multiplicar }}, 71%, 82%);" >{{slot.slot_subject}}</td>
-              {% endif %}
-              {% endfor %}
-            </tr>
-            <tr>
-              <th>Jueves</th>
-              {%for slot in subjectslot5%}
-              {%if slot.day.id == 4 %}
+                    </li>
+                      <li><hr ></li>  
+                    {% endif %}                         
+                  {% endfor %}
+                </ul>
+              </div>
 
-                <td  style="background-color: hsl({{slot.slot_subject.id | multiplicar }}, 71%, 82%);" >{{slot.slot_subject}}</td>
-              {% endif %}
-              {% endfor %}
-            </tr>
-            <tr>
-              <th>Viernes</th>
-              {%for slot in subjectslot5%}
+            </div> 
+
+            <div style="margin-top: 1rem;">      
+            </div>
+
+            <p style="width: 90%;">
+              <button class="btn btn-primary" style="width: 100%;" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample2" aria-expanded="false" aria-controls="collapseExample2">
+                Segundo de secundaria
+              </button>
+            </p>
+            <div class="collapse" id="collapseExample2" style="margin-top: -1rem;width: 90%;">
+              <div class="card card-body d-flex justify-content-center ">
+                <section id="best-features" class="text-center" style=" width: 100%;justify-self: center;">
+                  
+                  <div class="col-md-12 justify-content-center mb-5">
+                    
+                    <table id="class-time-table" class="tabla-encabezado">
+                      <tr>
+                        <th></th>
               
-              {%if slot.day.id == 5 %}
+                        <th scope="row">8 a.m.</th>
+                        <th scope="row">9 a.m.</th>
+                        <th scope="row">10 a.m.</th>
+                        <th scope="row">11 a.m.</th>
+                        <th scope="row">12 m.</th>
+                        <th scope="row">1 p.m.</th>
+                        <th scope="row">2 p.m.</th>
+                      </tr>
+                      <tr>
+                        <th>Lunes</th>
+                        
+                        {%for slot in subjectslot2%}
+                                
+                            {%if slot.day.id == 1  %}   
+                                                        
+                                <td  style="background-color: hsl({{slot.slot_subject.id | multiplicar }}, 71%, 82%);" >{{slot.slot_subject}}</td>                        
+                                                                                
+                            {% endif %}    
+                        {% endfor %}
+                      </tr>
+                      <tr>
+                        <th>Martes</th>
+                        {%for slot in subjectslot2%}
+                          {%if slot.day.id == 2 %}
+                      
+                            <td  style="background-color: hsl({{slot.slot_subject.id | multiplicar }}, 71%, 82%);" >{{slot.slot_subject}}</td>
+                          {% endif %}
+                          {% endfor %}
+                      </tr>
+                      <tr>
+                        <th>Miercoles</th>
+                        {%for slot in subjectslot2%}
+                        {%if slot.day.id == 3 %}
 
-                <td  style="background-color: hsl({{slot.slot_subject.id | multiplicar }}, 71%, 82%);" >{{slot.slot_subject}}</td>
-              {% endif %}
-              {% endfor %}
-            </tr>
-          </table>
-        </div>
-        
-      </section>
-      <ul class="cursos" style=" text-decoration: none;list-style:none">
-        {% for subject in cursos5 %}
-          {% if forloop.last %}
-          <li style="display: flex;"><a style="width: 70%;"class="dropdown-item" >{{subject.name}} </a><a href="{% url 'curriculum:lesson_list' slug=subject.slug standard="primero-secundaria" %}" style="width: 30%;justify-self: end;" class="btn btn-success">detalles</a></li>
-          {% else %}
-          <li style="display: flex;"><a style="width: 70%;"class="dropdown-item" >{{subject.name}} </a><a href="{% url 'curriculum:lesson_list' slug=subject.slug standard="primero-secundaria" %}" style="width: 30%;justify-self: end;" class="btn btn-success">detalles</a></li>
-            <li><hr ></li>  
-          {% endif %}                         
-        {% endfor %}
-      </ul>
-    </div>
+                          <td  style="background-color: hsl({{slot.slot_subject.id | multiplicar }}, 71%, 82%);" >{{slot.slot_subject}}</td>
+                        {% endif %}
+                        {% endfor %}
+                      </tr>
+                      <tr>
+                        <th>Jueves</th>
+                        {%for slot in subjectslot2%}
+                        {%if slot.day.id == 4 %}
 
+                          <td  style="background-color: hsl({{slot.slot_subject.id | multiplicar }}, 71%, 82%);" >{{slot.slot_subject}}</td>
+                        {% endif %}
+                        {% endfor %}
+                      </tr>
+                      <tr>
+                        <th>Viernes</th>
+                        {%for slot in subjectslot2%}
+                        
+                        {%if slot.day.id == 5 %}
+
+                          <td  style="background-color: hsl({{slot.slot_subject.id | multiplicar }}, 71%, 82%);" >{{slot.slot_subject}}</td>
+                        {% endif %}
+                        {% endfor %}
+                      </tr>
+                    </table>
+                  </div>
+                  
+                </section>
+                  <ul class="cursos" style=" text-decoration: none;list-style:none">
+                  {% for subject in cursos2 %}
+                    {% if forloop.last %}
+                    <li style="display: flex;"><a style="width: 300px;"class="dropdown-item" >{{subject.name}} </a>
+                      
+                      {% for lesson in lesson2  %}
+                        {%if lesson.subject|parseada == subject.name%}
+            
+                                <a href="{% url 'curriculum:lesson_detail' slug=lesson.slug subject=subject.slug standard=lesson.Standard.slug %}" style="width: 290px;" class="btn btn-outline-primary">
+                                  Capitulo-{{lesson.position}}: {{lesson.name}}
+                                </a>
+                        {%endif%}
+                      {% endfor %}
+                    
+                    </li>
+                    {% else %}
+                    <li style="display: flex;"><a style="width: 300px;"class="dropdown-item" >{{subject.name}} </a>
+                      
+                      {% for lesson in lesson1  %}
+                        {%if lesson.subject|parseada == subject.name%}
+            
+                                <a href="{% url 'curriculum:lesson_detail' slug=lesson.slug subject=subject.slug standard=lesson.Standard.slug %}" style="width: 290px;" class="btn btn-outline-primary">
+                                  Capitulo-{{lesson.position}}: {{lesson.name}}
+                                </a>
+                        {%endif%}
+                      {% endfor %}
+                    
+                    </li>
+                      <li><hr ></li>  
+                    {% endif %}                         
+                  {% endfor %}
+                  </ul>
+              </div>
+
+            </div> 
+
+            <div style="margin-top: 1rem;">      
+            </div>
+
+            <p style="width: 90%;">
+              <button class="btn btn-primary" style="width: 100%;" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample3" aria-expanded="false" aria-controls="collapseExample3">
+                Tercero de secundaria
+              </button>
+            </p>
+            <div class="collapse" id="collapseExample3" style="margin-top: -1rem;width: 90%;">
+              <div class="card card-body d-flex justify-content-center ">
+                <section id="best-features" class="text-center" style=" width: 100%;justify-self: center;">
+                  
+
+                  <div class="col-md-12 justify-content-center mb-5">
+                    
+                    <table id="class-time-table" class="tabla-encabezado">
+                      <tr>
+                        <th></th>
+
+                        <th scope="row">8 a.m.</th>
+                        <th scope="row">9 a.m.</th>
+                        <th scope="row">10 a.m.</th>
+                        <th scope="row">11 a.m.</th>
+                        <th scope="row">12 m.</th>
+                        <th scope="row">1 p.m.</th>
+                        <th scope="row">2 p.m.</th>
+                      </tr>
+                      <tr>
+                        <th>Lunes</th>
+                        
+                        {%for slot in subjectslot3%}
+                  
+                        
+                  
+                            {%if slot.day.id == 1  %}   
+                                                        
+                                <td  style="background-color: hsl({{slot.slot_subject.id | multiplicar }}, 71%, 82%);" >{{slot.slot_subject}}</td>                        
+                                        
+                              
+                          
+                            {% endif %}    
+                        {% endfor %}
+                      </tr>
+                      <tr>
+                        <th>Martes</th>
+                        {%for slot in subjectslot3%}
+                          {%if slot.day.id == 2 %}
+
+                            <td  style="background-color: hsl({{slot.slot_subject.id | multiplicar }}, 71%, 82%);" >{{slot.slot_subject}}</td>
+                          {% endif %}
+                          {% endfor %}
+                      </tr>
+                      <tr>
+                        <th>Miercoles</th>
+                        {%for slot in subjectslot3%}
+                        {%if slot.day.id == 3 %}
+            
+                          <td  style="background-color: hsl({{slot.slot_subject.id | multiplicar }}, 71%, 82%);" >{{slot.slot_subject}}</td>
+                        {% endif %}
+                        {% endfor %}
+                      </tr>
+                      <tr>
+                        <th>Jueves</th>
+                        {%for slot in subjectslot3%}
+                        {%if slot.day.id == 4 %}
+                          
+                          <td  style="background-color: hsl({{slot.slot_subject.id | multiplicar }}, 71%, 82%);" >{{slot.slot_subject}}</td>
+                        {% endif %}
+                        {% endfor %}
+                      </tr>
+                      <tr>
+                        <th>Viernes</th>
+                        {%for slot in subjectslot3%}
+                        
+                        {%if slot.day.id == 5 %}
+                          
+                          <td  style="background-color: hsl({{slot.slot_subject.id | multiplicar }}, 71%, 82%);" >{{slot.slot_subject}}</td>
+                        {% endif %}
+                        {% endfor %}
+                      </tr>
+                    </table>
+                  </div>
+                  
+                </section>
+                <ul class="cursos" style=" text-decoration: none;list-style:none">
+                  {% for subject in cursos3 %}
+                    {% if forloop.last %}
+                    <li style="display: flex;"><a style="width: 70%;"class="dropdown-item" >{{subject.name}} </a><a href="{% url 'curriculum:lesson_list' slug=subject.slug standard="primero-secundaria" %}" style="width: 30%;justify-self: end;" class="btn btn-success">detalles</a></li>
+                    {% else %}
+                    <li style="display: flex;"><a style="width: 70%;"class="dropdown-item" >{{subject.name}} </a><a href="{% url 'curriculum:lesson_list' slug=subject.slug standard="primero-secundaria" %}" style="width: 30%;justify-self: end;" class="btn btn-success">detalles</a></li>
+                      <li><hr ></li>  
+                    {% endif %}                         
+                  {% endfor %}
+                </ul>
+              </div>
+            </div> 
+
+            <div style="margin-top: 1rem;">      
+            </div>
+
+            <p style="width: 90%;">
+              <button class="btn btn-primary" style="width: 100%;" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample4" aria-expanded="false" aria-controls="collapseExample4">
+                Cuarto de secundaria
+              </button>
+            </p>
+            <div class="collapse" id="collapseExample4" style="margin-top: -1rem;width: 90%;">
+              <div class="card card-body d-flex justify-content-center ">
+                <section id="best-features" class="text-center" style=" width: 100%;justify-self: center;">
+                  
+                  <div class="col-md-12 justify-content-center mb-5">
+                    
+                    <table id="class-time-table" class="tabla-encabezado">
+                      <tr>
+                        <th></th>
+
+                        <th scope="row">8 a.m.</th>
+                        <th scope="row">9 a.m.</th>
+                        <th scope="row">10 a.m.</th>
+                        <th scope="row">11 a.m.</th>
+                        <th scope="row">12 m.</th>
+                        <th scope="row">1 p.m.</th>
+                        <th scope="row">2 p.m.</th>
+                      </tr>
+                      <tr>
+                        <th>Lunes</th>
+                        
+                        {%for slot in subjectslot4%}
+                        
+                        
+                  
+                            {%if slot.day.id == 1  %}   
+                                                        
+                                <td  style="background-color: hsl({{slot.slot_subject.id | multiplicar }}, 71%, 82%);" >{{slot.slot_subject}}</td>                        
+                                        
+                              
+                          
+                            {% endif %}    
+                        {% endfor %}
+                      </tr>
+                      <tr>
+                        <th>Martes</th>
+                        {%for slot in subjectslot4%}
+                          {%if slot.day.id == 2 %}
+                            
+                            <td  style="background-color: hsl({{slot.slot_subject.id | multiplicar }}, 71%, 82%);" >{{slot.slot_subject}}</td>
+                          {% endif %}
+                          {% endfor %}
+                      </tr>
+                      <tr>
+                        <th>Miercoles</th>
+                        {%for slot in subjectslot4%}
+                        {%if slot.day.id == 3 %}
+                          
+                          <td  style="background-color: hsl({{slot.slot_subject.id | multiplicar }}, 71%, 82%);" >{{slot.slot_subject}}</td>
+                        {% endif %}
+                        {% endfor %}
+                      </tr>
+                      <tr>
+                        <th>Jueves</th>
+                        {%for slot in subjectslot4%}
+                        {%if slot.day.id == 4 %}
+                          
+                          <td  style="background-color: hsl({{slot.slot_subject.id | multiplicar }}, 71%, 82%);" >{{slot.slot_subject}}</td>
+                        {% endif %}
+                        {% endfor %}
+                      </tr>
+                      <tr>
+                        <th>Viernes</th>
+                        {%for slot in subjectslot4%}
+                        
+                        {%if slot.day.id == 5 %}
+                          
+                          <td  style="background-color: hsl({{slot.slot_subject.id | multiplicar }}, 71%, 82%);" >{{slot.slot_subject}}</td>
+                        {% endif %}
+                        {% endfor %}
+                      </tr>
+                    </table>
+                  </div>
+                  
+                </section>
+                <ul class="cursos" style=" text-decoration: none;list-style:none">
+                  {% for subject in cursos4 %}
+                    {% if forloop.last %}
+                    <li style="display: flex;"><a style="width: 70%;"class="dropdown-item" >{{subject.name}} </a><a href="{% url 'curriculum:lesson_list' slug=subject.slug standard="primero-secundaria" %}" style="width: 30%;justify-self: end;" class="btn btn-success">detalles</a></li>
+                    {% else %}
+                    <li style="display: flex;"><a style="width: 70%;"class="dropdown-item" >{{subject.name}} </a><a href="{% url 'curriculum:lesson_list' slug=subject.slug standard="primero-secundaria" %}" style="width: 30%;justify-self: end;" class="btn btn-success">detalles</a></li>
+                      <li><hr ></li>  
+                    {% endif %}                         
+                  {% endfor %}
+                </ul>
+              </div>
+
+            </div> 
+
+            <div style="margin-top: 1rem;">      
+            </div>
+            <p style="width: 90%;">
+              <button class="btn btn-primary" style="width: 100%;" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample5" aria-expanded="false" aria-controls="collapseExample5">
+                Quinto de secundaria
+              </button>
+            </p>
+            <div class="collapse" id="collapseExample5" style="margin-top: -1rem;width: 90%;">
+              <div class="card card-body d-flex justify-content-center ">
+                <section id="best-features" class="text-center" style=" width: 100%;justify-self: center;">
+                    
+                  <div class="col-md-12 justify-content-center mb-5">
+                    
+                    <table id="class-time-table" class="tabla-encabezado">
+                      <tr>
+                        <th></th>
+
+                        <th scope="row">8 a.m.</th>
+                        <th scope="row">9 a.m.</th>
+                        <th scope="row">10 a.m.</th>
+                        <th scope="row">11 a.m.</th>
+                        <th scope="row">12 m.</th>
+                        <th scope="row">1 p.m.</th>
+                        <th scope="row">2 p.m.</th>
+                      </tr>
+                      <tr>
+                        <th>Lunes</th>
+                        
+                        {%for slot in subjectslot5%}                
+                  
+                            {%if slot.day.id == 1  %}   
+                                                        
+                                <td  style="background-color: hsl({{slot.slot_subject.id | multiplicar }}, 71%, 82%);" >{{slot.slot_subject}}</td>                        
+                                        
+                              
+                          
+                            {% endif %}    
+                        {% endfor %}
+                      </tr>
+                      <tr>
+                        <th>Martes</th>
+                        {%for slot in subjectslot5%}
+                          {%if slot.day.id == 2 %}
+
+                            <td  style="background-color: hsl({{slot.slot_subject.id | multiplicar }}, 71%, 82%);" >{{slot.slot_subject}}</td>
+                          {% endif %}
+                          {% endfor %}
+                      </tr>
+                      <tr>
+                        <th>Miercoles</th>
+                        {%for slot in subjectslot5%}
+                        {%if slot.day.id == 3 %}
+
+                          <td  style="background-color: hsl({{slot.slot_subject.id | multiplicar }}, 71%, 82%);" >{{slot.slot_subject}}</td>
+                        {% endif %}
+                        {% endfor %}
+                      </tr>
+                      <tr>
+                        <th>Jueves</th>
+                        {%for slot in subjectslot5%}
+                        {%if slot.day.id == 4 %}
+
+                          <td  style="background-color: hsl({{slot.slot_subject.id | multiplicar }}, 71%, 82%);" >{{slot.slot_subject}}</td>
+                        {% endif %}
+                        {% endfor %}
+                      </tr>
+                      <tr>
+                        <th>Viernes</th>
+                        {%for slot in subjectslot5%}
+                        
+                        {%if slot.day.id == 5 %}
+
+                          <td  style="background-color: hsl({{slot.slot_subject.id | multiplicar }}, 71%, 82%);" >{{slot.slot_subject}}</td>
+                        {% endif %}
+                        {% endfor %}
+                      </tr>
+                    </table>
+                  </div>
+                  
+                </section>
+                <ul class="cursos" style=" text-decoration: none;list-style:none">
+                  {% for subject in cursos5 %}
+                    {% if forloop.last %}
+                    <li style="display: flex;"><a style="width: 70%;"class="dropdown-item" >{{subject.name}} </a><a href="{% url 'curriculum:lesson_list' slug=subject.slug standard="primero-secundaria" %}" style="width: 30%;justify-self: end;" class="btn btn-success">detalles</a></li>
+                    {% else %}
+                    <li style="display: flex;"><a style="width: 70%;"class="dropdown-item" >{{subject.name}} </a><a href="{% url 'curriculum:lesson_list' slug=subject.slug standard="primero-secundaria" %}" style="width: 30%;justify-self: end;" class="btn btn-success">detalles</a></li>
+                      <li><hr ></li>  
+                    {% endif %}                         
+                  {% endfor %}
+                </ul>
+              </div>
+
+            </div> 
+
+            <div style="margin-top: 1rem;">      
+            </div>
+
+          </div> 
+          </div> {% endcomment %}
   </div> 
 
-  <div style="margin-top: 1rem;">      
-  </div>
-
-
-</div> {% endcomment %}
 {%endblock%}
 
 

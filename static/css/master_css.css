@@ -254,3 +254,22 @@ video {
 }
 
 
+.formulario-registro ul{
+  display: none;
+}
+.formulario-registro small{
+  display: none;
+}
+
+.formulario-registro input{
+  /* height: 30px; */
+}
+
+.formulario-registro label{
+  font-size: 0.8rem;
+}
+
+.asteriskField {
+  display: none;
+  
+  }

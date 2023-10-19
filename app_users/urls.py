@@ -11,3 +11,4 @@ urlpatterns = [
     # path('contact/', views.ContactView.as_view(), name="contact"),
     path('contactanos/', views.contact, name="contact"),
 ]
+ 

@@ -3,192 +3,93 @@
 {%block title %}Inicio{% endblock%}
 
 {% block image_block%}
-<link rel="stylesheet" href="{% static 'css/home_css.css' %}">
-
-<header>          
-          <div id="intro" class="container-fluid d-flex align-items-center justify-content-center " style="background-color: black;height: 100vh;">
-            
-            <div class="row d-flex justify-content-center text-center" style="width: 65%; justify-self: center;align-self: center;">
+  <link rel="stylesheet" href="{% static 'css/home_css.css' %}">
+  <header>          
+    <div id="intro" class="container-fluid d-flex align-items-center justify-content-center " style="background-color: black;height: 100vh;">
       
-              <div id="carouselExample" class="carousel slide" style=" margin-left:0px;width: 100%;">
-                 <h1 style="color: white;font-size:3rem;margin-top: 10rem;margin-bottom: -2rem;">Bienvenidos a escuela online</h1>
-                <div class="carousel-inner">
-                  <div class="carousel-item active">
-                    <img style="width:100%;"src="https://www.sneakerlost.es/hubfs/Las-universidades-se-adaptan-a-las-necesidades-02.png" class="d-block " alt="nueva imagen2">
-                    <p style="color: white;font-size: 1.5rem;margin-top: -2rem;">Educacion en todo momento para nuestros estudiantes en todos los niveles</p>
-                  </div>
-                  <div class="carousel-item">
-                    <img style="width:100%;"src="https://www.sneakerlost.es/hubfs/Como-atraer-y-retener-alumnos-extranjeros-01.png?noresize" class="d-block " alt="nueva imagen2">
-                    <p style="color: white;font-size: 1.5rem;margin-top: -2rem;">Educacion en todo momento para nuestros estudiantes en todos los niveles</p>
-                  </div>
-                  <div class="carousel-item">
-                    <img style="width:100%;"src="https://www.sneakerlost.es/hubfs/5-ejemplos-de-como-fijar-los-objetivos-SMART-02.png" class="d-block " alt="nueva imagen2">
-                    <p style="color: white;font-size: 1.5rem;margin-top: -2rem;">Educacion en todo momento para nuestros estudiantes en todos los niveles</p>
-                  </div>
-                </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
-                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                  <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
-                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                  <span class="visually-hidden">Next</span>
-                </button>
-              
-                <!-- heading -->
-                {% comment %} <h2 class="display-4 font-weight-bold  p-5 " style="color:#ff5722;" > Niveles </h2>
-                <div class="row d-flex justify-content-center text-center">
-                  <ul class="breadcrumb">
-                    <li><a href="{% url 'index' %}">Inicio</a></li>
-                    <li><a href="{% url 'curriculum:standard_list' %}">Curriculum</a></li>
-                    <li class="disabled-text">Nivel</li>
-                  </ul>
-                </div> {% endcomment %}
-        
-                <!-- divider -->
-                {% comment %} <hr style="color:#ff5722;"> {% endcomment %}
-        
-                <!-- description -->
-                {% comment %} <h4 class="white-text my-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                          Deleniti
-                          consequuntur.</h4> {% endcomment %}
-             
+      <div class="row d-flex justify-content-center text-center" style="width: 65%; justify-self: center;align-self: center;">
+
+        <div id="carouselExample" class="carousel slide" style=" margin-left:0px;width: 100%;">
+            <h1 style="color: white;font-size:3rem;margin-top: 10rem;margin-bottom: -2rem;">Bienvenidos a escuela online</h1>
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img style="width:100%;"src="https://www.sneakerlost.es/hubfs/Las-universidades-se-adaptan-a-las-necesidades-02.png" class="d-block " alt="nueva imagen2">
+              <p style="color: white;font-size: 1.5rem;margin-top: -2rem;">Educacion en todo momento para nuestros estudiantes en todos los niveles</p>
+            </div>
+            <div class="carousel-item">
+              <img style="width:100%;"src="https://www.sneakerlost.es/hubfs/Como-atraer-y-retener-alumnos-extranjeros-01.png?noresize" class="d-block " alt="nueva imagen2">
+              <p style="color: white;font-size: 1.5rem;margin-top: -2rem;">Educacion en todo momento para nuestros estudiantes en todos los niveles</p>
+            </div>
+            <div class="carousel-item">
+              <img style="width:100%;"src="https://www.sneakerlost.es/hubfs/5-ejemplos-de-como-fijar-los-objetivos-SMART-02.png" class="d-block " alt="nueva imagen2">
+              <p style="color: white;font-size: 1.5rem;margin-top: -2rem;">Educacion en todo momento para nuestros estudiantes en todos los niveles</p>
+            </div>
           </div>
-
-            {% comment %} <div class="row d-flex justify-content-center text-center">
-              <div class="col-md-10 text-white">
-                <!-- heading -->
-                <h2 class=" titulo display-4 font-weight-bold white-text  p-5 mb-2"  > Empieza a Aprender </h2>
-
-                <!-- divider -->
-                <hr style="color:#ff5722;">
-                
-                <!-- description -->
-                <h4 class="white-text my-4"> Bienvenidos!!!!!</h4>
-                <a href="{% url 'curriculum:standard_list' %}"> <button type="button" class="btn" style="color:#ff5722;border-color:#ff5722;">Empezar ahora</button> </a>
-                <a style="color:#ff5722;text-decoration: none;border: 2px solid #ff5722;border-radius: 14px;padding: 20px;" href="{% url 'curriculum:standard_list' %}"> Empezar ahora </a>
-
-
-                <div class="row d-flex mt-5 justify-content-center text-center">
-                  <div class="col">
-                    <a style="color:#ff5722;text-decoration: none;border: 2px solid #ff5722;border-radius: 14px;padding: 20px;" href="contact"> Enviar Comentarios </a>
-                    <a href="contact"> <button type="button" class="btn" style="color:#ff5722;border-color:#ff5722;">Enviar Comentarios</button> </a>
-                  </div>
-                </div>
-
-              </div>
-            </div> {% endcomment %}
-           {% comment %} este es el dato de la imagen para los estudiantes {% endcomment %}
-            {% comment %} <div class="d-flex col align-items-center justify-content-center mr-10">
-              <div style="color: white;">
-
-                <h1>bienvenidos{{user.username}} </h1>
-                <p>nombre2</p>
-                <p>nombre3</p>
-                <p>nombre2</p>
-                <p>nombre3</p>
-                <p>nombre2</p>
-                <p>nombre3</p>
-              </div>
-           
-              <div >
-                <img  style="width: 200px;height: 200px; opacity: 0.9;border-radius: 1000px;"src='../media/{{user.userprofileinfo.profile_pic}}' alt="">
-              
-                <p style="color: white;">{{user.userprofileinfo.profile_pic}}</p>
-              </div>
-            </div> {% endcomment %}
-
-
-
-
-            
-            {% comment %} <img style="width:80%;opacity: 0.7;" src="https://ichef.bbci.co.uk/news/640/cpsprodpb/E87F/production/_95591595_944f04b9-aa20-4b71-94ab-241e626e5333.jpg" class="d-block w-80" alt="nueva imagen"> {% endcomment %}
-
-            
-           
-            
-             {% comment %} <div id="carouselExample" class="carousel slide">
-              <div class="carousel-inner">
-                <div class="carousel-item ">
-                  <img style="width:80%;opacity: 0.7;" src="https://ichef.bbci.co.uk/news/640/cpsprodpb/E87F/production/_95591595_944f04b9-aa20-4b71-94ab-241e626e5333.jpg" class=" " alt="nueva imagen">
-                </div>
-                <div class="carousel-item active" >
-                  <img style="width:80%;opacity: 0.7;"src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/2018_Tesla_Model_S_75D.jpg/1200px-2018_Tesla_Model_S_75D.jpg" class=" w-80" alt="nueva imagen2">
-                </div>
-                <div class="carousel-item">
-                  <img style="width:80%;opacity: 0.7;" src="https://images.unsplash.com/photo-1617704548623-340376564e68?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8bG9nb3RpcG8lMjBkZSUyMHRlc2xhfGVufDB8fDB8fHww&w=1000&q=80" class=" w-80" alt="nueva imagen3">
-                </div>
-              </div>
-              <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
-              </button>
-              <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
-              </button>
-            </div> 
-          </div> {% endcomment %}
-
-</header>
-
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>                           
+    </div>
+  </header>
 {%endblock%}
 
 {% block content %}
-<div class="container-fluid d-flex justify-content-center mision-vision" style=" background-color: red; width: 100%;">
-  <div style="width: 75%;"class="d-flex flex-column justtify-content-center mb-4">
-    <div class="text-center ">
-      <br>
-      <h2 style="color:white">Conocenenos mas</h2>
-      <br>
-      {% comment %} <h4>Choose a payment plan that works for you</h4> {% endcomment %}
-    </div>
-    <div class="row ">
-      <div class="col-sm-4 ">
-        <div class="panel panel-default text-center">
-          <div class="panel-heading  ">
-            <h1>Sobre nosotros</h1>
-          </div>
-          <div class="panel-body mb-4">
-            <p style="color: white;"> Lorem Lorem, ipsum dolor sit amet consectetur adipisicing elit. Doloremque at earum, et magni neque commodi labore sunt quas atque, rerum consequuntur eius delectus ullam incidunt id voluptatem ut asperiores harum.</p>
-            <img src="https://www.cecare.com.mx/img/iphone62.png" alt="" style="width: 300px;height: 300px; border-radius: 1000px;">
-          </div>
-          <div class="panel-footer">
-  
-            {% comment %} <button class="btn btn-lg">Sign Up</button> {% endcomment %}
-          </div>
-        </div>
+  <div class="container-fluid d-flex justify-content-center mision-vision" style=" background-color: red; width: 100%;">
+    <div style="width: 75%;"class="d-flex flex-column justtify-content-center mb-4">
+      <div class="text-center ">
+        <br>
+        <h2 style="color:white">Conocenenos mas</h2>
+        <br>
       </div>
-      <div class="col-sm-4 ">
-        <div class="panel panel-default text-center">
-          <div class="panel-heading  ">
-            <h1>Mision y Vision</h1>
-          </div>
-          <div class="panel-body mb-4">
-            <p style="color: white;"> Lorem Lorem, ipsum dolor sit amet consectetur adipisicing elit. Doloremque at earum, et magni neque commodi labore sunt quas atque, rerum consequuntur eius delectus ullam incidunt id voluptatem ut asperiores harum.</p>
-            <img src="https://www.cecare.com.mx/img/iphone62.png" alt="" style="width: 300px;height: 300px; border-radius: 1000px;">
-          </div>
-          <div class="panel-footer">
-  
+      <div class="row ">
+        <div class="col-sm-4 ">
+          <div class="panel panel-default text-center">
+            <div class="panel-heading  ">
+              <h1>Sobre nosotros</h1>
+            </div>
+            <div class="panel-body mb-4">
+              <p style="color: white;"> Lorem Lorem, ipsum dolor sit amet consectetur adipisicing elit. Doloremque at earum, et magni neque commodi labore sunt quas atque, rerum consequuntur eius delectus ullam incidunt id voluptatem ut asperiores harum.</p>
+              <img src="https://www.cecare.com.mx/img/iphone62.png" alt="" style="width: 300px;height: 300px; border-radius: 1000px;">
+            </div>
+            <div class="panel-footer">
+    
+              {% comment %} <button class="btn btn-lg">Sign Up</button> {% endcomment %}
+            </div>
           </div>
         </div>
+        <div class="col-sm-4 ">
+          <div class="panel panel-default text-center">
+            <div class="panel-heading  ">
+              <h1>Mision y Vision</h1>
+            </div>
+            <div class="panel-body mb-4">
+              <p style="color: white;"> Lorem Lorem, ipsum dolor sit amet consectetur adipisicing elit. Doloremque at earum, et magni neque commodi labore sunt quas atque, rerum consequuntur eius delectus ullam incidunt id voluptatem ut asperiores harum.</p>
+              <img src="https://www.cecare.com.mx/img/iphone62.png" alt="" style="width: 300px;height: 300px; border-radius: 1000px;">
+            </div>
+            <div class="panel-footer">
+    
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-4 ">
+          <div class="panel panel-default text-center">
+            <div class="panel-heading  ">
+              <h1>Nuestros valores</h1>
+            </div>
+            <div class="panel-body mb-4">
+              <p style="color: white;"> Lorem Lorem, ipsum dolor sit amet consectetur adipisicing elit. Doloremque at earum, et magni neque commodi labore sunt quas atque, rerum consequuntur eius delectus ullam incidunt id voluptatem ut asperiores harum.</p>
+              <img src="https://www.cecare.com.mx/img/iphone62.png" alt="" style="width: 300px;height: 300px; border-radius: 1000px;">
+            </div>
+            <div class="panel-footer">
+              
+            </div>
+          </div>
+        </div> 
       </div>
-      <div class="col-sm-4 ">
-        <div class="panel panel-default text-center">
-          <div class="panel-heading  ">
-            <h1>Nuestros valores</h1>
-          </div>
-          <div class="panel-body mb-4">
-            <p style="color: white;"> Lorem Lorem, ipsum dolor sit amet consectetur adipisicing elit. Doloremque at earum, et magni neque commodi labore sunt quas atque, rerum consequuntur eius delectus ullam incidunt id voluptatem ut asperiores harum.</p>
-            <img src="https://www.cecare.com.mx/img/iphone62.png" alt="" style="width: 300px;height: 300px; border-radius: 1000px;">
-          </div>
-          <div class="panel-footer">
-            
-          </div>
-        </div>
-      </div> 
     </div>
   </div>
-</div>
-
 {%endblock%}

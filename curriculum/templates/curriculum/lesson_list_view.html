@@ -27,60 +27,53 @@
                   consequuntur.</h4>
       </div>
     </div> {% endcomment %}
-  </div>
-    
+  </div>    
 </header>
 {% endblock %}
 
-
 {% block content %}
-<div style="width: 10% ;height: 100%; margin-top: 2rem;margin-bottom: -4.4rem;" class=" row d-flex  justify-content-center">
-  <div>
-    <a class="navbar-brand color_encabezado" href="{% url 'curriculum:standard_list' %}" ><img class="logos-nav" src="https://cdn-icons-png.flaticon.com/512/5093/5093116.png" alt="Niveles"></a> 
-    {% comment %} <a class="navbar-brand color_encabezado" href="{% url 'curriculum:subject_list' slug=subjects.standard.slug %}"  ><img class="logos-nav" src="https://cdn-icons-png.flaticon.com/512/5093/5093116.png" alt="Niveles"></a>  {% endcomment %}
+  <div style="width: 10% ;height: 100%; margin-top: 2rem;margin-bottom: -4.4rem;" class=" row d-flex  justify-content-center">
+    <div>
+      <a class="navbar-brand color_encabezado" href="{% url 'curriculum:standard_list' %}" ><img class="logos-nav" src="https://cdn-icons-png.flaticon.com/512/5093/5093116.png" alt="Niveles"></a> 
+      {% comment %} <a class="navbar-brand color_encabezado" href="{% url 'curriculum:subject_list' slug=subjects.standard.slug %}"  ><img class="logos-nav" src="https://cdn-icons-png.flaticon.com/512/5093/5093116.png" alt="Niveles"></a>  {% endcomment %}
+    </div>
   </div>
-</div>
-<section id="best-features" class="text-center">
-              <h2 class="mb-5 mt-5 font-weight-bold" style="color:#black;">Temas del curso de {{subjects.name}}</h2>
-              <!-- class row for description-->
-              <div class="row d-flex justify-content-center mb-4">
-                <!-- class column -->
-                <div class="col-md-8 mb-5">
-                  <p class="grey-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi voluptate
-                                    hic
-                                    provident nulla repellat
-                                    facere esse molestiae ipsa labore porro minima quam quaerat rem, natus repudiandae debitis
-                                    est
-                                    sit pariatur.</p>
-                </div>
-              </div>
-              <!-- class row2 for cards -->
-              <div class="row d-flex justify-content-center mb-3">
-                {% for lesson in subjects.lessons.all %}
-                <div class="col-sm-4 mb-4">
-                  <div class="card box-shadow-hover">
-                    <div class="card-body">
-                      <h5 class="card-title">Capitulo-{{lesson.position}}: {{lesson.name}}</h5>
-                      <!-- <p class="card-text">With supporting text below as a natural lead-in to additional content.</p> -->
-                      <a href="{% url 'curriculum:lesson_detail' slug=lesson.slug subject=subjects.slug standard=lesson.Standard.slug %}" >
-                      <button type="button" class="button-les"><span>Detalles</span></button>
-                      </a>
-                    </div>
+  <section id="best-features" class="text-center">
+                <h2 class="mb-5 mt-5 font-weight-bold" style="color:#black;">Temas del curso de {{subjects.name}}</h2>
+                <!-- class row for description-->
+                <div class="row d-flex justify-content-center mb-4">
+                  <!-- class column -->
+                  <div class="col-md-8 mb-5">
+                    <p class="grey-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi voluptate
+                                      hic
+                                      provident nulla repellat
+                                      facere esse molestiae ipsa labore porro minima quam quaerat rem, natus repudiandae debitis
+                                      est
+                                      sit pariatur.</p>
                   </div>
                 </div>
-                {% endfor %}
-              </div>
-        <div class="row d-flex justify-content-center mb-3">
-          {% if user.userprofileinfo.user_type == 'teacher' or user.is_superuser %}
-           <a href="{% url 'curriculum:lesson_create' standard=subjects.standard.slug slug=subjects.slug %}"><button type="button" class="btn btn-success btn-lg btn-bloc" > Agregar nuevo capitulo </button> </a>
-          {% endif %}
-        </div>
+                <!-- class row2 for cards -->
+                <div class="row d-flex justify-content-center mb-3">
+                  {% for lesson in subjects.lessons.all %}
+                  <div class="col-sm-4 mb-4">
+                    <div class="card box-shadow-hover">
+                      <div class="card-body">
+                        <h5 class="card-title">Capitulo-{{lesson.position}}: {{lesson.name}}</h5>
 
-</section>
+                        
+                        <a href="{% url 'curriculum:lesson_detail' slug=lesson.slug subject=subjects.slug standard=lesson.Standard.slug %}" >
+                        <button type="button" class="button-les"><span>Detalles</span></button>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                  {% endfor %}
+                </div>
+          <div class="row d-flex justify-content-center mb-3">
+            {% if user.userprofileinfo.user_type == 'teacher' or user.is_superuser %}
+            <a href="{% url 'curriculum:lesson_create' standard=subjects.standard.slug slug=subjects.slug %}"><button type="button" class="btn btn-success btn-lg btn-bloc" > Agregar nuevo capitulo </button> </a>
+            {% endif %}
+          </div>
 
-
-
-
-
-
+  </section>
 {%endblock%}

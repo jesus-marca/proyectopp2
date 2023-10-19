@@ -49,9 +49,9 @@ background:linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url("https:/
 
 
 .navbar-expand-lg {
-    /* background-color: #b2ebf2; */
+   
     background-color: #1f2020;
-    /* background-color: #1f2020 !important; */
+   
   }
   @media (max-width: 768px) {
     .navbar:not(.top-nav-collapse) {

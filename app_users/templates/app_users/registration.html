@@ -12,28 +12,6 @@
 
 {% block content %}
 
-  {% comment %} <h2 class="mb-5 mt-4 font-weight-bold text-center" style="color:black;font-size: 2.5rem;">Registro</h2> {% endcomment %}
-{% comment %} 
-  {% if registered %}
-    <h1>Gracias por registrarte </h1>
-  {% else %} {% endcomment %}
-  {% comment %} <div class="d-flex row justify-content-center mb-4" >
-    <div class="d-flex row justify-content-center" style="background-color:white;width: 50%;border-radius: 25px">
-      <h3 style="text-align: center;">Completa el formulario: </h3>
-      <form method="post" style="width: 90%;" enctype="multipart/form-data">
-        {% csrf_token %}
-        {{ user_form|crispy }}
-        {{ profile_form|crispy }}
-        <div class="row justify-content-center">
-        <div class="col-md-2" style="color:red">
-        <input type="submit" value="Registrar etudiante"  class="btn btn-primary btn-block">
-        </div>
-        </div>
-      </form>
-    </div>
-  </div> {% endcomment %}
-  {% comment %} {% endif %} {% endcomment %}
-
 <div style="height: 100%;">
   
   <div id="intro2" style="width: 100%;height: 100%; display:flex;flex-direction:row;justify-content:center;align-items:center ;margin-bottom: 0rem;" >
@@ -43,7 +21,7 @@
       <div style="width: 40%;height: 100%; display:flex;flex-direction:column;justify-content:center;align-items:center;background-color: bisque; ">
         <h1 class="text-center" style="font-size: 1.5rem;">Registro de estudiante</h1>
         <img src="https://static.vecteezy.com/system/resources/previews/000/560/029/non_2x/customer-service-woman-with-headphones-and-microphone-with-laptop-concept-illustration-for-support-call-center-vector.jpg" style="width: 240px;height: 240px;border-radius: 1000px;"alt="">  
-        {% comment %} <div style="height: 1rem;"></div> {% endcomment %}
+        
         <div class="d-flex">
           <div class="d-flex flex-column align-items-center">
             <img src="https://vanacco.com/wp-content/uploads/2020/06/Form-1.jpg" style="width: 70px;height: 70px;border-radius: 1000px;"alt="">  
@@ -69,7 +47,6 @@
         </p >  
         {% comment %} <p style="color: black;font-size: 1.5rem;text-align: center;">+51 994993394</p>          {% endcomment %}
       </div>
-
       <div class="" style="width:75% ;height: 100%;background-color: white;">
         <div class="d-flex row justify-content-center mb-4" style="height: 70%;" >
           <div class="d-flex row justify-content-center formulario-registro" style="background-color:white;width: 95%;border-radius: 25px">
@@ -95,7 +72,5 @@
 -o-background-size: cover;
 background-size: cover;
 height: 20%;">
-
 </div>
-
 {%endblock%}

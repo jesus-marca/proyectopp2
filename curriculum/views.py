@@ -186,4 +186,5 @@ class LessonDeleteView(DeleteView):
         print(self.object)
         standard = self.object.Standard
         subject = self.object.subject
+        # return reverse_lazy('curriculum:lesson_list',kwargs={'standard':standard.slug,'slug':subject.slug})
         return reverse_lazy('curriculum:lesson_list',kwargs={'standard':standard.slug,'slug':subject.slug})

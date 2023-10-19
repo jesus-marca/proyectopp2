@@ -122,12 +122,12 @@
 
           <div class="row d-flex justify-content-center mb-3 mt-3">
               {% if user.userprofileinfo.user_type == 'teacher' or user.is_superuser %}
-              <div class="col-md-6 mb-3 text-center">
+              {% comment %} <div class="col-md-6 mb-3 text-center">
                   <a href="{% url 'curriculum:lesson_update' standard=lessons.Standard.slug subject=lessons.subject.slug slug=lessons.slug %}" class="btn btn-info btn-lg mr-4 btn-block">Actualizar Capitulo</a>
               </div>
               <div class="col-md-6">
                   <a href="{% url 'curriculum:lesson_delete' standard=lessons.Standard.slug subject=lessons.subject.slug slug=lessons.slug %}" class="btn btn-danger btn-lg mr-4 btn-block">Eliminar Capitulo </a>
-              </div>
+              </div> {% endcomment %}
               {% endif %}
             </div>
       </section>

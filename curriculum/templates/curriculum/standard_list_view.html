@@ -118,7 +118,7 @@
             
                 <div class="collapse " id="{{a.slug|parseada}}" style="margin-top: -1rem;width: 90%;">
                   <div class="card card-body d-flex justify-content-center ">
-                    <section id="best-features" class="text-center" style=" width: 100%;justify-self: center;">                    
+                    {% comment %} <section id="best-features" class="text-center" style=" width: 100%;justify-self: center;">                    
                       <div class="col-md-12 justify-content-center mb-5">                    
                             <table id="class-time-table" class="tabla-encabezado">
                               <tr>
@@ -194,7 +194,7 @@
                             
                       </div>
                         
-                    </section>
+                    </section> {% endcomment %}
 
                     <div style="width: 100%;" class="d-flex justify-content-center ">
                       <table class="table table-hover">
@@ -210,10 +210,7 @@
                           </tr>
                         </thead>
                         <tbody style="width: 100%;">
-                          {% for subject in a.subjects.all %}
-                            {% comment %} {%if subject.standard|parseada == a.name|parseada  %} {% endcomment %}
-                                                          
-
+                          {% for subject in a.subjects.all %}                                                
 
                               {% if subject.lessons.all.count == 0 %}
                                 <tr style="width: 100%;">  
@@ -245,47 +242,7 @@
                                   </tr> 
                                 {% endif %}
                               {% endfor %}
-                              {% comment %} <div class="modal fade" tabindex="-1" role="dialog" aria-hidden="true" id="{{subject.id|parseada2}}" aria-labelledby="{{subject.id|combinacionLabel}}" >
-                                <div class="modal-dialog" role="document">
-                                  <div class="modal-content">
-                                    <div class="modal-header bg-primary-subtle">
-                                      <h1 class="modal-title " style="color:black ;" >Horario</h1>
-                                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                      </button>
-                                    </div>
-                                    <div class="modal-body bg-warning-subtle">                          
-                                                               
-                                          <h1>Curso </h1>
-                                          {% for day in subject.standard_slots_subject.all %}
-                                            {% if day.day.id == 1 %}
-                                              Lunes:{{day.slot}}<p></p>
-                                            {% endif %}
-                              
-                                            {% if day.day.id == 2 %}
-                                              Martes:{{day.slot}}<p></p>
-                              
-                                            {% endif %}
-                              
-                                            {% if day.day.id == 3 %}
-                                              Miercoles:{{day.slot}}<p></p>
-                              
-                                            {% endif %}
-                              
-                                            {% if day.day.id == 4 %}
-                                              Jueves:{{day.slot}}<p></p>
-                              
-                                            {% endif %}
-                              
-                                            {% if day.day.id == 5 %}
-                                              Viernes:{{day.slot}}<p></p>
-                                            {% endif %}
-                                                            
-                                          {% endfor %}                                                                                 
-                                    </div>          
-                                  </div>    
-                                </div>
-                              </div>  {% endcomment %}
+
                               <div class=" modal-dialog modal-l modal fade modal-dialog modal-dialog-centered modal-dialog-scrollable " id="{{subject.id|parseada2}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="{{subject.id|combinacionLabel}}" aria-hidden="true" style="display: none; width: 500px;">
                                 <div class="modal-dialog">
                                   <div class="modal-content">
@@ -917,148 +874,12 @@
           </div> {% endcomment %}
 
           
-  {% comment %} {% for subject in c.subjects.all %}
-    <div class=" modal-dialog modal-l modal fade modal-dialog modal-dialog-centered modal-dialog-scrollable " id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" style="display: none;">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header bg-primary-subtle">
-            <h1 class="modal-title fs-5" style="color:black ;" id="staticBackdropLabel">Horario</h1>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body bg-warning-subtle">
 
-            <div class="d-flex col align-items-center justify-content-center mr-10">
-              <div style="color: black;">
-
-                <h1>Curso </h1>
-                {% for day in subject.standard_slots_subject.all %}
-                  {% if day.day.id == 1 %}
-                    Lunes:{{day.slot}}<p></p>
-                  {% endif %}
-    
-                  {% if day.day.id == 2 %}
-                    Martes:{{day.slot}}<p></p>
-    
-                  {% endif %}
-    
-                  {% if day.day.id == 3 %}
-                    Miercoles:{{day.slot}}<p></p>
-    
-                  {% endif %}
-    
-                  {% if day.day.id == 4 %}
-                    Jueves:{{day.slot}}<p></p>
-    
-                  {% endif %}
-    
-                  {% if day.day.id == 5 %}
-                    Viernes:{{day.slot}}<p></p>
-                  {% endif %}
-                                  
-                {% endfor %}
-
-              </div>
-              <div >
-                <img  style="width: 200px;height: 200px; opacity: 0.9;border-radius: 1000px;"src='../../media/{{user.userprofileinfo.profile_pic | default:"Images/User_Profile_Pictures/None.jpg"}}' alt="">                  
-              </div>          
-            </div>   
-            <div class="gap-3 mt-3 icons d-flex flex-row justify-content-center align-items-center"> 
-              <span><i class="fa fa-twitter"></i></span> 
-              <span><i class="fa fa-facebook-f"></i></span> 
-              <span><i class="fa fa-instagram"></i></span> 
-              <span><i class="fa fa-linkedin"></i></span> 
-            </div>   
-          </div>
-          <div class="modal-footer">        
-          </div>
-        </div>
-      </div>
-    </div>
-  {% endfor %} {% endcomment %}
 
          
-{% comment %} {% for c in standards.all %}
-          {% for subject in c.subjects.all %}
-            {% for day in subject.standard_slots_subject.all %}
-              {% if day.day.id == 1 %}
-                Lunes:{{day.slot}}<p></p>
-              {% endif %}
 
-              {% if day.day.id == 2 %}
-                Martes:{{day.slot}}<p></p>
-
-              {% endif %}
-
-              {% if day.day.id == 3 %}
-                Miercoles:{{day.slot}}<p></p>
-
-              {% endif %}
-
-              {% if day.day.id == 4 %}
-                Jueves:{{day.slot}}<p></p>
-
-              {% endif %}
-
-              {% if day.day.id == 5 %}
-                Viernes:{{day.slot}}<p></p>
-              {% endif %}
-              
-            
-            {% endfor %}
-            <p>dsds</p>
-
-          
-          {% endfor %}
-          
-  
-{% endfor %} {% endcomment %}
   </div> 
 
 
 {%endblock%}
 
-
-
-                                       
-    
-      
-                  {% comment %} <div class=" modal-dialog modal-l modal fade modal-dialog modal-dialog-centered modal-dialog-scrollable " id="{{subject.id|parseada2}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="{{subject.id|combinacionLabel}}" aria-hidden="true" style="display: none;">
-                    <div class="modal-dialog">
-                      <div class="modal-content">
-                        <div class="modal-header bg-primary-subtle">
-                          <h1 class="modal-title fs-5" style="color:black ;" id="staticBackdropLabel">Mi perfil</h1>
-                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body bg-warning-subtle">
-                          <h1>Curso </h1>
-                          {% for day in subject.standard_slots_subject.all %}
-                            {% if day.day.id == 1 %}
-                              Lunes:{{day.slot}}<p></p>
-                            {% endif %}
-              
-                            {% if day.day.id == 2 %}
-                              Martes:{{day.slot}}<p></p>
-              
-                            {% endif %}
-              
-                            {% if day.day.id == 3 %}
-                              Miercoles:{{day.slot}}<p></p>
-              
-                            {% endif %}
-              
-                            {% if day.day.id == 4 %}
-                              Jueves:{{day.slot}}<p></p>
-              
-                            {% endif %}
-              
-                            {% if day.day.id == 5 %}
-                              Viernes:{{day.slot}}<p></p>
-                            {% endif %}
-                                            
-                          {% endfor %}   
-                        </div>
-                        <div class="modal-footer">        
-                        </div>
-                      </div>
-                    </div>
-                  </div> {% endcomment %}

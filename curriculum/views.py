@@ -25,6 +25,7 @@ from django.template.loader import render_to_string
 class StandardListView(ListView):
     context_object_name = 'standards'
     extra_context = {
+        "usersAll":UserProfileInfo.objects.all(),
         "numeroNiveles":Standard.objects.all(),
         "numeroCursos":Subject.objects.all(),
         "numeroCapitulos":Lesson.objects.all(),
@@ -62,6 +63,14 @@ class StandardListView(ListView):
     model = Standard
     template_name = 'curriculum/standard_list_view.html'
  
+class UsersListView(ListView):
+    context_object_name = 'standards'
+    extra_context = {
+        "usersAll":UserProfileInfo.objects.all(),
+    }
+    model = Standard
+    template_name = 'curriculum/user_list_view.html'
+    
 class SubjectListView(DetailView):
     context_object_name = 'standards'
     extra_context = {

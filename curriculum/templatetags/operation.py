@@ -61,33 +61,21 @@ def combinacion2 (n):
 register.filter("combinacion2",combinacion2)
 
 def formatoHora(n):
-    
-    inicio = n[:-14]
-    final= n[:-3]
-    final=final[11:]
-    
-    h1=inicio[1]
-    hEntero1=int(h1)
-    
-    h2=inicio[1]
-    hEntero2=int(h2)
-    
-    if(hEntero1 == 12 ):
-        mi="m"
-    if(hEntero1 > 12 ):
-        mi="pm"
-    if(hEntero1 < 12 ):
-        mi="am"
-        
-    if(hEntero2 == 12 ):
-        mf="m"
-    if(hEntero2 > 12 ):
-        mf="pm"
-    if(hEntero2 < 12 ):
-        mf="am"
-    
-    inicio = inicio + mi
-    final = final + mf
-    
-    return (inicio + " - "+ final)
+    s=str(n)
+    if s == '12:00:00':
+        s="12 m"        
+        return s
+    else:
+        return n
+
 register.filter("formatoHora",formatoHora)
+
+def renombrar(n):    
+    if n == 'parent':               
+        return 'estudiante'  
+    if n == 'student':               
+        return 'estudiante'
+    if n == 'teacher':               
+        return 'profesor' 
+
+register.filter("renombrar",renombrar)

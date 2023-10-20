@@ -42,7 +42,7 @@
               <a class="navbar-brand color_encabezado" href="{% url 'contact' %}"  ><img class="logos-nav" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTYjzWEaMnT0s1MZ6EqMNbbix5iAGg7sgv74rm5n8wZkNVAmn3ABxDyIq4WzmfINHcqqh8&usqp=CAU" alt="contactanos"><p style="text-align: center;">contactanos</p></a>
 
 
-              <a class="navbar-brand color_encabezado" href=""  ><img class="logos-nav" src="https://i.pinimg.com/564x/d7/e7/6d/d7e76d00808386204d7b56f08969b78e.jpg" alt="contactanos"><p style="text-align: center;">directorio</p></a>
+              <a class="navbar-brand color_encabezado" href={% url 'curriculum:users_list' %}  ><img class="logos-nav" src="https://i.pinimg.com/564x/d7/e7/6d/d7e76d00808386204d7b56f08969b78e.jpg" alt="contactanos"><p style="text-align: center;">usuarios</p></a>
 
 
               <a class="navbar-brand color_encabezado" href="{% url 'user_logout' %}"  ><img class="logos-nav" src="https://cdn-icons-png.flaticon.com/512/339/339737.png" alt="cerrar"><p style="text-align: center;">cerrar sesion</p></a>
@@ -176,6 +176,7 @@
         </div>
       </div>
     </div>
+    
     </body>
   {% else %}
     <body style="background-image: url('https://w0.peakpx.com/wallpaper/161/556/HD-wallpaper-abstract-background-for-mac-green-abstract-mac-blue.jpg') ">

@@ -419,3 +419,11 @@ text-align: center;
   margin-top: 5rem; 
   width: 90%;
 }
+
+.imagen-usuario img :hover{
+  transition: 0.8s;
+  height: 300px;
+  width: 300px;
+  border-radius: 1000px;
+  background-color: red;
+}

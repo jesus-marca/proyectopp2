@@ -59,3 +59,35 @@ register.filter("combinacionLabel",combinacionLabel)
 def combinacion2 (n):
     return ("#prop"+str(n))
 register.filter("combinacion2",combinacion2)
+
+def formatoHora(n):
+    
+    inicio = n[:-14]
+    final= n[:-3]
+    final=final[11:]
+    
+    h1=inicio[1]
+    hEntero1=int(h1)
+    
+    h2=inicio[1]
+    hEntero2=int(h2)
+    
+    if(hEntero1 == 12 ):
+        mi="m"
+    if(hEntero1 > 12 ):
+        mi="pm"
+    if(hEntero1 < 12 ):
+        mi="am"
+        
+    if(hEntero2 == 12 ):
+        mf="m"
+    if(hEntero2 > 12 ):
+        mf="pm"
+    if(hEntero2 < 12 ):
+        mf="am"
+    
+    inicio = inicio + mi
+    final = final + mf
+    
+    return (inicio + " - "+ final)
+register.filter("formatoHora",formatoHora)

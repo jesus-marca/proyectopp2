@@ -41,7 +41,21 @@ def parseada (n):
     return str(n)
 register.filter("parseada",parseada)
 
+def parseada2 (n):
+    return ("prop"+str(n))
+register.filter("parseada2",parseada2)
+
 
 def combinacion (n):
     return ("#"+str(n))
 register.filter("combinacion",combinacion)
+
+
+
+def combinacionLabel (n):
+    return ("staticBackdropLabel"+str(n))
+register.filter("combinacionLabel",combinacionLabel)
+
+def combinacion2 (n):
+    return ("#prop"+str(n))
+register.filter("combinacion2",combinacion2)

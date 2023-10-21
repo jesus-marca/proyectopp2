@@ -326,6 +326,10 @@ video {
   
 }
 
+.boton-agregar{
+  width: 10%;
+}
+
 @media (width <= 1450px ) {
   
   .base-formulario-registro {
@@ -353,7 +357,9 @@ video {
     margin-top: 14rem;
   }
   
-  
+  .boton-agregar{
+    width: 15%;
+  }
   
   
 }

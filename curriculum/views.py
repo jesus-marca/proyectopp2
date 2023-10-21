@@ -12,7 +12,7 @@ from django.contrib.auth import authenticate, login, logout
 
 from .models import Standard, Subject, Lesson, Comment, WorkingDays, TimeSlots,SlotSubject
 from django.urls import reverse_lazy
-from .forms import CommentForm,ReplyForm, LessonForm
+from .forms import CommentForm,ReplyForm, LessonForm, SlotSubjectForm
 from django.http import HttpResponseRedirect
 
 # para enviar correo
@@ -198,3 +198,48 @@ class LessonDeleteView(DeleteView):
         #return antes de optimizar
         # return reverse_lazy('curriculum:lesson_list',kwargs={'standard':standard.slug,'slug':subject.slug})
         return reverse_lazy('curriculum:standard_list')
+
+class SlotSubjectListView(ListView):
+    context_object_name = 'standards'
+    extra_context = {
+        "usersAll":UserProfileInfo.objects.all(),
+        "numeroNiveles":Standard.objects.all(),
+        "numeroCursos":Subject.objects.all(),
+        "numeroCapitulos":Lesson.objects.all(),
+        "subjectsAll":SlotSubject.objects.all(),
+        "numeroComentarios":Comment.objects.all(),
+                
+        'cursos':Subject.objects.all(),
+        'slots': TimeSlots.objects.all(),
+        
+        'lessonsAll':Lesson.objects.all(),        
+    }
+    model = Standard
+    template_name = 'curriculum/slot_list.html'
+    
+class SlotSubjectCreateView(CreateView):
+    # fields = ('lesson_id','name','position','image','video','ppt','Notes')
+    form_class =  SlotSubjectForm
+    context_object_name = 'subject'
+    model= Subject
+    template_name = 'curriculum/slot_subject_create.html' 
+
+    def get_success_url(self):
+        self.object = self.get_object()
+        standard = self.object.standard
+  
+  
+        #regresar a la normalidad si no se puede
+        # return reverse_lazy('curriculum:lesson_list',kwargs={'standard':standard.slug,
+        #                                                      'slug':self.object.slug}) 
+        # return reverse_lazy('curriculum:slots_list', kwargs={'slug':self.slug, 'standard':self.Standard.slug,'subject':self.subject.slug})
+        return reverse_lazy('curriculum:slots_list')
+ 
+ 
+    def form_valid(self, form, *args, **kwargs):
+        self.object = self.get_object()
+        fm = form.save(commit=False)
+        fm.standard = self.object.standard
+        fm.slot_subject = self.object
+        fm.save()
+        return HttpResponseRedirect(self.get_success_url())

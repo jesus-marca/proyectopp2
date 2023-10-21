@@ -1,5 +1,5 @@
 from django import forms
-from .models import Comment, Reply, Lesson
+from .models import Comment, Reply, Lesson, SlotSubject
 
 class LessonForm(forms.ModelForm):
     class Meta:
@@ -12,7 +12,7 @@ class LessonForm(forms.ModelForm):
         'position':"numero de capitulo",
         'video':"video sobre el capitulo",      
         'ppt':'pdf',
-        'Notes':'anotaciones'        
+        'Notes':'anotacionesss'        
         }
 
 class CommentForm(forms.ModelForm):
@@ -42,3 +42,14 @@ class ReplyForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         self.request = kwargs.pop('request', None)
         super(ReplyForm, self).__init__(*args, **kwargs)
+
+class SlotSubjectForm(forms.ModelForm):
+    class Meta:
+        model = SlotSubject
+        fields = ('day','slot')
+        labels = {
+            # 'standard':'Nivel',
+            'day':"dia",
+            'slot':"espacio",
+            # 'slot_subject':"curso",                              
+        }

@@ -11,5 +11,7 @@ urlpatterns = [
     path('<str:standard>/<str:subject>/<slug:slug>/update/', views.LessonUpdateView.as_view(),name='lesson_update'),
     path('<str:standard>/<str:subject>/<slug:slug>/delete/', views.LessonDeleteView.as_view(),name='lesson_delete'),
     path('usuarios', views.UsersListView.as_view(), name='users_list'),
+    path('horarios', views.SlotSubjectListView.as_view(), name='slots_list'),
+    path('/hora/<str:standard>/<str:slug>', views.SlotSubjectCreateView.as_view(),name='slot_subject_create'),
 
 ]

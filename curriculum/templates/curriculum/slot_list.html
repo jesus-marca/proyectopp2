@@ -130,42 +130,67 @@
                                 <th scope="row">1 p.m.</th>
                                 <th scope="row">2 p.m.</th>
                               </tr>
+
                               <tr>
-                                
-                                <th>Lunes</th>
-                                            
-                                {%for slot in subjectsAll%}
                               
-                                    {%if slot.day.id == 1 %}  
-                                  
-                                        {%if slot.standard|parseada == a.name|parseada %}   
-                                        
-                                    
-                                        <td  style="background-color: hsl({{slot.slot_subject.id | multiplicar }}, 71%, 82%);" >{{slot.slot_subject}}</td>                                                {%endif%}                                     
-                                    {% endif %}    
+                                {% comment %} <th>Lunes</th> {% endcomment %}
+                                <th>Lunes</th>
+                                
+                                {% for slt in slotsAll.all %}
+                                    {% comment %} <td>{{slt}}</td> {% endcomment %}
+                                    {%for subject in a.subjects.all%}
+
+                                            {%for slot in subject.standard_slots_subject.all %}
+                                               
+                                                {%if slot.day.id == 1 and slot.slot == slt%}                                                                                                 
+                                                        <td  style="background-color: hsl({{slot.slot_subject.id | multiplicar }}, 71%, 82%);" >{{slot.slot_subject}}</td> 
+                                                      
+                                                {% endif %}
+                                                {% if forloop.last and  %}
+                                                {% endif %}
+                                            {%endfor%}                                                                                                                    
+                                    {%endfor%}  
                                 {% endfor %}
+                              
                               </tr>
                               <tr>
                                 <th>Martes</th>
-                                {%for slot in subjectsAll%}
-                              
-                                  {%if slot.day.id == 2 %}  
+                                {% for slt in slotsAll.all %}
                                 
-                                      {%if slot.standard|parseada == a.name|parseada %}   
-                                      
-                                  
-                                      <td  style="background-color: hsl({{slot.slot_subject.id | multiplicar }}, 71%, 82%);" >{{slot.slot_subject}}</td>                                                {%endif%}                                     
-                                  {% endif %}    
+                                    {%for subject in a.subjects.all%}
+
+                                            {%for slot in subject.standard_slots_subject.all %}
+                                            
+                                                {%if slot.day.id == 2 %} 
+                                                
+                                                
+                                                    {% if  slot.slot == slt %}
+                                                        <td  style="background-color: hsl({{slot.slot_subject.id | multiplicar }}, 71%, 82%);" >{{slot.slot_subject}}</td> 
+                                                    
+                                                    {% endif %}
+                                                {% endif %}
+                                            {%endfor%}                                                                                                                      
+                                    {%endfor%}  
                                 {% endfor %}
                               </tr>
                               <tr>
                                 <th>Miercoles</th>
-                                {%for slot in subjectsAll%}
-                              
-                                  {%if slot.day.id == 3 %}                          
-                                    {%if slot.standard|parseada == a.name|parseada %}                                                           
-                                      <td  style="background-color: hsl({{slot.slot_subject.id | multiplicar }}, 71%, 82%);" >{{slot.slot_subject}}</td>                                                {%endif%}                                     
-                                  {% endif %}    
+                                {% for slt in slotsAll.all %}
+                                
+                                    {%for subject in a.subjects.all%}
+
+                                            {%for slot in subject.standard_slots_subject.all %}
+                                            
+                                                {%if slot.day.id == 3 %} 
+                                                
+                                                
+                                                    {% if  slot.slot == slt %}
+                                                        <td  style="background-color: hsl({{slot.slot_subject.id | multiplicar }}, 71%, 82%);" >{{slot.slot_subject}}</td> 
+                                                    
+                                                    {% endif %}
+                                                {% endif %}
+                                            {%endfor%}                                                                                                                      
+                                    {%endfor%}  
                                 {% endfor %}
                               </tr>
                               <tr>

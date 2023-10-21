@@ -59,11 +59,15 @@
 
 {% block content %}
 
-    <div class="d-flex row justify-content-center"   style="width: 100% ; margin-left: 0.2%;">
-      <h2 class="text-center " style="font-size: 3rem;">Lista de usuarios</h2>
-        <div class="d-flex justify-content-center">
+    <div class="d-flex row justify-content-center align-items-center"   style="width: 100% ; margin-left: 0.3%;">
+      <h2 class="text-center " style="font-size: 3rem;margin-bottom: 2rem;">Lista de usuarios</h2>
+    
+        <a  style="width: 10%;justify-self:end" type="button" class="btn btn-primary" href="{% url 'register' %}">Agregar usuario</a>
+      
+
+        <div class="d-flex justify-content-center mb-5 " style="">
             <div class="contenedor-niveles">            
-                <div  style="width: 90%;">
+                <div  style="width: 100%;">
                   <div class="card card-body d-flex justify-content-center ">
                     <div style="width: 100%;" class="d-flex justify-content-center ">
                     
@@ -108,7 +112,7 @@
                                     <tr style="width: 90%;">  
                                         <td style="width: 20%;">{{user.user.username}}</td>
                                         <td style="width: 10%;">{{user.user.email}}</td>
-                                        <td style="width: 10%;"><a type="button" class="imagen-usuario" style="text-decoration: none;background-color: red;"  data-bs-toggle="modal" data-bs-target={{user.user.username|combinacion}} aria-expanded="false" href=""><img style="width: 40px;height: 40px;border-radius: 1000px;" src="../../media/{{user.profile_pic}}" alt="no hay"></a></td>  
+                                        <td style="width: 10%;"><a type="button" class="imagen-usuario" style="text-decoration: none;"  data-bs-toggle="modal" data-bs-target={{user.user.username|combinacion}} aria-expanded="false" href=""><img style="width: 40px;height: 40px;border-radius: 1000px;" src="../../media/{{user.profile_pic}}" alt="no hay"></a></td>  
                                         <td style="width: 20%;">{{user.user.first_name}}</td>
                                         <td style="width: 20%;">{{user.user.last_name}}</td>      
                                         <td style="width: 20%;">{{user.user_type|renombrar}}</td>     

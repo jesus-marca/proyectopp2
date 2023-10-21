@@ -35,7 +35,7 @@
               <a class="navbar-brand color_encabezado" href="{% url 'curriculum:standard_list' %}"  ><img class="logos-nav" src="https://thetreeschool.org/wp-content/uploads/2015/05/icono-talleres.png" alt="Niveles"><p style="text-align: center;">Niveles</p></a> 
               {% if user.is_superuser %}
 
-              <a class="navbar-brand color_encabezado" href="{% url 'register' %}"  ><img class="logos-nav" src="https://cdn-icons-png.flaticon.com/512/3534/3534139.png" alt="registrar"><p style="text-align: center;">Registrar estudiante</p></a> 
+              {% comment %} <a class="navbar-brand color_encabezado" href="{% url 'register' %}"  ><img class="logos-nav" src="https://cdn-icons-png.flaticon.com/512/3534/3534139.png" alt="registrar"><p style="text-align: center;">Registrar estudiante</p></a>  {% endcomment %}
               <a class="navbar-brand color_encabezado" href="{% url 'admin:index' %}"  ><img class="logos-nav" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTl7sdO_sTN4pi5bZE8M7ZzMYMH4RovSb4wJFrVh2Bu4GRAQCYuHZt256lIR7O_H20sC-s&usqp=CAU" alt="ajustes admin"><p style="text-align: center;">administrador</p></a> 
                 
               {%endif%}

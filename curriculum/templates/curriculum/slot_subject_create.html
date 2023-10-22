@@ -20,22 +20,24 @@
       <a class="navbar-brand color_encabezado" href="{% url 'curriculum:slots_list' %}" ><img class="logos-nav" style="width: 100px" src="https://cdn-icons-png.flaticon.com/512/5093/5093116.png" alt="Niveles"></a>         
     </div>    
   </div>
-  <p class="text-center">Agregar un horario nuevo</p>
+  <p class="text-center" style="font-size: 2rem;font-weight: 300;"><strong>Agregar un nuevo horario</strong></p>
   <section class="gradient-custom w-100" style="">
     <div class="container my-5 py-5">
       <div class="row d-flex justify-content-center">
         <div class="col-md-12 col-lg-10 col-xl-8">
-          <div class="card">
+          
             <div class="d-flex row justify-content-center">
-              <form method="post" enctype="multipart/form-data" style="width: 50%;">
-                <div class="form-group d-flex row justify-content-center">
+              <form method="post" enctype="multipart/form-data" style="width: 60%;background-color: white;height: 270px; border:10px double black;">
+                <div class="form-group d-flex row justify-content-center mt-4">
                 {% csrf_token %}
                 {{form|crispy}}
-                <input class="btn btn-success btn-lg btn-block "  style="width: 20%;"type="submit" value="Crear">
+                <input class="btn btn-success btn-lg btn-block "  style="width: 25%; margin-top: 2rem;margin-bottom: 1rem;"type="submit" value="Crear">
+                <span style="width: 8%;"></span>
+                <a class="btn btn-info btn-lg btn-block " href="{% url 'curriculum:slots_list'  %}" class="btn btn-danger btn-block" style="width: 25%; margin-top: 2rem;margin-bottom: 1rem;"><span style="text-center">Cancelar</span></a>
                 </div>
               </form>
-            </div>
-          </div>
+          
+             </div>
         </div>
       </div>
     </div>

@@ -20,14 +20,14 @@
       <a class="navbar-brand color_encabezado" href="{% url 'curriculum:standard_list' %}" ><img class="logos-nav" style="width: 100px" src="https://cdn-icons-png.flaticon.com/512/5093/5093116.png" alt="Niveles"></a>         
     </div>    
   </div>
-  <p class="text-center">Agregar un nuevo capitulo</p>
+  <p class="text-center" style="font-size: 2rem;font-weight: 300;"><strong>Agregar un nuevo capitulo</strong></p>
   <section class="gradient-custom w-100" style="">
-    <div class="container my-5 py-5">
-      <div class="row d-flex justify-content-center">
-        <div class="col-md-12 col-lg-10 col-xl-8">
-          <div class="card">
+    <div class="container my-5 py-5" >
+      <div class="row d-flex justify-content-center" >
+        
+          
             <div class="d-flex row justify-content-center">
-              <form method="post" enctype="multipart/form-data" style="width: 50%;">
+              <form method="post" enctype="multipart/form-data" style="width: 50%;background-color: white;height: 470px; border:10px double black;">
                 <div class="form-group d-flex row justify-content-center">
                 {% csrf_token %}
                 {{form|crispy}}
@@ -35,8 +35,8 @@
                 </div>
               </form>
             </div>
-          </div>
-        </div>
+          
+        
       </div>
     </div>
   </section>

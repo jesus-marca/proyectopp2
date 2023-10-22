@@ -38,14 +38,18 @@
 
 
 {% block content %}
-<div style="height: 39.5vh;">
+<div style="height: 40.5vh;margin-bottom: 4rem;">
+
   <section id="best-features" class="text-center">
-                <h2 class="mb-5 font-weight-bold" style="color:black;">Eliminar el capitulo de {{lessons.name}}</h2>
+                <h2 class="mb-3 font-weight-bold" style="color:black;">Eliminar el capitulo de {{lessons.name}}</h2>
 
   </section>
+  <div class="d-flex justify-content-center">
+    <img  style="width: 11%;"src="https://cdn.pixabay.com/photo/2022/07/06/10/28/sign-7304817_960_720.png" alt="">
+  </div>
 
   <h3 class="mb-4 text-center" style="color:black;">¿Desea eliminar el capitulo {{lessons.name}} ?</h3>
-  <div class="d-flex justify-content-center">
+  <div class="d-flex justify-content-center ">
     <form method="post">
       {% csrf_token %}
       <div class="row d-flex justify-content-between">
@@ -53,7 +57,7 @@
                     <input type="submit" value="Aceptar" class="btn btn-danger btn-block">
             </div>
             <div class="col-md-4 mb-3 mr-3">
-                    <a href="{% url 'curriculum:standard_list' %}" class="btn btn-warning btn-block">Cancelar</a>
+                    <a href="{% url 'curriculum:standard_list' %}" class="btn btn-info btn-block">Cancelar</a>
             </div>
       </div>
     </form>

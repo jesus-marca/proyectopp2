@@ -363,3 +363,10 @@ video {
   
   
 }
+
+/* actualzar capitulo */
+
+.actualizar-capitulo #id_position{
+  width: 30%;
+
+}

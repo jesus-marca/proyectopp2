@@ -241,47 +241,49 @@
                                   </tr> 
                                 {% endif %}
                               {% endfor %}
-
-                              <div class=" modal-dialog modal-l modal fade modal-dialog modal-dialog-centered modal-dialog-scrollable " id="{{subject.id|parseada2}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="{{subject.id|combinacionLabel}}" aria-hidden="true" style="display: none; width: 500px;">
-                                <div class="modal-dialog">
-                                  <div class="modal-content">
-                                    <div class="modal-header bg-success-subtle">
-                                      <h1 class="modal-title fs-5" style="color:black ;" id="staticBackdropLabel">Horario del curso de {{subject.name}}</h1>
-                                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body bg-warning-subtle">
-                                    
-                                      {% for day in subject.standard_slots_subject.all %}
-                                        {% if day.day.id == 1 %}
-                                          Lunes: {{day.slot.start_time|formatoHora}} - {{day.slot.end_time|formatoHora}}<p></p>
-                                        {% endif %}
-                          
-                                        {% if day.day.id == 2 %}
-                                          Martes: {{day.slot.start_time|formatoHora}} - {{day.slot.end_time|formatoHora}}<p></p>
-                          
-                                        {% endif %}
-                          
-                                        {% if day.day.id == 3 %}
-                                          Miercoles: {{day.slot.start_time|formatoHora}} - {{day.slot.end_time|formatoHora}}<p></p>
-                          
-                                        {% endif %}
-                          
-                                        {% if day.day.id == 4 %}
-                                          Jueves: {{day.slot.start_time|formatoHora}} - {{day.slot.end_time|formatoHora}}<p></p>
-                          
-                                        {% endif %}
-                          
-                                        {% if day.day.id == 5 %}
-                                          Viernes: {{day.slot.start_time|formatoHora}} - {{day.slot.end_time|formatoHora}}<p></p>
-                                        {% endif %}
-                                                        
-                                      {% endfor %}   
-                                    </div>
-                                    <div class="modal-footer">        
-                                    </div>
+                                  <div class="d-flex justify-content-center">
+                                    <div class=" modal " id="{{subject.id|parseada2}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="{{subject.id|combinacionLabel}}" aria-hidden="true" style="justify-self: center; display: none; width: 100%;">
+                                      <div class="modal-dialog modal-dialog-centered">
+                                        <div class="modal-content">
+                                          <div class="modal-header bg-success-subtle">
+                                            <h1 class="modal-title fs-5" style="color:black ;" id="staticBackdropLabel">Horario del curso de {{subject.name}}</h1>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                          </div>
+                                          <div class="modal-body bg-warning-subtle">
+                                          
+                                            {% for day in subject.standard_slots_subject.all %}
+                                              {% if day.day.id == 1 %}
+                                                Lunes: {{day.slot.start_time|formatoHora}} - {{day.slot.end_time|formatoHora}}<p></p>
+                                              {% endif %}
+                                
+                                              {% if day.day.id == 2 %}
+                                                Martes: {{day.slot.start_time|formatoHora}} - {{day.slot.end_time|formatoHora}}<p></p>
+                                
+                                              {% endif %}
+                                
+                                              {% if day.day.id == 3 %}
+                                                Miercoles: {{day.slot.start_time|formatoHora}} - {{day.slot.end_time|formatoHora}}<p></p>
+                                
+                                              {% endif %}
+                                
+                                              {% if day.day.id == 4 %}
+                                                Jueves: {{day.slot.start_time|formatoHora}} - {{day.slot.end_time|formatoHora}}<p></p>
+                                
+                                              {% endif %}
+                                
+                                              {% if day.day.id == 5 %}
+                                                Viernes: {{day.slot.start_time|formatoHora}} - {{day.slot.end_time|formatoHora}}<p></p>
+                                              {% endif %}
+                                                              
+                                            {% endfor %}   
+                                          </div>
+                                          <div class="modal-footer">        
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>   
                                   </div>
-                                </div>
-                              </div>                            
+                                           
                           {%endfor%} 
                         </tbody>
                       </table>

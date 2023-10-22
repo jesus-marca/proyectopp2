@@ -79,3 +79,23 @@ def renombrar(n):
         return 'profesor' 
 
 register.filter("renombrar",renombrar)
+
+# def filtrar(subjects,slt):
+#     count=0   
+#     n=6
+ 
+    
+#     for subject in subjects:
+#         if subject.standard_slots_subject.all.count == 0 :
+#             for slot in subject.standard_slots_subject.all :
+#                 if slot.day.id == 1 and slot.slot == slt :
+#                     count=count+1
+#     if count == n :
+#         return True
+#     else:
+#         return False
+# register.filter("filtrar",filtrar)
+
+@register.simple_tag
+def define(val=0):
+  return val

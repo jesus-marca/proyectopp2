@@ -133,23 +133,31 @@
 
                               <tr>
                               
-                                {% comment %} <th>Lunes</th> {% endcomment %}
-                                <th>Lunes</th>
                                 
-                                {% for slt in slotsAll.all %}
-                                    {% comment %} <td>{{slt}}</td> {% endcomment %}
-                                    {%for subject in a.subjects.all%}
+                                <th>Lunes</th>
+                                                            
+                                {% for slt in slotsAll.all %}                                
+                                  
+                             
+                                                                                       
+                                  {%for subject in a.subjects.all%}
+                                 
+                                    {%if subject.standard_slots_subject.all.count != 0 %}
+                                                                              
+                                        {%for slot in subject.standard_slots_subject.all %}
+                                                
+                                          {%if slot.day.id == 1 and slot.slot == slt %}                                                                                                                                         
+                                            <td  style="background-color: hsl({{slot.slot_subject.id|multiplicar }}, 71%, 82%);" >{{slot.slot_subject}} </td>   
+                                            {% define 1 as variable %}                                                                                                                                                                                        
+                                          {% endif %}                                                    
+                                        {%endfor%}                                                                                                                                                           
+                                    {% endif %}
+                                    {% if total.all.count|add:variable == total.all.count %}
+                                      <td>{{total.all.count|add:variable}}</td>                                    
+                                    {% endif %} 
+                                  {%endfor%}
+                                                                                                                                       
 
-                                            {%for slot in subject.standard_slots_subject.all %}
-                                               
-                                                {%if slot.day.id == 1 and slot.slot == slt%}                                                                                                 
-                                                        <td  style="background-color: hsl({{slot.slot_subject.id | multiplicar }}, 71%, 82%);" >{{slot.slot_subject}}</td> 
-                                                      
-                                                {% endif %}
-                                                {% if forloop.last and  %}
-                                                {% endif %}
-                                            {%endfor%}                                                                                                                    
-                                    {%endfor%}  
                                 {% endfor %}
                               
                               </tr>

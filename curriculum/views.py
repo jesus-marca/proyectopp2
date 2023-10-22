@@ -202,6 +202,7 @@ class LessonDeleteView(DeleteView):
 class SlotSubjectListView(ListView):
     context_object_name = 'standards'
     extra_context = {
+        "total":Standard.objects.all(),
         'slotsAll': TimeSlots.objects.all(),
         "usersAll":UserProfileInfo.objects.all(),
         "numeroNiveles":Standard.objects.all(),

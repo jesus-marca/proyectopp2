@@ -80,6 +80,22 @@ def renombrar(n):
 
 register.filter("renombrar",renombrar)
 
+
+def formatoDia(n): 
+    n=str(n)   
+    if n == 'Monday':               
+        return 'Lunes'  
+    if n == 'Tuesday':               
+        return 'Martes'
+    if n == 'Wednesday':               
+        return 'Miercoles' 
+    if n == 'Thursday':               
+        return 'Jueves'
+    if n == 'Friday':               
+        return 'Viernes'
+
+register.filter("formatoDia",formatoDia)
+
 # def filtrar(subjects,slt):
 #     count=0   
 #     n=6

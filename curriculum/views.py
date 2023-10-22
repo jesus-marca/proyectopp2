@@ -245,3 +245,9 @@ class SlotSubjectCreateView(CreateView):
         fm.slot_subject = self.object
         fm.save()
         return HttpResponseRedirect(self.get_success_url())
+
+class SlotUpdateView(UpdateView):
+    fields = ('horario')
+    model= SlotSubject
+    template_name = 'curriculum/slot_update.html'
+    context_object_name = 'slotsSubject'

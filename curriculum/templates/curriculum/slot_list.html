@@ -59,7 +59,7 @@
 
 {% block content %}
   <div class="d-flex row justify-content-center"  style="width: 100% ;margin-left: 0.2%;">
-      <h2 class="text-center mt-5 mb-4" style="font-size: 3rem;">Nuestro horarios</h2>
+      <h2 class="text-center mt-5 mb-4" style="font-size: 3rem;">Nuestros horarios</h2>
       {% comment %} <div class="d-flex row justify-content-center" style="height: auto">
         <div class=" d-flex  justify-content-center align-items-center" style="width: 73%;">
           <div  class="tablero bg-info d-flex flex-column justify-content-center align-items-center ">
@@ -234,25 +234,69 @@
                           <tr>
                             
                             <th style="width: 5%;" scope="col">Nivel</th>
-                            <th style="width: 30%;" scope="col">Curso</th>
-                            <th style="width: 10%;" scope="col"></th>
+                            <th style="width: 15%;" scope="col">Curso</th>
+                            <th style="width: 7%;" scope="col"></th>
+                            <th style="width: 7%;" scope="col"></th>
                             <th style="width: 10%;" scope="col">#capitulos</th>
-                            <th style="width: 45%;" scope="col">Acciones</th>
+                            <th style="width: 9%;" scope="col">Dia</th>
+                            <th style="width: 9%;" scope="col">H.Inicio</th>
+                            <th style="width: 9%;" scope="col">H.Final</th>
+                            <th style="width: 29%;" scope="col">Acciones</th>
+                       
                           </tr>
                         </thead>
                         <tbody style="width: 100%;">
                           {% for subject in a.subjects.all %}                                                
+                          
+                            {% if subject.standard_slots_subject.all == 0 %}
+                              <tr>
+                                <td style="width: 5%;">{{subject.standard.id}}</td>
+                                <td style="width: 15%;">{{subject.name}}</td>
+                                <td style="width: 10%;"><span style="width: 5%;"></span><a style="width: 95%;"   href="{% url 'curriculum:slot_subject_create' standard=subject.standard.slug slug=subject.slug %}"  class="btn btn-success">Agregar</a></td>
+                                <td style="width: 9%;"></td>
+                                <td style="width: 10%;">{{subject.lessons.all.count}}</td>
+                                <td style="width: 9%;" class="text-center"></td>
+                                <td style="width: 9%;"></td>
+                                <td style="width: 9%;"></td>
+                                <td style="width: 24%;"></td>
+                              </tr>
+                            {% endif %}
+                            {% for slot in subject.standard_slots_subject.all %}
+                              {% if forloop.first or subject.standard_slots_subject.all.count == 1  %}
+                              
+                                <tr>
+                                  <td  rowspan="{{subject.standard_slots_subject.all.count}}"  style="width: 5%;">{{subject.standard.id}}</td>
+                                  <td rowspan="{{subject.standard_slots_subject.all.count}}" style="width: 15%;">{{subject.name}}</td>
+                                  <td rowspan="{{subject.standard_slots_subject.all.count}}" style="width: 10%;"><span style="width: 5%;"></span><a style="width: 95%;"   href="{% url 'curriculum:slot_subject_create' standard=subject.standard.slug slug=subject.slug %}"  class="btn btn-success">Agregar</a></td>
+                                  <td rowspan="{{subject.standard_slots_subject.all.count}}" style="width: 10%;"><a  type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="{{subject.id|combinacion2}}" style="width: 100%;">horario</a> </td>
+                                  <td rowspan="{{subject.standard_slots_subject.all.count}}" style="width: 10%;" class="text-center">{{subject.lessons.all.count}}</td>
 
-                              {% if subject.standard_slots_subject.all != 0 %}
-
-                                <tr>                                
+                                  <td style="width: 9%;">{{slot.day|formatoDia}}</td>
+                                  <td style="width: 9%;">{{slot.slot.start_time|formatoHora}}</td>
+                                  <td style="width: 9%;">{{slot.slot.end_time|formatoHora}}</td>
+                                  
+                                  <td style="width: 24%;">
+                                    <a style="width: 45%;"   href=""  class="btn btn-outline-success">Editar</a><span style="width: 4%;"> </span><a style="width: 45%;" class="btn btn-outline-danger" href="" >Eliminar</a></td>
+                                  </td>
+                                </tr>
+                              {% else %}
+                              <tr>                                
+                                <td style="width: 9%;">{{slot.day|formatoDia}}</td>
+                                <td style="width: 9%;">{{slot.slot.start_time|formatoHora}}</td>
+                                <td style="width: 9%;">{{slot.slot.end_time|formatoHora}}</td>                              
+                                <td style="width: 24%;">
+                                  <a style="width: 45%;"   href=""  class="btn btn-outline-success">Editar</a><span style="width: 4%;"> </span><a style="width: 45%;" class="btn btn-outline-danger" href="" >Eliminar</a></td>
+                                </td>
+                              </tr>
+                              {% endif %}
+                            {% endfor %}
+                                {% comment %} <tr>                                
                                     <td style="width: 5%;">{{subject.standard.id}}</td>
                                     <td style="width: 30%;">{{subject.name}}</td>
-                                    <td style="width: 10%;"><span style="width: 5%;"></span><a style="width: 95%;"   href="{% url 'curriculum:slot_subject_create' standard=subject.standard.slug slug=subject.slug %}"  class="btn btn-success">Agregar</a></td>
-                                    <td style="width: 10%;" class="text-center">{{subject.lessons.all.count}}</td>
-                                    <td style="width: 45%;"><a type="button" class="btn btn-outline-info" data-bs-toggle="modal" data-bs-target="{{subject.id|combinacion2}}" style="width: 30%;">ver</a> <span style="width: 5%;"> </span><a style="width: 30%;"   href="" class="btn btn-outline-success">Editar</a><span style="width: 5%;"> </span><a style="width: 30%;"   href="" class="btn btn-outline-danger">Eliminar</a></td>
-                                </tr>                                                                                      
-                              {% endif %}
+                                   
+                                    <td style="width: 45%;"><a type="button" class="btn btn-outline-info" data-bs-toggle="modal" data-bs-target="{{subject.id|combinacion2}}" style="width: 30%;">ver</a> <span style="width: 5%;"> </span><a style="width: 30%;"   href="{% url 'curriculum:slot_subject_update' standard=subject.standard.slug subject=subject.slug %}"  class="btn btn-outline-success">Editar</a><span style="width: 5%;"> </span><a style="width: 30%;"   href="" class="btn btn-outline-danger">Eliminar</a></td>
+                                </tr>                                                                                       {% endcomment %}
+                            
                               
                               {% comment %} {% for lesson in subject.lessons.all  %}
                                 {% if forloop.first or subject.lessons.all.count == 1  %}
@@ -273,8 +317,8 @@
                                 {% endif %}
                               {% endfor %} {% endcomment %}
 
-                              <div class=" modal-dialog modal-l modal fade modal-dialog modal-dialog-centered modal-dialog-scrollable " id="{{subject.id|parseada2}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="{{subject.id|combinacionLabel}}" aria-hidden="true" style="display: none; width: 500px;">
-                                <div class="modal-dialog">
+                              <div class=" modal " id="{{subject.id|parseada2}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="{{subject.id|combinacionLabel}}" aria-hidden="true" style="display: none; width: 100%;">
+                                <div class="modal-dialog modal-dialog-centered">
                                   <div class="modal-content">
                                     <div class="modal-header bg-success-subtle">
                                       <h1 class="modal-title fs-5" style="color:black ;" id="staticBackdropLabel">Horario del curso de {{subject.name}}</h1>

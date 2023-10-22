@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 {% load operation %}
-{% block title %} Niveles {% endblock %}
+{% block title %} Horarios {% endblock %}
 
 
 {% block image_block %}
@@ -276,7 +276,7 @@
                                   <td style="width: 9%;">{{slot.slot.end_time|formatoHora}}</td>
                                   
                                   <td style="width: 24%;">
-                                    <a style="width: 45%;"   href=""  class="btn btn-outline-success">Editar</a><span style="width: 4%;"> </span><a style="width: 45%;" class="btn btn-outline-danger" href="" >Eliminar</a></td>
+                                    <a style="width: 45%;"  href=""   class="btn btn-outline-success">Editar</a><span style="width: 4%;"> </span><a style="width: 45%;" class="btn btn-outline-danger" href="" >Eliminar</a></td>
                                   </td>
                                 </tr>
                               {% else %}
@@ -285,7 +285,7 @@
                                 <td style="width: 9%;">{{slot.slot.start_time|formatoHora}}</td>
                                 <td style="width: 9%;">{{slot.slot.end_time|formatoHora}}</td>                              
                                 <td style="width: 24%;">
-                                  <a style="width: 45%;"   href=""  class="btn btn-outline-success">Editar</a><span style="width: 4%;"> </span><a style="width: 45%;" class="btn btn-outline-danger" href="" >Eliminar</a></td>
+                                  <a style="width: 45%;"   href="{% url 'curriculum:slot_subject_update' standard=subject.standard.slug subject=slot.slot_subject.slug  slug=slot.slot.standard_time_slots%}"  class="btn btn-outline-success">Editar</a><span style="width: 4%;"> </span><a style="width: 45%;" class="btn btn-outline-danger" href="" >Eliminar</a></td>
                                 </td>
                               </tr>
                               {% endif %}

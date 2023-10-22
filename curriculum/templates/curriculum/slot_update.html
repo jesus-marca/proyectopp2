@@ -32,8 +32,8 @@
           
         <input type="submit" value="Actualizar" class="btn btn-warning btn-block" style="margin-left: 2rem;margin-right: 2rem;">            
             
-        <a href="{% url 'curriculum:lesson_detail' standard=lessons.Standard.slug subject=lessons.subject.slug slug=lessons.slug %}" class="btn btn-danger btn-block" style="margin-left: 2rem;margin-right: 2rem;">Cancelar</a>
-          
+        {% comment %} <a href="{% url 'curriculum:lesson_detail' standard=lessons.Standard.slug subject=lessons.subject.slug slug=lessons.slug %}" class="btn btn-danger btn-block" style="margin-left: 2rem;margin-right: 2rem;">Cancelar</a>
+           {% endcomment %}
       </div>
     </form>
   </div>

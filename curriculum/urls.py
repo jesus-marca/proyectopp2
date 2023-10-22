@@ -13,6 +13,6 @@ urlpatterns = [
     path('usuarios', views.UsersListView.as_view(), name='users_list'),
     path('horarios', views.SlotSubjectListView.as_view(), name='slots_list'),
     path('/hora/<str:standard>/<str:slug>', views.SlotSubjectCreateView.as_view(),name='slot_subject_create'),
-    path('/update_horario/<str:standard>/<str:subject>/', views.SlotUpdateView.as_view(),name='slot_subject_update'),
+    path('horarios/<str:standard>/<str:subject>/<slug:slug>/update', views.SlotUpdateView.as_view(),name='slot_subject_update'),
 
 ]

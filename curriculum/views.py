@@ -230,7 +230,7 @@ class SlotSubjectCreateView(CreateView):
         self.object = self.get_object()
         standard = self.object.standard
   
-  
+        # return reverse_lazy('curriculum:slots_list', kwargs={'slug':self, 'standard':self.standard.slug,'subject':self.slot_subject.slug})
         #regresar a la normalidad si no se puede
         # return reverse_lazy('curriculum:lesson_list',kwargs={'standard':standard.slug,
         #                                                      'slug':self.object.slug}) 
@@ -247,7 +247,7 @@ class SlotSubjectCreateView(CreateView):
         return HttpResponseRedirect(self.get_success_url())
 
 class SlotUpdateView(UpdateView):
-    fields = ('horario')
-    model= SlotSubject
+    fields = ('day','slot')
+    model= SlotSubject 
     template_name = 'curriculum/slot_update.html'
-    context_object_name = 'slotsSubject'
+    context_object_name = 'slotSubjects'

@@ -95,6 +95,7 @@ class TimeSlots(models.Model):
         return str(self.start_time) + ' - ' + str(self.end_time) 
 
 class SlotSubject(models.Model):
+    # slug = models.SlugField(null=True, blank=True),
     standard = models.ForeignKey(Standard, on_delete=models.CASCADE,related_name='standard_slots')
     day = models.ForeignKey(WorkingDays, on_delete=models.CASCADE,related_name='standard_slots_days')
     slot = models.ForeignKey(TimeSlots, on_delete=models.CASCADE,related_name='standard_slots_time')

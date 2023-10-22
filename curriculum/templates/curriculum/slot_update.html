@@ -25,7 +25,40 @@
     <section id="best-features" class="text-center d-flex row justify-content-center" >
                   
     </section>
-    <form method="post" enctype="multipart/form-data" style="width: 50%;" style="">
+    {% comment %} <form action="/slot_update/" method="POST">{% csrf_token %}
+      <div class="form-group">
+          <input type="text" id="hour_startInput" name="hour_startInput" class="form-control" placeholder="hora inicio"
+              required>
+      </div>
+      <div class="form-group">
+          <input type="text" id="hour_endInput" name="hour_endInput" class="form-control" placeholder="hora final"
+              required>
+      </div>
+      <div class="form-group">
+          <input type="text" id="dayInput" name="dayInput" class="form-control" placeholder="dia"
+              required>
+      </div>
+      <div class="form-group">
+          <input type="text" id="standarsInput" name="standarsInput" class="form-control" placeholder="nivel"
+              required>
+      </div>
+      <div class="form-group">
+          <input type="text" id="subjectInput" name="subjectInput" class="form-control" placeholder="curso"
+              required>
+      </div>
+      {% comment %} <div class="form-group">
+          <input type="number" id="ageInput" name="ageInput" class="form-control" placeholder="Age"
+              maxlength="50" required>
+      </div>
+      <div class="form-group">
+          <input type="text" id="skillInput" name="skillInput" class="form-control" min="1" max="9"
+          placeholder="Skill" required>
+      </div> {% endcomment %}
+      <div class="form-group">
+          <button type="submit" class="btn btn-info btn-block text-white">Save</button>
+      </div>
+  </form> {% endcomment %}
+   <form method="post" enctype="multipart/form-data" style="width: 50%;" style="">
       {% csrf_token %}
       {{form|crispy}}
       <div class="d-flex col  justify-content-center">
@@ -35,6 +68,6 @@
         {% comment %} <a href="{% url 'curriculum:lesson_detail' standard=lessons.Standard.slug subject=lessons.subject.slug slug=lessons.slug %}" class="btn btn-danger btn-block" style="margin-left: 2rem;margin-right: 2rem;">Cancelar</a>
            {% endcomment %}
       </div>
-    </form>
+    </form> 
   </div>
 {% endblock %}

@@ -246,6 +246,41 @@ class SlotSubjectCreateView(CreateView):
         fm.save()
         return HttpResponseRedirect(self.get_success_url())
 
+
+
+# def SlotUpdateView(request, slug):
+    # slotsSubject = slotsSubject.objects.get(slot=slug)
+
+    # hour_start = request.POST.get('hour_startInput')
+    # hour_end = request.POST.get('hour_endInput')
+    # day = request.POST.get('dayInput')
+    # standard=request.POST.get('standarsInput')
+    # subject=request.POST.get('subjectInput')
+    
+    # if request.method == 'POST':
+
+    #     slotsSubject.standard = standard
+    #     slotsSubject.slot_subject = subject
+    #     slotsSubject.day = day
+        
+        
+        # slotsSubject.slot = skill
+        
+        
+        # slotsSubject.slot.start_time = hour_start
+        # slotsSubject.slot.end_time  = hour_end
+        # slotsSubject.save()
+        
+        # messages.success(request, 'User: ' + name +' ¡Edit Success!')
+        
+        
+        return reverse_lazy('curriculum:slots_list')
+    # return render (request, "edit.html", {"slotsSubject": slotsSubject})
+    
+    
+    # return reverse_lazy('curriculum:slots_list')
+
+
 class SlotUpdateView(UpdateView):
     fields = ('day','slot')
     model= SlotSubject 

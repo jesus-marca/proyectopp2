@@ -235,13 +235,13 @@
                             
                             <th style="width: 5%;" scope="col">Nivel</th>
                             <th style="width: 15%;" scope="col">Curso</th>
-                            <th style="width: 7%;" scope="col"></th>
+                            <th style="width: 11%;" scope="col"></th>
                             <th style="width: 7%;" scope="col"></th>
                             <th style="width: 10%;" scope="col">#capitulos</th>
-                            <th style="width: 9%;" scope="col">Dia</th>
-                            <th style="width: 9%;" scope="col">H.Inicio</th>
-                            <th style="width: 9%;" scope="col">H.Final</th>
-                            <th style="width: 29%;" scope="col">Acciones</th>
+                            <th style="width: 13%;" scope="col">Dia</th>
+                            <th style="width: 17%;" scope="col">H.Inicio</th>
+                            <th style="width: 17%;" scope="col">H.Final</th>
+                            {% comment %} <th style="width: 29%;" scope="col">Acciones</th> {% endcomment %}
                        
                           </tr>
                         </thead>
@@ -252,13 +252,13 @@
                               <tr>
                                 <td style="width: 5%;">{{subject.standard.id}}</td>
                                 <td style="width: 15%;">{{subject.name}}</td>
-                                <td style="width: 10%;"><span style="width: 5%;"></span><a style="width: 95%;"   href="{% url 'curriculum:slot_subject_create' standard=subject.standard.slug slug=subject.slug %}"  class="btn btn-success">Agregar</a></td>
-                                <td style="width: 9%;"></td>
+                                <td style="width: 11%;"><span style="width: 5%;"></span><a style="width: 95%;"   href="{% url 'curriculum:slot_subject_create' standard=subject.standard.slug slug=subject.slug %}"  class="btn btn-success">Agregar</a></td>
+                                <td style="width: 7%;"></td>
                                 <td style="width: 10%;">{{subject.lessons.all.count}}</td>
-                                <td style="width: 9%;" class="text-center"></td>
-                                <td style="width: 9%;"></td>
-                                <td style="width: 9%;"></td>
-                                <td style="width: 24%;"></td>
+                                <td style="width: 13%;" class="text-center"></td>
+                                <td style="width: 17%;"></td>
+                                <td style="width: 17%;"></td>
+                                {% comment %} <td style="width: 24%;"></td> {% endcomment %}
                               </tr>
                             {% endif %}
                             {% for slot in subject.standard_slots_subject.all %}
@@ -267,28 +267,27 @@
                                 <tr>
                                   <td  rowspan="{{subject.standard_slots_subject.all.count}}"  style="width: 5%;">{{subject.standard.id}}</td>
                                   <td rowspan="{{subject.standard_slots_subject.all.count}}" style="width: 15%;">{{subject.name}}</td>
-                                  <td rowspan="{{subject.standard_slots_subject.all.count}}" style="width: 10%;"><span style="width: 5%;"></span><a style="width: 95%;"   href="{% url 'curriculum:slot_subject_create' standard=subject.standard.slug slug=subject.slug %}"  class="btn btn-success">Agregar</a></td>
-                                  <td rowspan="{{subject.standard_slots_subject.all.count}}" style="width: 10%;"><a  type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="{{subject.id|combinacion2}}" style="width: 100%;">horario</a> </td>
+                                  <td rowspan="{{subject.standard_slots_subject.all.count}}" style="width: 11%;"><span style="width: 5%;"></span><a style="width: 95%;"   href="{% url 'curriculum:slot_subject_create' standard=subject.standard.slug slug=subject.slug %}"  class="btn btn-success">Agregar</a></td>
+                                  <td rowspan="{{subject.standard_slots_subject.all.count}}" style="width: 7%;"><a  type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="{{subject.id|combinacion2}}" style="width: 100%;">horario</a> </td>
                                   <td rowspan="{{subject.standard_slots_subject.all.count}}" style="width: 10%;" class="text-center">{{subject.lessons.all.count}}</td>
 
-                                  <td style="width: 9%;">{{slot.day|formatoDia}}</td>
-                                  <td style="width: 9%;">{{slot.slot.start_time|formatoHora}}</td>
-                                  <td style="width: 9%;">{{slot.slot.end_time|formatoHora}}</td>
+                                  <td style="width: 13%;">{{slot.day|formatoDia}}</td>
+                                  <td style="width: 17%;">{{slot.slot.start_time|formatoHora}}</td>
+                                  <td style="width: 17%;">{{slot.slot.end_time|formatoHora}}</td>
                                   
-                                  <td style="width: 24%;">
-                                    <a style="width: 45%;"  href=""   class="btn btn-outline-success">Editar</a><span style="width: 4%;"> </span><a style="width: 45%;" class="btn btn-outline-danger" href="" >Eliminar</a></td>
-                                  </td>
+                                  {% comment %} <td style="width: 24%;">
+                                    <a style="width: 45%;"  href="{%  url 'curriculum:slot_subject_update' standard=subject.standard.slug subject=slot.slot_subject.slug slug=slot %}"   class="btn btn-outline-success">Editar</a><span style="width: 4%;"> </span><a style="width: 45%;" class="btn btn-outline-danger" href="" >Eliminar</a> 
+                                  </td> {% endcomment %}
+                                  
                                 </tr>
                               {% else %}
                               <tr>                                
-                                <td style="width: 9%;">{{slot.day|formatoDia}}</td>
-                                <td style="width: 9%;">{{slot.slot.start_time|formatoHora}}</td>
-                                <td style="width: 9%;">{{slot.slot.end_time|formatoHora}}</td>                              
-                                <td style="width: 24%;">
-                                  <a style="width: 45%;"   href=""  class="btn btn-outline-success">Editar</a><span style="width: 4%;"> </span><a style="width: 45%;" class="btn btn-outline-danger" href="" >Eliminar</a></td>
-                                </td>
-
-                                {% comment %} href="{% url 'curriculum:slot_subject_update' standard=subject.standard.slug subject=slot.slot_subject.slug  slug=slot%}" {% endcomment %}
+                                <td style="width: 13%;">{{slot.day|formatoDia}}</td>
+                                <td style="width: 17%;">{{slot.slot.start_time|formatoHora}}</td>
+                                <td style="width: 17%;">{{slot.slot.end_time|formatoHora}}</td>                              
+                                {% comment %} <td style="width: 24%;">
+                                  <a style="width: 45%;"   href="{%  url 'curriculum:slot_subject_update' standard=subject.standard.slug subject=slot.slot_subject.slug slug=slot  %}"   class="btn btn-outline-success">Editar</a><span style="width: 4%;"> </span><a style="width: 45%;" class="btn btn-outline-danger" href="" >Eliminar</a> 
+                                </td> {% endcomment %}
                               </tr>
                               {% endif %}
                             {% endfor %}

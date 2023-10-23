@@ -12,9 +12,9 @@
 <link rel="stylesheet" href="{% static 'css/master_css.css' %}">
 <link rel="stylesheet" href="{% static 'css/home_css.css' %}">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
-
-<header class="info-header">
-  <div id="page-intro" class="container-fluid d-flex align-items-center justify-content-center">
+<div style="height: 15vh;"></div>
+{% comment %} <header class="info-header">
+  <div id="page-intro" class="container-fluid d-flex align-items-center justify-content-center"> 
     <div class="row d-flex justify-content-center text-center " style="width: 40%; justify-self: center;align-self: center;margin-top: 5rem;">
       <div id="carouselExample" class="carousel slide" style=" margin-left:0px;width: 100%;">
         <div class="carousel-inner">
@@ -54,12 +54,12 @@
     </div>
   </div>
 
-</header>
+</header> {% endcomment %}
 {% endblock %}
 
 {% block content %}
   <div class="d-flex row justify-content-center"  style="width: 100% ;margin-left: 0.2%;">
-      <h2 class="text-center mt-5 mb-4" style="font-size: 3rem;">Nuestros horarios</h2>
+      <h2 class="text-center mt-5 mb-4" style="font-size: 3rem;">Horarios de los cursos</h2>
       {% comment %} <div class="d-flex row justify-content-center" style="height: auto">
         <div class=" d-flex  justify-content-center align-items-center" style="width: 73%;">
           <div  class="tablero bg-info d-flex flex-column justify-content-center align-items-center ">

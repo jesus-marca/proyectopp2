@@ -25,6 +25,8 @@ from django.template.loader import render_to_string
 class StandardListView(ListView):
     context_object_name = 'standards'
     extra_context = {
+        'slotsSubjectAll':SlotSubject.objects.all(),
+        
         "usersAll":UserProfileInfo.objects.all(),
         "numeroNiveles":Standard.objects.all(),
         "numeroCursos":Subject.objects.all(),

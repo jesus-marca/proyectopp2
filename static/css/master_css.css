@@ -259,7 +259,7 @@ ul.breadcrumb li a:hover {
 .formulario-contacto-mensaje{
   display: flex; 
   justify-content: center;
-  margin-top: 7rem;
+  margin-top: 2rem;
   opacity:0.9;
   width: 60%;
   border-radius: 0rem;
@@ -382,6 +382,20 @@ video {
   width: 10%;
 }
 
+/* actualzar capitulo */
+
+.actualizar-capitulo #id_position{
+  width: 30%;
+
+}
+.actualizar-formulario{
+
+  width: 30%;
+  background-color: white;
+  height: 470px;
+  border:10px double black;
+}
+
 @media (width <= 1450px ) {
   
   .base-formulario-registro {
@@ -415,11 +429,15 @@ video {
   .formulario-contacto-mensaje{
     display: flex; 
     justify-content: center;
-    margin-top: 7rem;
+    margin-top: 17rem;
     opacity:0.9;
-    width: 60%;
+    width: 70%;
     border-radius: 0rem;
     border:10px double  black;
+    
+  }
+  #id_user_type{
+    width: 30%;
   }
 
   .footer-formulario-base{
@@ -432,13 +450,12 @@ video {
     height: 10%; 
     margin-top: 20rem;
   }
+  .actualizar-formulario{
   
+    width: 40%;
+    background-color: white;
+    height: 500px;
+    border:10px double black;
+  }
   
-}
-
-/* actualzar capitulo */
-
-.actualizar-capitulo #id_position{
-  width: 30%;
-
 }

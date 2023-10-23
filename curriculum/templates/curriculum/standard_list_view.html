@@ -102,6 +102,18 @@
               {%endfor%}
             </div>
           </div>
+          <div  class="bg-dark tablero d-flex flex-column justify-content-center align-items-center">
+            <div>
+              <p class="letras">Horas</p>
+              {%for numero in slotsSubjectAll.all %}
+                {%if forloop.last %} 
+                  <p class="numero">{{forloop.counter}}</p>
+                {%endif%}
+              {%endfor%}
+            </div>
+          </div>
+          
+          
         </div>
       </div>
 

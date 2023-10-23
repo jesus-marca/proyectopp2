@@ -8,17 +8,22 @@
     color:rgb(240, 241, 245);        
 }
 .color_encabezado>p{
-  display: none;
+  /* display: none;  */
+  color:#1f2020;
+  opacity: 0;;
   /* transition: all .5s; */
   transition: all ease-in-out 0.5s;
 
 }
 
 .color_encabezado img:hover +p {
-  display:block;
+  /* display:block; */
+  opacity: 1;
+  color:white;
   transition: all .7s;
   text-align: center;
 }
+
 
 
 
@@ -374,7 +379,9 @@
 }
 
 .mision-vision{
-  background:linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("https://us.123rf.com/450wm/iimages/iimages1502/iimages150200945/36769904-ilustraci%C3%B3n-de-un-aula-vac%C3%ADa-con-una-tabla.jpg")no-repeat center center fixed;
+  /* background:linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("https://us.123rf.com/450wm/iimages/iimages1502/iimages150200945/36769904-ilustraci%C3%B3n-de-un-aula-vac%C3%ADa-con-una-tabla.jpg")no-repeat center center fixed; */
+
+  background-color: rgb(222, 228, 214);
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;

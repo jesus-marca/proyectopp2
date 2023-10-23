@@ -8,8 +8,8 @@ body{
   background-color: rgb(222, 228, 214);
 }
 #intro {
-    background:linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url("https://img2.freepng.es/20180304/uuq/kisspng-student-school-cartoon-illustration-school-story-5a9be5218085f6.3532592515201661775265.jpg")no-repeat center center fixed;
-
+    /* background:linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url("")no-repeat center center fixed; */
+    background-color: rgb(222, 228, 214);
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -17,7 +17,8 @@ body{
 }
 #intro2 {
 height: 100%;
-background:linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url("https://img.freepik.com/fotos-premium/fondo-azul-lineas-azules_591496-90.jpg");
+/* background:linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url("https://img.freepik.com/fotos-premium/fondo-azul-lineas-azules_591496-90.jpg"); */
+  background-color: rgb(222, 228, 214);
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -27,7 +28,8 @@ background:linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url("https:/
 
 
 .bg-light{
-  background-color:transparent !important;
+  background-color: #1f2020;
+  background-color:#1f2020 !important;
   /* transition:0.5s ease; */
   transition: all ease-in-out 0.9s;
   }
@@ -117,7 +119,8 @@ hr{
 }
 
 #page-intro {
-    background:linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("https://us.123rf.com/450wm/iimages/iimages1502/iimages150200945/36769904-ilustraci%C3%B3n-de-un-aula-vac%C3%ADa-con-una-tabla.jpg")no-repeat center center fixed;
+    /* background:linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("https://us.123rf.com/450wm/iimages/iimages1502/iimages150200945/36769904-ilustraci%C3%B3n-de-un-aula-vac%C3%ADa-con-una-tabla.jpg")no-repeat center center fixed; */
+    background-color: rgb(222, 228, 214);
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -223,7 +226,55 @@ ul.breadcrumb li a:hover {
   right: 0;
 }
 
-/* get lesson button */
+/* index */
+
+.carrusel-index{
+  margin-left:0px;
+  width: 100%;
+}
+
+.carrusel-index>h1{
+  color: black;
+  font-size:3rem;
+  margin-top: 10rem;
+  margin-bottom: -2rem;
+}
+.carrusel-index p{
+  color: black;
+  font-size: 1.5rem;
+  margin-top: -2rem;
+}
+
+.anuncios-mision-vision{
+  color:black;
+}
+
+.niveles-cursos{
+  color: black;
+  font-size: 1.5rem ;
+}
+
+
+/* formularios contacto y registro usuario */
+.formulario-contacto-mensaje{
+  display: flex; 
+  justify-content: center;
+  margin-top: 7rem;
+  opacity:0.9;
+  width: 60%;
+  border-radius: 0rem;
+  border:10px double  black;
+}
+
+.formulario-registro-usuario{
+  width: 40%;
+  height: 100%; 
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  background-color: bisque;
+}
 
 /* responsive video */
 #player-overlay {
@@ -262,7 +313,7 @@ video {
 #intro2 .base-flecha{
   width: 100% ;
   height: 10%; 
-  margin-top: 7rem;
+  margin-top: 10rem;
 }
 
 .inicio-flecha{
@@ -307,13 +358,14 @@ video {
   opacity:0.9;
   width: 60%;
   border-radius: 0rem;
-  border:10px double white;
+  border:10px double black;
   height: 70%;
 }
 
 .footer-formulario-base{
   
-  background:linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://img.freepik.com/fotos-premium/fondo-azul-lineas-azules_591496-90.jpg')no-repeat center center fixed;  -webkit-background-size: cover;
+  background-color: rgb(222, 228, 214);
+   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
@@ -338,7 +390,7 @@ video {
     margin-top: 2rem;
     opacity:0.9;width: 60%;
     border-radius: 0rem;
-    border:10px double white;
+    border:10px double black;
     height: 110%;
     width: 90%;
   }
@@ -359,6 +411,26 @@ video {
   
   .boton-agregar{
     width: 15%;
+  }
+  .formulario-contacto-mensaje{
+    display: flex; 
+    justify-content: center;
+    margin-top: 7rem;
+    opacity:0.9;
+    width: 60%;
+    border-radius: 0rem;
+    border:10px double  black;
+  }
+
+  .footer-formulario-base{
+  
+    height: 42%;
+  }
+
+  #intro2 .base-flecha{
+    width: 100% ;
+    height: 10%; 
+    margin-top: 20rem;
   }
   
   

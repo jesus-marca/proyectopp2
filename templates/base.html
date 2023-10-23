@@ -15,24 +15,26 @@
   {% if user.is_authenticated %}
     <!-- body -->
     <body>    
-      <nav  class="navbar navbar-expand-lg  navbar-light bg-light fixed-top   scrolling-navbar" style="background-color:  #1f2020;">
-        <div style="width: 4% ;height: 100%;margin-left: 10px;background-color:  #1f2020;" class=" row d-flex  justify-content-center">
+      <nav  class="navbar navbar-expand-lg  navbar-light bg-light fixed-top   scrolling-navbar" style="background-color:  #1f2020;height: 15vh;">
+        {% comment %} <div style="width: 4% ;height: 100%;margin-left: 10px;background-color:  #1f2020;" class=" row d-flex  justify-content-center">
           <div>
             <a class="nav-link color_encabezado row d-flex  justify-content-end" style=" pointer-events: none; opacity: 0;background-color width: 100%; height: 100%" href="{% url 'user_logout' %}"><img class="logos-nav2" src="https://cdn-icons-png.flaticon.com/512/339/339737.png" alt="cerrar"></a>
           </div>
-        </div>
+        </div> {% endcomment %}
         <div class="container " style="width: 92%;">
           <div class="collapse navbar-collapse " id="basicExampleNav" >          
-            <ul class=" navbar-nav  mr-auto smooth-scroll d-flex col justify-content-center "  >
+            <ul class=" navbar-nav  mr-auto smooth-scroll d-flex col justify-content-center mt-3"  >
               <a class="navbar-brand color_encabezado" href="{% url 'index' %}"  ><img class="logos-nav" src="https://img2.freepng.es/20180411/ike/kisspng-computer-icons-home-house-home-5ace88fc2001a1.3041062815234849241311.jpg" alt="home"><p style="text-align: center;">Inicio</p></a>
-
+              
               
               <a type="button" class=" navbar-brand  color_encabezado"  data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                 <img class="logos-nav" src='https://c0.klipartz.com/pngpicture/831/88/gratis-png-perfil-de-usuario-iconos-de-la-computadora-interfaz-de-usuario-mistica.png' alt="perfil">
                 <p style="text-align: center;">Perfil</p>
               </a>
+              
 
               <a class="navbar-brand color_encabezado" href="{% url 'curriculum:standard_list' %}"  ><img class="logos-nav" src="https://thetreeschool.org/wp-content/uploads/2015/05/icono-talleres.png" alt="Niveles"><p style="text-align: center;">Niveles</p></a> 
+              
               {% if user.is_superuser %}
 
               {% comment %} <a class="navbar-brand color_encabezado" href="{% url 'register' %}"  ><img class="logos-nav" src="https://cdn-icons-png.flaticon.com/512/3534/3534139.png" alt="registrar"><p style="text-align: center;">Registrar estudiante</p></a>  {% endcomment %}
@@ -40,13 +42,17 @@
                 
 
               <a class="navbar-brand color_encabezado" href={% url 'curriculum:users_list' %}  ><img class="logos-nav" src="https://i.pinimg.com/564x/d7/e7/6d/d7e76d00808386204d7b56f08969b78e.jpg" alt="contactanos"><p style="text-align: center;">usuarios</p></a>
+              
 
               <a class="navbar-brand color_encabezado" href={% url 'curriculum:slots_list' %}  ><img class="logos-nav" src="https://i.pinimg.com/564x/ea/6c/9c/ea6c9c34369156c17943a26a958d0ff1.jpg" alt="contactanos"><p style="text-align: center;">horarios</p></a>
+              
 
               <a class="navbar-brand color_encabezado" href="{% url 'admin:index' %}"  ><img class="logos-nav" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTl7sdO_sTN4pi5bZE8M7ZzMYMH4RovSb4wJFrVh2Bu4GRAQCYuHZt256lIR7O_H20sC-s&usqp=CAU" alt="ajustes admin"><p style="text-align: center;">administrador</p></a> 
+              
 
               {%endif%}
               <a class="navbar-brand color_encabezado" href="{% url 'contact' %}"  ><img class="logos-nav" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTYjzWEaMnT0s1MZ6EqMNbbix5iAGg7sgv74rm5n8wZkNVAmn3ABxDyIq4WzmfINHcqqh8&usqp=CAU" alt="contactanos"><p style="text-align: center;">contactanos</p></a>
+              
 
 
 
@@ -56,9 +62,9 @@
             </ul> 
           </div>                      
         </div>
-        <div style="width: 4% ;height: 100%;margin-right: 10px" class=" row d-flex  justify-content-center">                      
+        {% comment %} <div style="width: 4% ;height: 100%;margin-right: 10px" class=" row d-flex  justify-content-center">                      
             <a class="navbar-brand color_encabezado" href="{% url 'user_logout' %}"  ><img class="logos-nav" src="https://cdn-icons-png.flaticon.com/512/339/339737.png" alt="cerrar"><p>cerrar sesion</p></a>
-        </div>
+        </div> {% endcomment %}
       </nav>                      
       {% block image_block %}
       {% endblock %}                         

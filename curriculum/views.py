@@ -6,7 +6,7 @@ from django.views.generic import (TemplateView, DetailView,
 from app_users.forms import UserForm, UserProfileInfoForm
 
 #usuarios
-from app_users.models import UserProfileInfo,User
+from app_users.models import UserProfileInfo, User
 from django.contrib.auth.models import User
 
 from django.contrib.auth import authenticate, login, logout
@@ -360,23 +360,65 @@ def edit_user(request):
     last_name = request.POST['last_name']
     email = request.POST['email']
     bio = request.POST['bio']
+    print(bio)
     # profile_pic=request.POST['profile_pic']
+    userprofile = UserProfileInfo.objects.get(id = id)    
+    # userprofile.user.username = username
+    # print(userprofile.user.username)
+    # userprofile.user.first_name = first_name
+    # print(userprofile.user.first_name)
+    # userprofile.user.last_name = last_name
+    # print(userprofile.user.last_name)
+    # userprofile.user.email = email
+    # print(userprofile.user.email)
+    # userprofile.bio = bio
+    # print(userprofile.bio)
+    
+    us=User.objects.get(id=userprofile.user.id)
+    us.username = username
+    us.first_name = first_name
+    us.last_name = last_name
+    us.email = email
+    us.save()
+    userprofile.user=us
+    userprofile.bio = bio
+    userprofile.save()
     
     
-    userprofile = UserProfileInfo.objects.get(id = id)
+    
+    # if UserProfileInfo.objects.get(id = id).save(update_fields=['bio'],  force_update=True):
+    #     print('se guardo')
+    # else:
+    #     print('no guardo')
+    # userp = User.objects.get(id = userprofile.user.id)
+    # print(userp)
+    # print(userprofile.user.username)
     # id2=userprofile.user.id
     # userobject= User.objects.get(id =id2 )
-    userprofile.user.username = username
-    userprofile.user.first_name = first_name
-    userprofile.user.last_name = last_name
-    userprofile.user.email = email
+    # userprofile.user.username = username
+    # print(userprofile.user.username)
+    
+    # userp.first_name = first_name
+    # userp.last_name = last_name
+    # userp.email = email
    
-    userprofile.bio = bio
+    # userprofile.bio = bio
+    # userprofile.user=userp
+   
+    # userp.delete()
+    # if userp.save() :
+    #     print('guardo')
+    # else :
+    #     print('no guardo')
+    # userprofile.save()
+ 
     # userprofile.profile_pic=profile_pic
-    if userprofile.save() :
-        print('se guardo')
-    else :
-        print('no se guardo')
+    # if userprofile.save(update_fields=['user','bio']) :
+    #     print('se guardo')
+    # else :
+    #     print('no se guardo')
                        
     # return redirect('/')
     return render(request ,'curriculum/updattte.html')
+
+

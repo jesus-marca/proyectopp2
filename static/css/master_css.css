@@ -398,10 +398,25 @@ video {
 
 .actualizar-formulario-usuarios{
 
-  width: 50%;
+  width: 30%;
   background-color: white;
   height: 720px;
   border:10px double black;
+}
+.actualizar-formulario-usuarios  input{
+
+  width: 100%;
+
+}
+.actualizar-formulario-usuarios  textarea{
+
+  width: 100%;
+
+}
+.actualizar-formulario-usuarios  label{
+
+  font-weight: 700;
+
 }
 
 

@@ -1,7 +1,7 @@
 
 
 from django.shortcuts import render,redirect
-from app_users.forms import UserForm, UserProfileInfoForm
+from app_users.forms import UserForm, UserProfileInfoForm,UserProfileUpdateInfoForm,UserUpdateForm
 from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
@@ -103,7 +103,16 @@ def user_logout(request):
     logout(request)
     return HttpResponseRedirect(reverse('index'))
 
-
+@login_required
+def profile(request):
+    u_form=UserUpdateForm
+    p_form=UserProfileUpdateInfoForm
+    
+    context={
+        'u_form':u_form,
+        'p_form':p_form
+    }
+    return render(request,'app/profile.html',context)
 # Create your views here.
 # def index(request):
 #     return render(request,'app_users/index.html')

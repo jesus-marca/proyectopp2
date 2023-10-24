@@ -57,16 +57,13 @@
             <h3 style="text-align: center;font-size: 1.5rem">Completa el formulario: </h3>
             <form method="post" style="width: 100%;height: ;" enctype="multipart/form-data">
               {% csrf_token %}
-              {{ user_form|crispy }}
-              {{ profile_form|crispy }}
-
-              
+              {{ u_form|crispy }}
+              {{ p_form|crispy }}
               <div class="row justify-content-center">
               <div class="d-flex justify-content-end" style="color:red">
-                <input type="submit" value="Registrar etudiante"  class="btn btn-primary btn-block">
+                <input type="submit" value="Actualizar"  class="btn btn-primary btn-block">
               </div>
               </div>
-          
             </form>
           </div>
         </div>

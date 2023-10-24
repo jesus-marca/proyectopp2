@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 import os
 from django.urls import reverse
+from django.template.defaultfilters import slugify
 
 def path_and_rename(instance, filename):
     upload_to = 'Images/'
@@ -31,6 +32,12 @@ class UserProfileInfo(models.Model):
 
     def __str__(self):
         return self.user.username
+    # def save(self):
+    #     super().save()
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.id)
+        super().save(*args, **kwargs)
+
 
 class Contact(models.Model):
     name = models.CharField(max_length=150)

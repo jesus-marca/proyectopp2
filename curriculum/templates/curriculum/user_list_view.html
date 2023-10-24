@@ -120,7 +120,7 @@
                                         <td style="width: 20%;">{{user.user.first_name}}</td>
                                         <td style="width: 15%;">{{user.user.last_name}}</td>      
                                         <td style="width: 15%;">{{user.user_type|renombrar}}</td> 
-                                        <td style="width: 20%;" scope="col"><a style="width: 48%;" href="{% url 'curriculum:user_update' id=user.id %}"  class="btn btn-outline-success">Editar</a><span style="width: 4%;"></span> <a style="width: 48%;"   href=""  class="btn btn-outline-danger">Eliminar</a></td>    
+                                        <td style="width: 20%;" scope="col"><a style="width: 48%;" href="{% url 'curriculum:user_update' id=user.id %}"  class="btn btn-outline-success" href="{% url 'curriculum:user_update' id=user.id %}">Editar</a><span style="width: 4%;"></span> <a style="width: 48%;"  href="{% url 'curriculum:user_delete' id=user.id %}"  class="btn btn-outline-danger">Eliminar</a></td>    
                                         
                                     </tr>                                                                                          
                                                                                         

@@ -41,23 +41,25 @@
 <div style="height: 40.5vh;margin-bottom: 4rem;">
 
   <section id="best-features" class="text-center">
-                <h2 class="mb-3 font-weight-bold" style="color:black;">Eliminar el usuario {{lessons.name}}</h2>
+                <h2 class="mb-3 font-weight-bold" style="color:black;">Eliminar el usuario {{usuario.user.username}}</h2>
 
   </section>
   <div class="d-flex justify-content-center">
     <img  style="width: 11%;"src="https://cdn.pixabay.com/photo/2022/07/06/10/28/sign-7304817_960_720.png" alt="">
   </div>
 
-  <h3 class="mb-4 text-center" style="color:black;">¿Desea eliminar el usuario {{lessons.name}} ?</h3>
+  <h3 class="mb-4 text-center" style="color:black;">¿Desea eliminar el usuario {{usuario.user.username}} ?</h3>
   <div class="d-flex justify-content-center ">
-    <form method="post">
+    <form id="formularioUsuarios2" method="POST" action="/curriculum/list/users/delete/views/user/" >
       {% csrf_token %}
       <div class="row d-flex justify-content-between">
             <div class="col-md-4 mb-3 mr-3">
                     <input type="submit" value="Aceptar" class="btn btn-danger btn-block">
             </div>
+            <input style="width: 10%; display: none;" type="text" id="id" name="id" value="{{usuario.id}}">
             <div class="col-md-4 mb-3 mr-3">
-                    <a href="{% url 'curriculum:standard_list' %}" class="btn btn-info btn-block">Cancelar</a>
+                    <a href="{% url 'curriculum:users_list' %}" class="btn btn-info btn-block">Cancelar</a>
+                    <input type="hidden" name="next" value="/curriculum/usuarios">   
             </div>
       </div>
     </form>

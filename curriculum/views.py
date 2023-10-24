@@ -419,6 +419,26 @@ def edit_user(request):
     #     print('no se guardo')
                        
     # return redirect('/')
-    return render(request ,'curriculum/updattte.html')
+    # return reverse_lazy('curriculum:users_list')
+    # return render(request ,'curriculum/update.html')
+    
+    next = request.POST.get('next', '/')
+    return HttpResponseRedirect(next)
 
 
+def user_delete(request,id):
+    userprofile = UserProfileInfo.objects.get(id= id)
+    data = {
+        
+        'usuario':userprofile
+    }
+    return render(request,'curriculum/user_delete.html',data)
+
+def delete_user(request):
+    id = int(request.POST['id'])
+    userprofile = UserProfileInfo.objects.get(id = id)    
+
+    us=User.objects.get(id=userprofile.user.id)
+    us.delete()            
+    next = request.POST.get('next', '/')
+    return HttpResponseRedirect(next)

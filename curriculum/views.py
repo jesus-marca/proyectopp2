@@ -291,32 +291,32 @@ class SlotUpdateView(UpdateView):
     context_object_name = 'slotSubjects'
 
 
-def user_update(request,user):
-    user2 = get_object_or_404(User, username = user)
-    user = get_object_or_404(UserProfileInfo, user = user2)
-    form = UserForm(initial={'username':user2.username,'first_name':user2.first_name,'last_name':user2.last_name, 'email':user2.email,})
-    form2 = UserProfileInfoForm(initial={'user_type':user.user_type,'profile_pic':user.profile_pic, 'bio':user.bio})
+# def user_update(request,user):
+#     user2 = get_object_or_404(User, username = user)
+#     user = get_object_or_404(UserProfileInfo, user = user2)
+#     form = UserForm(initial={'username':user2.username,'first_name':user2.first_name,'last_name':user2.last_name, 'email':user2.email,})
+#     form2 = UserProfileInfoForm(initial={'user_type':user.user_type,'profile_pic':user.profile_pic, 'bio':user.bio})
     
-    if request.method == "POST" :
-        form=UserForm(request.POST)
-        form2=UserProfileInfo(request.POST)
+#     if request.method == "POST" :
+#         form=UserForm(request.POST)
+#         form2=UserProfileInfo(request.POST)
         
-    if form.is_valid() and form2.is_valid():
-        print('valido')
-        # user=UserProfileInfo()
+#     if form.is_valid() and form2.is_valid():
+#         print('valido')
+#         # user=UserProfileInfo()
         
-        user.user.username=form.cleaned_data['username']
-        user.user.first_name=form.cleaned_data['first_name']
-        user.user.last_name=form.cleaned_data['last_name']
-        user.user.email=form.cleaned_data['email']
-        user.user_type=form2.cleaned_data['user_type']
-        user.profile_pic=form2.cleaned_data['profile_pic']
-        user.bio=form2.cleaned_data['bio']
-        user.save()
-        return reverse_lazy('curriculum:user_list_view.html')
-    else:
-        print('invalid')
-    return reverse_lazy('curriculum:user_list_view.html')
+#         user.user.username=form.cleaned_data['username']
+#         user.user.first_name=form.cleaned_data['first_name']
+#         user.user.last_name=form.cleaned_data['last_name']
+#         user.user.email=form.cleaned_data['email']
+#         user.user_type=form2.cleaned_data['user_type']
+#         user.profile_pic=form2.cleaned_data['profile_pic']
+#         user.bio=form2.cleaned_data['bio']
+#         user.save()
+#         return reverse_lazy('curriculum:user_list_view.html')
+#     else:
+#         print('invalid')
+#     return reverse_lazy('curriculum:user_list_view.html')
     
         
 # def user_update1(request,user1):      
@@ -345,32 +345,38 @@ def user_update(request,user):
 #                              'user_form':user_form,
 #                              'profile_form':profile_form})
 
-def user_update1(request,id):
+def user_update(request,id):
     userprofile = UserProfileInfo.objects.get(id= id)
     data = {
-        'titulo':'edicion de curso',
+        
         'usuario':userprofile
     }
     return render(request,'curriculum/user_update.html',data)
 
 def edit_user(request):
-    id=int(request.POST['id'])
-    username=request.POST['username']
-    first_name=request.POST['first_name']
-    last_name=request.POST['last_name']
-    email=request.POST['email']
-    bio=request.POST['bio']
-    profile_pic=request.POST['profile_pic']
+    id = int(request.POST['id'])
+    username = request.POST['username']
+    first_name = request.POST['first_name']
+    last_name = request.POST['last_name']
+    email = request.POST['email']
+    bio = request.POST['bio']
+    # profile_pic=request.POST['profile_pic']
     
     
     userprofile = UserProfileInfo.objects.get(id = id)
     # id2=userprofile.user.id
     # userobject= User.objects.get(id =id2 )
-    userprofile.user.username=username
-    userprofile.user.first_name=first_name
-    userprofile.user.last_name=last_name
-    userprofile.user.email=email
-    userprofile.bio=bio
-    userprofile.profile_pic=profile_pic
-    userprofile.save()                    
-    return redirect('curriculum/user_list_view.html')
+    userprofile.user.username = username
+    userprofile.user.first_name = first_name
+    userprofile.user.last_name = last_name
+    userprofile.user.email = email
+   
+    userprofile.bio = bio
+    # userprofile.profile_pic=profile_pic
+    if userprofile.save() :
+        print('se guardo')
+    else :
+        print('no se guardo')
+                       
+    # return redirect('/')
+    return render(request ,'curriculum/updattte.html')

@@ -434,3 +434,22 @@ text-align: center;
   border-radius: 1000px;
   /* background-color: red; */
 }
+
+
+
+@media (width <= 1450px ) {
+  .tablero{
+    width: 150px;
+    height:150px;
+   
+
+  }
+  .letras{
+
+    font-size: 1.0rem;
+    text-align:center;
+    margin-top: 1rem;
+
+  }
+
+}

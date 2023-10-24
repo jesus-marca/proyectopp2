@@ -1,0 +1,102 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block title %}Actualizar capitulo {% endblock %}
+{% load operation %}
+{% block image_block %}
+{% comment %} <header class="info-header">
+  <div id="page-intro" class="container-fluid d-flex align-items-center justify-content-center ">
+  </div>
+</header> {% endcomment %}
+{% endblock %}
+
+{% block content %}
+
+  <div style="width: 90% ;height: 15%; margin-top: 1rem;margin-bottom: 1rem;" class=" row d-flex  justify-content-center mb-2">
+    <div style="width: 90%;" class="d-flex justify-content-start">
+
+    </div>
+  </div> 
+  
+  <div style="width: 100%;">
+    <h2 class="mb-5 font-weight-bold text-center" style="font-size: 3rem;">Actualizar el capitulo {{lessons.name}}</h2>
+  </div>
+  <div class=" d-flex row justify-content-center mb-5 mt-5 align-content-center">
+    {% comment %} <section id="best-features" class="text-center d-flex row justify-content-center" >
+                  
+    </section> {% endcomment %}
+    <form method="post" action="/ed_user/" enctype="multipart/form-data" class="actualizar-capitulo actualizar-formulario-usuarios">
+      <p class="mt-2"></p>
+      {% csrf_token %}
+        {% comment %} {{form|crispy}}
+        {{form2|crispy}}  {% endcomment %}
+        <div style="display: flex;flex-direction: column;">
+            <input type="hidden" name="id" value="{{usuario.id}}">
+            {% comment %} <input type="text" name="id" value="{{usuario.user.id}}">
+            <input type="text" name="id" value="{{usuario.id}}"> {% endcomment %}
+            <div class="form-group">
+                <label for="">usuario</label><input type="text" id="username" name="username" value="{{usuario.user.username}}">
+            </div>
+            <div class="form-group">
+                <label for="">nombres</label><input type="text" id="first_name" name="first_name" value="{{usuario.user.first_name}}">
+            </div>       
+            <div class="form-group">
+                <label for="">apellidos</label><input type="text"  id="last_name" name="last_name"  value="{{usuario.user.last_name}}">
+            </div>       
+            <div class="form-group">
+                <label for="">email</label><input type="text" id="email" name="email" value="{{usuario.user.email}}">    
+            </div>       
+            <div class="form-group">                
+                <label for="">detalles</label><textarea  id="bio" name="bio"  cols="30" rows="7">{{usuario.bio}}</textarea>
+            </div> 
+            <br>
+            <br>   
+            <output  style="width: 25px;height: 25px;" id="list"></output>   
+            <dir style="height: 80px;"></dir>
+            <div  class="form-group" >
+                <label for="">imagen</label>   <input type="file"  name="profile_pic"   id="profile_pic" width="100"   height="100" >
+            </div>                   
+
+            <select name="type_user" id="type_user" style="width: 30%;" >
+                <option value="{{usuario.user_type}}">valor actual : {{usuario.user_type|renombrar}}</option>
+                <option value="teacher">profesor</option>
+                <option value="student" selected>estudiante</option>                
+              </select>
+        </div>
+        <div style="height: 80px;"></div>
+      <div class="d-flex col  justify-content-center mt-4">
+        
+        <input type="submit" value="Actualizar" class="btn btn-success btn-block" style="margin-left: 2rem;margin-right: 2rem;">            
+        
+        <a href="{% url 'curriculum:standard_list' %}" class="btn btn-danger btn-block" style="margin-left: 2rem;margin-right: 2rem;">Cancelar</a>
+          
+      </div>
+    </form>
+    <script>
+        function archivo(evt) {
+            var files = evt.target.files; // FileList object
+       
+            // Obtenemos la imagen del campo "file".
+            for (var i = 0, f; f = files[i]; i++) {
+              //Solo admitimos imágenes.
+              if (!f.type.match('image.*')) {
+                  continue;
+              }
+       
+              var reader = new FileReader();
+       
+              reader.onload = (function(theFile) {
+                  return function(e) {
+                    // Insertamos la imagen
+                   document.getElementById("list").innerHTML = ['<img class="thumb" src="', e.target.result,'" title="', escape(theFile.name), '"/>'].join('');
+                  };
+              })(f);
+       
+              reader.readAsDataURL(f);
+            }
+        }
+       
+        document.getElementById('profile_pic').addEventListener('change', archivo, false);
+</script>
+  </div>
+{% endblock %}

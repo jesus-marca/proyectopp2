@@ -396,6 +396,21 @@ video {
   border:10px double black;
 }
 
+.actualizar-formulario-usuarios{
+
+  width: 50%;
+  background-color: white;
+  height: 720px;
+  border:10px double black;
+}
+
+
+.thumb {
+  height: 100px;
+  width: 100px;
+  border: 1px solid #000;
+  margin: 10px 5px 0 0;
+}
 @media (width <= 1450px ) {
   
   .base-formulario-registro {
@@ -455,6 +470,14 @@ video {
     width: 40%;
     background-color: white;
     height: 500px;
+    border:10px double black;
+  }
+
+  .actualizar-formulario-usuarios{
+
+    width: 50%;
+    background-color: white;
+    height: 720px;
     border:10px double black;
   }
   

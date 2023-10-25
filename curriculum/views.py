@@ -369,13 +369,13 @@ def edit_slot_subject(request):
     day=int(request.POST['day'])
     slot=request.POST['slot']
     
-    slotI=horaI(slot)
-    slotF=horaF(slot)
+    # slotI=horaI(slot)
+    # slotF=horaF(slot)
     
     
     slotSubject = SlotSubject.objects.get(id = id) 
     
-    slot_item = TimeSlots.objects.get(id=slotSubject.slot.id)
+    slot_item = TimeSlots.objects.get(id=slot)
 
     day_item=WorkingDays.objects.get(id=day)
     

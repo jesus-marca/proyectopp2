@@ -392,7 +392,7 @@ def edit_slot_subject(request):
 # hora de inicio y final
 
 def horaI(n):
-    if(n == '1'):
+    if(n == '1'): 
         return "08:00:00"
     if(n == '2'):
         return "09:00:00"

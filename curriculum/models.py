@@ -85,7 +85,7 @@ class WorkingDays(models.Model):
     day = models.CharField(max_length=100)
     def __str__(self):
         return self.day
-
+ 
 class TimeSlots(models.Model):
     standard = models.ForeignKey(Standard, on_delete=models.CASCADE,related_name='standard_time_slots')
     start_time = models.TimeField()

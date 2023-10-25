@@ -368,27 +368,49 @@ def edit_slot_subject(request):
     id = int(request.POST['id'])
     day=int(request.POST['day'])
     slot=request.POST['slot']
+    
     slotI=horaI(slot)
     slotF=horaF(slot)
     
+    
     slotSubject = SlotSubject.objects.get(id = id) 
-    print(slotSubject.slot.start_time)
-    print(slotSubject.slot.end_time)
-    print(slotSubject.day.id)
-    slotSubject.day.id=day
-    slotSubject.slot.start_time=slotI
-    slotSubject.slot.end_time=slotF
-    print('despues')
-    print(slotSubject.slot.start_time)
-    print(slotSubject.slot.end_time)
-    print(slotSubject.day.id)
     
-    slot_slot=TimeSlots.objects.get(id = slotSubject.slot.id )
+    slot_item = TimeSlots.objects.get(id=slotSubject.slot.id)
+
+    day_item=WorkingDays.objects.get(id=day)
     
-    if slotSubject.save() :
-        print('lo lograste')
-    else :
-        print('no lo lograste')
+    slotSubject.slot=slot_item
+    slotSubject.day=day_item
+    
+    slot_item.save()
+    day_item.save()
+    slotSubject.save()
+    
+    
+    
+    
+    # print(slotSubject.slot.start_time)
+    # print(slotSubject.slot.end_time)
+    # print(slotSubject.day.id)
+    
+    
+    # slotSubject.day.id=day
+    
+    # slotSubject.slot.start_time=slotI
+    # slotSubject.slot.end_time=slotF
+    # slotSubject.save()
+    
+    # print('despues')
+    # print(slotSubject.slot.start_time)
+    # print(slotSubject.slot.end_time)
+    # print(slotSubject.day.id)
+    
+    
+    # slotSubject.save()
+    # if slotSubject.save() :
+    #     print('lo lograste')
+    # else :
+    #     print('no lo lograste')
     # userprofile = UserProfileInfo.objects.get(id = id)    
 
     

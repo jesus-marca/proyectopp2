@@ -5,7 +5,7 @@
 {% load crispy_forms_tags %}
 
 {% block title %}Crear capitulos {% endblock %}
-
+{% load operation %}
 {% block image_block %}
 <header class="" style="height: 20vh;">
   <div id="" class=" ">
@@ -43,7 +43,7 @@
                   </select>
                   <div style="height: 130px;"></div>
                   <select name="slot" id="slot" class="select form-control" style="width: 50%;"> 
-                    <option value="{{slotsSubjectt}}"> horario actual: {{slotsSubjectt.slot.start_time}}--{{slotsSubjectt.slot.end_time}}</option> 
+                    <option value="0"> horario actual: {{slotsSubjectt.slot.start_time|formatoHora}}--{{slotsSubjectt.slot.end_time|formatoHora}}</option> 
                     <option value="1">8 a.m -- 9 a.m.</option> 
                     <option value="2">9 a.m -- 10 a.m.</option> 
                     <option value="3">10 a.m -- 11 a.m.</option> 

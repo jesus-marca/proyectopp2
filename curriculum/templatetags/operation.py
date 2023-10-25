@@ -70,6 +70,16 @@ def formatoHora(n):
 
 register.filter("formatoHora",formatoHora)
 
+# def formatoM(n):
+#     s=str(n)
+#     if s == '12:00:00':
+#         s = "12:00:00"        
+#         return s
+#     else:
+#         return n
+    
+# register.filter("formatoM",formatoM)
+
 def renombrar(n):    
     if n == 'parent':               
         return 'estudiante'  
@@ -162,4 +172,37 @@ def define(val=0):
 #         return "14:00:00"
 #     if(n == '7'):
 #         return "15:00:00"
+# def horaInicial(n):
+#     if(n == '1'):
+#         return "08:00:00"
+#     if(n == '2'):
+#         return "09:00:00"
+#     if(n == '3'):
+#         return "10:00:00"
+#     if(n == '4'):
+#         return "11:00:00"
+#     if(n == '5'):
+#         return "12:00:00"
+#     if(n == '6'):
+#         return "13:00:00"
+#     if(n == '7'):
+#         return "14:00:00"
     
+# register.filter("horaInicial",horaInicial) 
+    
+# def horaFinal(n):
+#     if(n == '1'):
+#         return "09:00:00"
+#     if(n == '2'):
+#         return "10:00:00"
+#     if(n == '3'):
+#         return "11:00:00"
+#     if(n == '4'):
+#         return "12:00:00"
+#     if(n == '5'):
+#         return "13:00:00"
+#     if(n == '6'):
+#         return "14:00:00"
+#     if(n == '7'):
+#         return "15:00:00" 
+# register.filter("horaFinal",horaFinal) 

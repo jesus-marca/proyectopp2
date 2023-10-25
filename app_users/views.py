@@ -1,5 +1,5 @@
 
-
+# principales
 from django.shortcuts import render,redirect
 from app_users.forms import UserForm, UserProfileInfoForm,UserProfileUpdateInfoForm,UserUpdateForm
 from django.http import HttpResponse, HttpResponseRedirect
@@ -21,31 +21,14 @@ from django.contrib import messages
 
 def contact(request):
     if request.method=="POST":
-        # name=request.POST["name"]
-        # email=request.POST["email"]
-        # subject=request.POST["subject"]
-        # message=request.POST["message"]
+
         asunto="consulta"
         subject= asunto+" de "+request.POST["name"]+" "
         message=request.POST["message"]+" de "+request.POST["email"]
         email_from=settings.EMAIL_HOST_USER
         recipient_list=["jesusmarca47@gmail.com"]
         send_mail(subject,message,email_from,recipient_list)
-        # template=render_to_string("email_temmplate_html",{
-        #     "name":name,
-        #     "email":email,
-        #     "message":message            
-        # })
-        # email=EmailMessage(
-        #     subject,
-        #     template,
-        #     settings.EMAIL_HOST_USER,
-        #     ["jesusmarca47@gmail.com"]            
-        # )
-        # email.fail_silently=False
-        # email.send()
-        
-        # messages.success(request,"se ha enviado tu correo")
+
         return render(request ,'app_users/contact.html')
   
     return render(request ,'app_users/contact.html')
@@ -87,7 +70,7 @@ def user_login(request):
                 login(request,user)
                 return HttpResponseRedirect(reverse('index'))
             else:
-                return HttpResponse("ACCOUNT IS DEACTIVATED")
+                return HttpResponse("cuenta es desactivada")
         else:
             
             # return HttpResponse("ingrese datos correctamente")

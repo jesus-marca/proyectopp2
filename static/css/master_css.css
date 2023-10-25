@@ -481,5 +481,72 @@ video {
   padding: 5px 10px;
 }
 
+/* lessons */
+/* delete */
+.lesson-delete{
+  height: 40.5vh;
+  margin-bottom: 4rem;
+}
+.lesson-list-view{
+  width: 10% ;
+  height: 100%; 
+  margin-top: 2rem;
+  margin-bottom: -4.4rem;
+}
+
+.lesson-list-update{
+  width: 90% ;
+  height: 15%; 
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+ /* slots */
+
+ .slot-delete-view{
+  height: 40.5vh;
+  margin-bottom: 4rem;
+ }
+
+ .slot-list-view{
+  width: 100% ;
+  margin-left: 0.2%;
+ }
+
+ .slot-update{
+  font-size: 2rem;
+  font-weight: 300;
+ }
+
+ /* subjects */
+
+ .subject-list-view{
+  width: 10% ;
+  height: 100%; 
+  margin-top: 2rem;
+  margin-bottom: -4.4rem;
+ }
+
+ /* users */
+
+ .user-delete-view{
+  height: 40.5vh;
+  margin-bottom: 4rem;
+ }
+
+ .user-list-view{
+  width: 100% ; 
+  margin-left: 0.3%;
+ }
+
+ .user-update-view{
+  width: 90% ;
+  height: 15%; 
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+ }
+
+
+
+
 
 

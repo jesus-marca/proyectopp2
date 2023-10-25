@@ -32,7 +32,7 @@
 {% endblock %}
 
 {% block content %}
-  <div style="width: 10% ;height: 100%; margin-top: 2rem;margin-bottom: -4.4rem;" class=" row d-flex  justify-content-center">
+  <div  class=" lesson-list-view row d-flex  justify-content-center">
     <div>
       <a class="navbar-brand color_encabezado" href="{% url 'curriculum:standard_list' %}" ><img class="logos-nav" src="https://cdn-icons-png.flaticon.com/512/5093/5093116.png" alt="Niveles"></a> 
       {% comment %} <a class="navbar-brand color_encabezado" href="{% url 'curriculum:subject_list' slug=subjects.standard.slug %}"  ><img class="logos-nav" src="https://cdn-icons-png.flaticon.com/512/5093/5093116.png" alt="Niveles"></a>  {% endcomment %}
@@ -44,12 +44,7 @@
                 <div class="row d-flex justify-content-center mb-4">
                   <!-- class column -->
                   <div class="col-md-8 mb-5">
-                    <p class="grey-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi voluptate
-                                      hic
-                                      provident nulla repellat
-                                      facere esse molestiae ipsa labore porro minima quam quaerat rem, natus repudiandae debitis
-                                      est
-                                      sit pariatur.</p>
+                    <p class="grey-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem beatae accusamus obcaecati numquam omnis totam commodi. Unde dolores, ipsa saepe at distinctio quo, assumenda incidunt voluptatem earum suscipit placeat fugiat?</p>
                   </div>
                 </div>
                 <!-- class row2 for cards -->
@@ -74,6 +69,5 @@
             <a href="{% url 'curriculum:lesson_create' standard=subjects.standard.slug slug=subjects.slug %}"><button type="button" class="btn btn-success btn-lg btn-bloc" > Agregar nuevo capitulo </button> </a>
             {% endif %}
           </div>
-
   </section>
 {%endblock%}

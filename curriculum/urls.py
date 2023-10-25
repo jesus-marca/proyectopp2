@@ -26,6 +26,11 @@ urlpatterns = [
     
     path('slot/page/update/<int:id>/',views.slot_subject_update,name='slot_subject_update'),
     path('list/slots/edit/view/',views.edit_slot_subject),
+    
+    
+    path('delete/page/slot/del/<int:id>/',views.slot_subject_delete,name='slot_subject_delete'),
+    path('list/slots/delete/views/slot/',views.delete_slot_subject),
+    
     # path('horarios/updateItem/', views.SlotUpdateView.as_view, name='slot_subject_update'),
 
 ]

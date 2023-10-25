@@ -353,8 +353,6 @@ def delete_user(request):
     return HttpResponseRedirect(next)
 
 
-
-
 def slot_subject_update(request,id):
     slotsubject = SlotSubject.objects.get(id= id)
     data = {
@@ -385,8 +383,6 @@ def edit_slot_subject(request):
     slot_item.save()
     day_item.save()
     slotSubject.save()
-    
-    
     
     
     # print(slotSubject.slot.start_time)
@@ -465,3 +461,20 @@ def horaF(n):
     
 
 # ---------------------
+
+def slot_subject_delete(request,id):
+    slotsubject=SlotSubject.objects.get(id= id)
+    data = {
+        
+        'slotsSubjectt':slotsubject
+    }
+    return render(request,'curriculum/slot_delete.html',data)
+    
+
+def delete_slot_subject(request):
+    id = int(request.POST['id'])
+    slotsubject = SlotSubject.objects.get(id = id)    
+    slotsubject.delete()
+               
+    next = request.POST.get('next', '/')
+    return HttpResponseRedirect(next)

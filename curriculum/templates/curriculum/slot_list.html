@@ -295,7 +295,7 @@
                                     <td style="width: 11%;">{{slot.slot.start_time|formatoHora}}</td>
                                     <td style="width: 11%;">{{slot.slot.end_time|formatoHora}}</td>   
                                     <td style="width: 19%;">
-                                      <a style="width: 47%;"   href="{% url 'curriculum:slot_subject_update' id=slot.id %}"   class="btn btn-outline-success">Editar</a><span style="width: 0%;"> </span><a style="width: 47%;" class="btn btn-outline-danger" href="" >Eliminar</a> 
+                                      <a style="width: 47%;"   href="{% url 'curriculum:slot_subject_update' id=slot.id %}"   class="btn btn-outline-success">Editar</a><span style="width: 0%;"> </span><a style="width: 47%;" class="btn btn-outline-danger" href="{% url 'curriculum:slot_subject_delete' id=slot.id %}" >Eliminar</a> 
                                     </td>
                                     {% comment %} <td style="width: 11%;">{{slot.day|formatoDia}}</td>
                                     <td style="width: 11%;">{{slot.slot.start_time|formatoHora}}</td>

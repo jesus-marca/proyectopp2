@@ -291,60 +291,6 @@ class SlotUpdateView(UpdateView):
     context_object_name = 'slotSubjects'
 
 
-# def user_update(request,user):
-#     user2 = get_object_or_404(User, username = user)
-#     user = get_object_or_404(UserProfileInfo, user = user2)
-#     form = UserForm(initial={'username':user2.username,'first_name':user2.first_name,'last_name':user2.last_name, 'email':user2.email,})
-#     form2 = UserProfileInfoForm(initial={'user_type':user.user_type,'profile_pic':user.profile_pic, 'bio':user.bio})
-    
-#     if request.method == "POST" :
-#         form=UserForm(request.POST)
-#         form2=UserProfileInfo(request.POST)
-        
-#     if form.is_valid() and form2.is_valid():
-#         print('valido')
-#         # user=UserProfileInfo()
-        
-#         user.user.username=form.cleaned_data['username']
-#         user.user.first_name=form.cleaned_data['first_name']
-#         user.user.last_name=form.cleaned_data['last_name']
-#         user.user.email=form.cleaned_data['email']
-#         user.user_type=form2.cleaned_data['user_type']
-#         user.profile_pic=form2.cleaned_data['profile_pic']
-#         user.bio=form2.cleaned_data['bio']
-#         user.save()
-#         return reverse_lazy('curriculum:user_list_view.html')
-#     else:
-#         print('invalid')
-#     return reverse_lazy('curriculum:user_list_view.html')
-    
-        
-# def user_update1(request,user1):      
-#     if request.method == "POST":
-#         user_form = UserForm(data=request.POST)
-#         profile_form = UserProfileInfoForm(data=request.POST)
-
-#         if user_form.is_valid() and profile_form.is_valid():
-#             user = user_form.save()
-#             # user.set_password(user.password)
-#             user.save()
-
-#             profile = profile_form.save(commit=False)
-#             profile.user = user
-#             profile.save()
-
-#             registered = True
-#         else:
-#             print(user_form.errors, profile_form.errors)
-#     else:
-#         user_form = UserForm()
-#         profile_form = UserProfileInfoForm()
-
-#     return render(request, 'app_users/registration.html',
-#                             {'registered':registered,
-#                              'user_form':user_form,
-#                              'profile_form':profile_form})
-
 def user_update(request,id):
     userprofile = UserProfileInfo.objects.get(id= id)
     data = {
@@ -352,6 +298,7 @@ def user_update(request,id):
         'usuario':userprofile
     }
     return render(request,'curriculum/user_update.html',data)
+
 
 def edit_user(request):
     id = int(request.POST['id'])
@@ -384,44 +331,6 @@ def edit_user(request):
     userprofile.bio = bio
     userprofile.save()
     
-    
-    
-    # if UserProfileInfo.objects.get(id = id).save(update_fields=['bio'],  force_update=True):
-    #     print('se guardo')
-    # else:
-    #     print('no guardo')
-    # userp = User.objects.get(id = userprofile.user.id)
-    # print(userp)
-    # print(userprofile.user.username)
-    # id2=userprofile.user.id
-    # userobject= User.objects.get(id =id2 )
-    # userprofile.user.username = username
-    # print(userprofile.user.username)
-    
-    # userp.first_name = first_name
-    # userp.last_name = last_name
-    # userp.email = email
-   
-    # userprofile.bio = bio
-    # userprofile.user=userp
-   
-    # userp.delete()
-    # if userp.save() :
-    #     print('guardo')
-    # else :
-    #     print('no guardo')
-    # userprofile.save()
- 
-    # userprofile.profile_pic=profile_pic
-    # if userprofile.save(update_fields=['user','bio']) :
-    #     print('se guardo')
-    # else :
-    #     print('no se guardo')
-                       
-    # return redirect('/')
-    # return reverse_lazy('curriculum:users_list')
-    # return render(request ,'curriculum/update.html')
-    
     next = request.POST.get('next', '/')
     return HttpResponseRedirect(next)
 
@@ -442,3 +351,95 @@ def delete_user(request):
     us.delete()            
     next = request.POST.get('next', '/')
     return HttpResponseRedirect(next)
+
+
+
+
+def slot_subject_update(request,id):
+    slotsubject = SlotSubject.objects.get(id= id)
+    data = {
+        
+        'slotsSubjectt':slotsubject
+    }
+    return render(request,'curriculum/slot_update.html',data)
+
+def edit_slot_subject(request):
+    
+    id = int(request.POST['id'])
+    day=int(request.POST['day'])
+    slot=request.POST['slot']
+    slotI=horaI(slot)
+    slotF=horaF(slot)
+    
+    slotSubject = SlotSubject.objects.get(id = id) 
+    print(slotSubject.slot.start_time)
+    print(slotSubject.slot.end_time)
+    print(slotSubject.day.id)
+    slotSubject.day.id=day
+    slotSubject.slot.start_time=slotI
+    slotSubject.slot.end_time=slotF
+    print('despues')
+    print(slotSubject.slot.start_time)
+    print(slotSubject.slot.end_time)
+    print(slotSubject.day.id)
+    
+    slot_slot=TimeSlots.objects.get(id = slotSubject.slot.id )
+    
+    if slotSubject.save() :
+        print('lo lograste')
+    else :
+        print('no lo lograste')
+    # userprofile = UserProfileInfo.objects.get(id = id)    
+
+    
+    # us=User.objects.get(id=userprofile.user.id)
+    # us.username = username
+    # us.first_name = first_name
+    # us.last_name = last_name
+    # us.email = email
+    # us.save()
+    # userprofile.user=us
+    # userprofile.bio = bio
+    # userprofile.save()
+    
+    
+    next = request.POST.get('next', '/')
+    return HttpResponseRedirect(next)
+
+# hora de inicio y final
+
+def horaI(n):
+    if(n == '1'):
+        return "08:00:00"
+    if(n == '2'):
+        return "09:00:00"
+    if(n == '3'):
+        return "10:00:00"
+    if(n == '4'):
+        return "11:00:00"
+    if(n == '5'):
+        return "12:00:00"
+    if(n == '6'):
+        return "13:00:00"
+    if(n == '7'):
+        return "14:00:00"
+    
+    
+def horaF(n):
+    if(n == '1'):
+        return "09:00:00"
+    if(n == '2'):
+        return "10:00:00"
+    if(n == '3'):
+        return "11:00:00"
+    if(n == '4'):
+        return "12:00:00"
+    if(n == '5'):
+        return "13:00:00"
+    if(n == '6'):
+        return "14:00:00"
+    if(n == '7'):
+        return "15:00:00"
+    
+
+# ---------------------

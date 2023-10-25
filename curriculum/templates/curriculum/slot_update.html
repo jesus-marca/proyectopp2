@@ -1,73 +1,81 @@
 {% extends 'base.html' %}
+
 {% load static %}
+{% load operation %}
 {% load crispy_forms_tags %}
-{% block title %}Actualizar horario {% endblock %}
+
+{% block title %}Crear capitulos {% endblock %}
 
 {% block image_block %}
-<header class="info-header">
-  <div id="page-intro" class="container-fluid d-flex align-items-center justify-content-center ">
+<header class="" style="height: 20vh;">
+  <div id="" class=" ">
   </div>
 </header>
 {% endblock %}
 
 {% block content %}
-
-  <div style="width: 100% ;height: 15%; margin-top: 1rem;margin-bottom: 1rem;" class=" row d-flex  justify-content-center mb-2">
-    <div style="width: 90%;" class="d-flex justify-content-start">
-      <a class="navbar-brand color_encabezado" href="{% url 'curriculum:standard_list' %}" ><img class="logos-nav" style="width: 100px" src="https://cdn-icons-png.flaticon.com/512/5093/5093116.png" alt="Niveles"></a> 
-    </div>
-    <div style="">
-      <h2 class="mb-5 font-weight-bold text-center" style="font-size: 3rem;">Actualizar el horario del curso {{lessons.name}}</h2>
-    </div>
-  </div>
   
-  <div class=" d-flex row justify-content-center mb-5 mt-5">
-    <section id="best-features" class="text-center d-flex row justify-content-center" >
-                  
-    </section>
-    {% comment %} <form action="/slot_update/" method="POST">{% csrf_token %}
-      <div class="form-group">
-          <input type="text" id="hour_startInput" name="hour_startInput" class="form-control" placeholder="hora inicio"
-              required>
-      </div>
-      <div class="form-group">
-          <input type="text" id="hour_endInput" name="hour_endInput" class="form-control" placeholder="hora final"
-              required>
-      </div>
-      <div class="form-group">
-          <input type="text" id="dayInput" name="dayInput" class="form-control" placeholder="dia"
-              required>
-      </div>
-      <div class="form-group">
-          <input type="text" id="standarsInput" name="standarsInput" class="form-control" placeholder="nivel"
-              required>
-      </div>
-      <div class="form-group">
-          <input type="text" id="subjectInput" name="subjectInput" class="form-control" placeholder="curso"
-              required>
-      </div>
-      {% comment %} <div class="form-group">
-          <input type="number" id="ageInput" name="ageInput" class="form-control" placeholder="Age"
-              maxlength="50" required>
-      </div>
-      <div class="form-group">
-          <input type="text" id="skillInput" name="skillInput" class="form-control" min="1" max="9"
-          placeholder="Skill" required>
-      </div> {% endcomment %}
-      <div class="form-group">
-          <button type="submit" class="btn btn-info btn-block text-white">Save</button>
-      </div>
-  </form> {% endcomment %}
-   <form method="post" enctype="multipart/form-data" style="width: 50%;" style="">
-      {% csrf_token %}
-      {{form|crispy}}
-      <div class="d-flex col  justify-content-center">
-          
-        <input type="submit" value="Actualizar" class="btn btn-warning btn-block" style="margin-left: 2rem;margin-right: 2rem;">            
-            
-        {% comment %} <a href="{% url 'curriculum:lesson_detail' standard=lessons.Standard.slug subject=lessons.subject.slug slug=lessons.slug %}" class="btn btn-danger btn-block" style="margin-left: 2rem;margin-right: 2rem;">Cancelar</a>
-           {% endcomment %}
-      </div>
-    </form> 
+  <div style="width: 100% ;height: 10%; margin-top: 0rem;margin-bottom: 0rem;" class="d-flex  justify-content-center mb-2">
+    <div style="width: 90%; " class="d-flex justify-content-start">
+      <a class="navbar-brand color_encabezado" href="{% url 'curriculum:slots_list' %}" ><img class="logos-nav" style="width: 100px" src="https://cdn-icons-png.flaticon.com/512/5093/5093116.png" alt="Niveles"></a>         
+    </div>    
   </div>
+  <p class="text-center" style="font-size: 2rem;font-weight: 300;"><strong>Editar el horario del curso {{slotsSubjectt.slot_subject.name}} </strong></p>
+  <section class="gradient-custom w-100" style="">
+    <div class="container my-5 py-5">
+      <div class="row d-flex justify-content-center">
+        <div class="col-md-12 col-lg-10 col-xl-8">
+          
+            <div class="d-flex row justify-content-center">
+              <form id="formularioSlots" method="POST" action="/curriculum/list/slots/edit/view/"  style="width: 60%;background-color: white;height: 470px; border:10px double black;">
+                <div class="form-group d-flex row justify-content-center mt-4">
+                {% csrf_token %}
+                
+                <input type="hidden" id ="id" name="id" value="{{slotsSubjectt.id}}">
+                <div class="d-flex flex-column align-items-center">
+                  <select name="day" id="day" style="width: 40%;" >
+                    <option value="{{slotsSubjectt.day.id}}" selected >dia actual : {{slotsSubjectt.day.id|idDia}}</option>
+                    <option value="1">Lunes</option>
+                    <option value="2" >Martes</option>                
+                    <option value="3">Miercoles</option>
+                    <option value="4" >Jueves</option>                
+                    <option value="5" >Viernes</option>                
+                  </select>
+                  <div style="height: 130px;"></div>
+                  <select name="slot" id="slot" class="select form-control" style="width: 50%;"> 
+                    <option value="{{slotsSubjectt}}"> horario actual: {{slotsSubjectt.slot.start_time}}--{{slotsSubjectt.slot.end_time}}</option> 
+                    <option value="1">8 a.m -- 9 a.m.</option> 
+                    <option value="2">9 a.m -- 10 a.m.</option> 
+                    <option value="3">10 a.m -- 11 a.m.</option> 
+                    <option value="4">11 a.m -- 12 a.m.</option> 
+                    <option value="5">12 m -- 13 p.m.</option> 
+                    <option value="6">13 p.m -- 14 p.m.</option> 
+                    <option value="7">14 p.m -- 15 p.m.</option>
+                  </select>
+                  <div style="height: 130px;"></div>
+                </div>
+
+
+                {% comment %} <select name="day" id="day" style="width: 30%;" >
+                  <option value="{{slotsSubjectt.day}}">valor actual : {{slotsSubjectt.day|renombrar}}</option>
+                  <option value="Monday">Lunes</option>
+                  <option value="Tuesday" selected>Martes</option>                
+                  <option value="Wednesday" selected>Miercoles</option>                
+                  <option value="Thursday" selected>Jueves</option>                
+                  <option value="Friday" selected>Viernes</option>                                              
+                </select> {% endcomment %}
+
+
+                <input class="btn btn-success btn-lg btn-block "  style="width: 25%; margin-top: 2rem;margin-bottom: 1rem;"type="submit" value="Actualizar">
+                <span style="width: 8%;"></span>
+                <a class="btn btn-info btn-lg btn-block " href="{% url 'curriculum:slots_list'  %}" class="btn btn-danger btn-block" style="width: 25%; margin-top: 2rem;margin-bottom: 1rem;"><span style="text-center">Cancelar</span></a>
+                <input type="hidden" name="next" value="/curriculum/horarios">  
+                </div>
+              </form>
+          
+             </div>
+        </div>
+      </div>
+    </div>
+  </section>
 {% endblock %}

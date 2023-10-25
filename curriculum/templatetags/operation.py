@@ -96,6 +96,21 @@ def formatoDia(n):
 
 register.filter("formatoDia",formatoDia)
 
+def idDia(n): 
+  
+    if n == 1:               
+        return 'Lunes'  
+    if n == 2:               
+        return 'Martes'
+    if n == 3:               
+        return 'Miercoles' 
+    if n == 4:               
+        return 'Jueves'
+    if n == 5:               
+        return 'Viernes'
+
+register.filter("idDia",idDia)
+
 # def filtrar(subjects,slt):
 #     count=0   
 #     n=6
@@ -115,3 +130,36 @@ register.filter("formatoDia",formatoDia)
 @register.simple_tag
 def define(val=0):
   return val
+
+# def horaI(n):
+#     if(n == '1'):
+#         return "08:00:00"
+#     if(n == '2'):
+#         return "09:00:00"
+#     if(n == '3'):
+#         return "10:00:00"
+#     if(n == '4'):
+#         return "11:00:00"
+#     if(n == '5'):
+#         return "12:00:00"
+#     if(n == '6'):
+#         return "13:00:00"
+#     if(n == '7'):
+#         return "14:00:00"
+    
+# def horaF(n):
+#     if(n == '1'):
+#         return "09:00:00"
+#     if(n == '2'):
+#         return "10:00:00"
+#     if(n == '3'):
+#         return "11:00:00"
+#     if(n == '4'):
+#         return "12:00:00"
+#     if(n == '5'):
+#         return "13:00:00"
+#     if(n == '6'):
+#         return "14:00:00"
+#     if(n == '7'):
+#         return "15:00:00"
+    

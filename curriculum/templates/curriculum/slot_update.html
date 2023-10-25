@@ -55,17 +55,6 @@
                   <div style="height: 130px;"></div>
                 </div>
 
-
-                {% comment %} <select name="day" id="day" style="width: 30%;" >
-                  <option value="{{slotsSubjectt.day}}">valor actual : {{slotsSubjectt.day|renombrar}}</option>
-                  <option value="Monday">Lunes</option>
-                  <option value="Tuesday" selected>Martes</option>                
-                  <option value="Wednesday" selected>Miercoles</option>                
-                  <option value="Thursday" selected>Jueves</option>                
-                  <option value="Friday" selected>Viernes</option>                                              
-                </select> {% endcomment %}
-
-
                 <input class="btn btn-success btn-lg btn-block "  style="width: 25%; margin-top: 2rem;margin-bottom: 1rem;"type="submit" value="Actualizar">
                 <span style="width: 8%;"></span>
                 <a class="btn btn-info btn-lg btn-block " href="{% url 'curriculum:slots_list'  %}" class="btn btn-danger btn-block" style="width: 25%; margin-top: 2rem;margin-bottom: 1rem;"><span style="text-center">Cancelar</span></a>

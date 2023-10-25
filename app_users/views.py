@@ -113,9 +113,6 @@ def profile(request):
         'p_form':p_form
     }
     return render(request,'app/profile.html',context)
-# Create your views here.
-# def index(request):
-#     return render(request,'app_users/index.html')
 
 def register(request):
 

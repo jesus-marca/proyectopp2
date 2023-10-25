@@ -109,59 +109,6 @@
   </div>
 
 
-<!-- Comments section -->
-{% comment %} <section >
-    <h2 class="mb-4 mt-5 font-weight-bold" style="color: black;">Envie sus consultas</h2>
-
-    <br><br>
-    <div class="container row">
-      <div class="col-md-6">
-                              <form method="post">
-                                    <div class="form-group">
-                                    {% csrf_token %}
-                                    {{form|crispy}}
-                                    <input type="submit" name="form" value="Enviar comentario" class="btn btn-primary btn-sm">
-                                    </div>
-                              </form>
-
-      </div>
-    </div>
-    <div class="row">
-      {% for comment in lessons.comments.all %}
-      <div class="col-md-8 mt-2 mb-2">
-                      <div class="media border p-3">
-                          <img src="{% static 'Images/user_avatar.png' %}" alt="John Doe" class="mr-3 mt-3 rounded-circle" style="width:60px;">
-                          <div class="media-body">
-                                    <h4>{{comment.author}} <small><i>Fecha de publicacion {{comment.date_added}}</i></small></h4>
-                                    <p>{{comment.body}}</p>
-                            {% for reply in comment.replies.all %}
-                                        <div class="media p-3">
-                                                <img src="{% static 'Images/user_avatar.png' %}" alt="Jane Doe" class="mr-3 mt-3 rounded-circle" style="width:45px;">
-                                        <div class="media-body">
-                                                <h5>{{reply.author}} <small><i>Enviado por {{reply.date_added}}</i></small></h5>
-                                                <p>{{reply.reply_body}}</p>
-                                          </div>
-                                        </div>
-                            {% endfor %}
-                           
-
-
-                            <form method="post" style="width: 75%;">
-                                  <input type="hidden" name="comment.id" value="{{comment.id}}">
-                                  <input type="hidden" name="comment.comm_name" value="{{comment.comm_name}}">
-                                  {% csrf_token %}
-                                  {{form2.as_p}}
-                                  <input type="submit" name="form2" value="Agregar respuesta" class="btn btn-warning btn-sm">
-                            </form>
-                          </div>
-                  </div>
-      </div>
-      {% endfor %}
-    </div>
-
-
-</section> {% endcomment %}
-
   <section class="gradient-custom w-100" style="">
     <div class="container my-5 py-5">
       <div class="row d-flex justify-content-center">

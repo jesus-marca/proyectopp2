@@ -3,6 +3,8 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from app_users.models import UserProfileInfo
 from .models import UserProfileInfo
+
+#formulario user
 class UserForm(UserCreationForm):
     email = forms.EmailField(label="correo electronico")
 
@@ -10,17 +12,6 @@ class UserForm(UserCreationForm):
         model = User
         fields = ('username','first_name','last_name', 'email', 'password1', 'password2')
 
-        # widgets = {
-        # "password":"forms.PasswordInput()",
-        # }
-        # widgets = {
-        #     'username': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Username'}),
-        #     'first_name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'First Name'}),
-        #     'last_name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Last Name'}),
-        #     'email': forms.EmailInput(attrs={'class': 'form-control', 'placeholder': 'Email'}),
-        #     'password1': forms.PasswordInput(attrs={'class': 'form-control', 'placeholder': 'Password'}),
-        #     'password2': forms.PasswordInput(attrs={'class': 'form-control', 'placeholder': 'Password Again'}),
-        # }
         labels = {
         'username':"Nombre de usuario",
         'first_name':"Nombre",
@@ -43,9 +34,7 @@ class UserUpdateForm(forms.ModelForm):
         'last_name':"Apellidos",      
         }
 
-
-
-
+#Formulario perfil usuario
 class UserProfileInfoForm(forms.ModelForm):
     bio = forms.CharField(label="Detalles",required=False)
     teacher = 'teacher'
@@ -63,7 +52,7 @@ class UserProfileInfoForm(forms.ModelForm):
         labels={
             'bio':'tipo'
         }
-
+#Formulario actualizar perfil usuario
 class UserProfileUpdateInfoForm(forms.ModelForm):
     class Meta():
         model = UserProfileInfo

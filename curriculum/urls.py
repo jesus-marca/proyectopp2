@@ -19,19 +19,12 @@ urlpatterns = [
     path('list/users/edit/view/',views.edit_user),
     
     path('delete/page/user/del/<int:id>/',views.user_delete,name='user_delete'),
-    path('list/users/delete/views/user/',views.delete_user),
-    
-    # path('horarios/updateItem/', views.SlotUpdateView.as_view, name='slot_subject_update'),
-   
+    path('list/users/delete/views/user/',views.delete_user),           
     
     path('slot/page/update/<int:id>/',views.slot_subject_update,name='slot_subject_update'),
-    path('list/slots/edit/view/',views.edit_slot_subject),
-    
+    path('list/slots/edit/view/',views.edit_slot_subject),    
     
     path('delete/page/slot/del/<int:id>/',views.slot_subject_delete,name='slot_subject_delete'),
-    path('list/slots/delete/views/slot/',views.delete_slot_subject),
-    
-    # path('horarios/updateItem/', views.SlotUpdateView.as_view, name='slot_subject_update'),
-
+    path('list/slots/delete/views/slot/',views.delete_slot_subject),    
 ]
  

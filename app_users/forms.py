@@ -44,7 +44,7 @@ class UserProfileInfoForm(forms.ModelForm):
         (student, 'estudiante'),
         (teacher, 'profesor'),
     ]
-    user_type = forms.ChoiceField(label="Tipo de estudiante",required=True, choices=user_types)
+    user_type = forms.ChoiceField(label="Tipo de usuario",required=True, choices=user_types)
 
     class Meta():
         model = UserProfileInfo

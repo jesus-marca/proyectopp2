@@ -47,7 +47,7 @@
                 <label for="">email</label><input type="text" id="email" name="email" value="{{usuario.user.email}}">    
             </div>       
             <div class="form-group">                
-                <label for="">detalles</label><textarea  id="bio" name="bio"  cols="30" rows="7" >{{usuario.bio}}</textarea>
+                <label for="">detalles</label><textarea  id="bio" name="bio"  cols="30" rows="6" >{{usuario.bio}}</textarea>
             </div> 
             
           
@@ -72,8 +72,9 @@
             <a href="{% url 'curriculum:users_list' %}" class="btn btn-danger btn-block" style="width:50%;">Cancelar</a> 
             <input type="hidden" name="next" value="/curriculum/usuarios">                    
         </div>
-             
+        
       </div>
+      
     </form>
     <script>
         function archivo(evt) {

@@ -22,7 +22,8 @@
         <div class="container " style="width: 92%;">
           <div class="collapse navbar-collapse " id="basicExampleNav" >          
             <ul class=" navbar-nav  mr-auto smooth-scroll d-flex col justify-content-center mt-3"  >
-              <a class="navbar-brand color_encabezado" href="{% url 'index' %}"  ><img class="logos-nav" src="https://img2.freepng.es/20180411/ike/kisspng-computer-icons-home-house-home-5ace88fc2001a1.3041062815234849241311.jpg" alt="home"><p style="text-align: center;">Inicio</p></a>
+              <a class="navbar-brand color_encabezado" href="{% url 'index' %}"  ><img class="logos-nav" src="https://img2.freepng.es/20180411/ike/kisspng-computer-icons-home-house-home-5ace88fc2001a1.3041062815234849241311.jpg" alt="home">
+                <p style="text-align: center;">Inicio</p></a>
               
               
               <a type="button" class=" navbar-brand  color_encabezado"  data-bs-toggle="modal" data-bs-target="#staticBackdrop">
@@ -47,6 +48,12 @@
 
               <a class="navbar-brand color_encabezado" href="{% url 'admin:index' %}"  ><img class="logos-nav" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTl7sdO_sTN4pi5bZE8M7ZzMYMH4RovSb4wJFrVh2Bu4GRAQCYuHZt256lIR7O_H20sC-s&usqp=CAU" alt="ajustes admin"><p style="text-align: center;">administrador</p></a> 
               
+
+              {%endif%}
+              
+              {% if user.userprofileinfo.user_type == 'teacher' or user.userprofileinfo.user_type == 'student'%}
+                            
+              <a class="navbar-brand color_encabezado" href={% url 'curriculum:slots_list' %}  ><img class="logos-nav" src="https://i.pinimg.com/564x/ea/6c/9c/ea6c9c34369156c17943a26a958d0ff1.jpg" alt="contactanos"><p style="text-align: center;">horarios</p></a>
 
               {%endif%}
               <a class="navbar-brand color_encabezado" href="{% url 'contact' %}"  ><img class="logos-nav" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTYjzWEaMnT0s1MZ6EqMNbbix5iAGg7sgv74rm5n8wZkNVAmn3ABxDyIq4WzmfINHcqqh8&usqp=CAU" alt="contactanos"><p style="text-align: center;">contactanos</p></a>

@@ -104,24 +104,30 @@ def register(request):
     if request.method == "POST":
         user_form = UserForm(data=request.POST)
         profile_form = UserProfileInfoForm(data=request.POST)
-
+        profile_pic=request.FILES['profile_pic']
         if user_form.is_valid() and profile_form.is_valid():
             user = user_form.save()
             # user.set_password(user.password)
             user.save()
 
             profile = profile_form.save(commit=False)
+            profile.profile_pic=profile_pic
             profile.user = user
             profile.save()
 
             registered = True
+            
+            next = request.POST.get('next', '/')
+            return HttpResponseRedirect(next)
+        
         else:
             print(user_form.errors, profile_form.errors)
     else:
         user_form = UserForm()
         profile_form = UserProfileInfoForm()
-
-    return render(request, 'app_users/registration.html',
+        next = request.POST.get('next', '/')
+    
+        return render(request, 'app_users/registration.html',
                             {'registered':registered,
                              'user_form':user_form,
                              'profile_form':profile_form})

@@ -272,29 +272,34 @@ def edit_user(request):
     last_name = request.POST['last_name']
     email = request.POST['email']
     bio = request.POST['bio']
-    print(bio)
-    # profile_pic=request.POST['profile_pic']
-    userprofile = UserProfileInfo.objects.get(id = id)    
-    # userprofile.user.username = username
-    # print(userprofile.user.username)
-    # userprofile.user.first_name = first_name
-    # print(userprofile.user.first_name)
-    # userprofile.user.last_name = last_name
-    # print(userprofile.user.last_name)
-    # userprofile.user.email = email
-    # print(userprofile.user.email)
-    # userprofile.bio = bio
-    # print(userprofile.bio)
+    profile_pic=request.FILES['profile_pic']
+    
+   
+    userprofile = UserProfileInfo.objects.get(id = id)  
+    
+    print(userprofile.profile_pic)  
     
     us=User.objects.get(id=userprofile.user.id)
+    
     us.username = username
     us.first_name = first_name
     us.last_name = last_name
     us.email = email
+    
     us.save()
+    
     userprofile.user=us
+    if profile_pic == "" :
+       userprofile.profile_pic = userprofile.profile_pic 
+    else: 
+       userprofile.profile_pic = profile_pic 
+    
     userprofile.bio = bio
+    
     userprofile.save()
+
+ 
+
     
     next = request.POST.get('next', '/')
     return HttpResponseRedirect(next)

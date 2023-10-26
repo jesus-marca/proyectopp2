@@ -58,13 +58,17 @@
               <form method="post" style="width: 100%;height: ;" enctype="multipart/form-data">
                 {% csrf_token %}
                 {{ user_form|crispy }}
-                {{ profile_form|crispy }}
-
-                
+                {{ profile_form|crispy }}                
                 <div class="row justify-content-center">
-                <div class="d-flex justify-content-end" style="color:red">
-                  <input type="submit" value="Registrar etudiante"  class="btn btn-primary btn-block">
-                </div>
+                  
+                  <div  class="form-group" >
+                    <label for="">Imagen</label>  <br> <input type="file"  name="profile_pic"  id="profile_pic" width="100"   height="100" accept="image/*">
+                  </div>  
+
+                  <div class="d-flex justify-content-end" style="color:red">
+                    <input type="submit" value="Registrar "  class="btn btn-primary btn-block">
+                    <input type="hidden" name="next" value="/curriculum/usuarios"> 
+                  </div>
                 </div>
             
               </form>

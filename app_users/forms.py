@@ -48,9 +48,9 @@ class UserProfileInfoForm(forms.ModelForm):
 
     class Meta():
         model = UserProfileInfo
-        fields = ('bio','profile_pic','user_type')
+        fields = ('bio','user_type')
         labels={
-            'bio':'tipo'
+            # 'bio':'tipo'
         }
 #Formulario actualizar perfil usuario
 class UserProfileUpdateInfoForm(forms.ModelForm):

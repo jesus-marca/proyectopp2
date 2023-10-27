@@ -119,231 +119,389 @@
 
       <div class="d-flex justify-content-center">
         <div class="contenedor-niveles">
-          {%for a in standards.all%}
-            
-                <p style="width: 90%;">
-                  <button class="btn btn-primary" style="width: 100%;" type="button" data-bs-toggle="collapse" data-bs-target={{a.slug|combinacion}} aria-expanded="false" aria-controls={{a.slug|parseada}}>
-                  {{a.slug}}
-                  </button>
-                </p>
-            
-                <div class="collapse " id="{{a.slug|parseada}}" style="margin-top: -1rem;width: 90%;">
-                  <div class="card card-body d-flex justify-content-center ">
-                    {% comment %} <section id="best-features" class="text-center" style=" width: 100%;justify-self: center;">                    
-                      <div class="col-md-12 justify-content-center mb-5">                    
-                            <table id="class-time-table" class="tabla-encabezado">
-                              <tr>
-                                <th></th>                    
-                                <th scope="row">8 a.m.</th>
-                                <th scope="row">9 a.m.</th>
-                                <th scope="row">10 a.m.</th>
-                                <th scope="row">11 a.m.</th>
-                                <th scope="row">12 m.</th>
-                                <th scope="row">1 p.m.</th>
-                                <th scope="row">2 p.m.</th>
-                              </tr>
-                              <tr>
+          {%for a in standards.all%} 
                                 
-                                <th>Lunes</th>
+            {% if user.is_superuser %}
+              <p style="width: 90%;">
+                <button class="btn btn-primary" style="width: 100%;" type="button" data-bs-toggle="collapse" data-bs-target={{a.slug|combinacion}} aria-expanded="false" aria-controls={{a.slug|parseada}}>
+                {{a.slug}}
+                </button>
+              </p>
+            
+              <div class="collapse " id="{{a.slug|parseada}}" style="margin-top: -1rem;width: 90%;">
+                <div class="card card-body d-flex justify-content-center ">
+                  {% comment %} <section id="best-features" class="text-center" style=" width: 100%;justify-self: center;">                    
+                    <div class="col-md-12 justify-content-center mb-5">                    
+                          <table id="class-time-table" class="tabla-encabezado">
+                            <tr>
+                              <th></th>                    
+                              <th scope="row">8 a.m.</th>
+                              <th scope="row">9 a.m.</th>
+                              <th scope="row">10 a.m.</th>
+                              <th scope="row">11 a.m.</th>
+                              <th scope="row">12 m.</th>
+                              <th scope="row">1 p.m.</th>
+                              <th scope="row">2 p.m.</th>
+                            </tr>
+                            <tr>
                               
-                                {%for slot in subjectsAll%}
-                              
-                                    {%if slot.day.id == 1 %}  
-                                  
-                                        {%if slot.standard|parseada == a.name|parseada %}   
-                                        
-                                    
-                                        <td  style="background-color: hsl({{slot.slot_subject.id | multiplicar }}, 71%, 82%);" >{{slot.slot_subject}}</td>                                                {%endif%}                                     
-                                    {% endif %}    
-                                {% endfor %}
-                              </tr>
-                              <tr>
-                                <th>Martes</th>
-                                {%for slot in subjectsAll%}
-                              
-                                  {%if slot.day.id == 2 %}  
+                              <th>Lunes</th>
+                            
+                              {%for slot in subjectsAll%}
+                            
+                                  {%if slot.day.id == 1 %}  
                                 
                                       {%if slot.standard|parseada == a.name|parseada %}   
                                       
                                   
                                       <td  style="background-color: hsl({{slot.slot_subject.id | multiplicar }}, 71%, 82%);" >{{slot.slot_subject}}</td>                                                {%endif%}                                     
                                   {% endif %}    
-                                {% endfor %}
-                              </tr>
-                              <tr>
-                                <th>Miercoles</th>
-                                {%for slot in subjectsAll%}
-                              
-                                  {%if slot.day.id == 3 %}                          
-                                    {%if slot.standard|parseada == a.name|parseada %}                                                           
-                                      <td  style="background-color: hsl({{slot.slot_subject.id | multiplicar }}, 71%, 82%);" >{{slot.slot_subject}}</td>                                                {%endif%}                                     
-                                  {% endif %}    
-                                {% endfor %}
-                              </tr>
-                              <tr>
-                                <th>Jueves</th>
-                                {%for slot in subjectsAll%}
-                              
-                                  {%if slot.day.id == 4 %}                          
-                                    {%if slot.standard|parseada == a.name|parseada %}                                                           
-                                      <td  style="background-color: hsl({{slot.slot_subject.id | multiplicar }}, 71%, 82%);" >{{slot.slot_subject}}</td>                                                {%endif%}                                     
-                                  {% endif %}    
-                                {% endfor %}
-                              </tr>
-                              <tr>
-                                <th>Viernes</th>
-                                {%for slot in subjectsAll%}
-                              
-                                  {%if slot.day.id == 5 %}                          
-                                    {%if slot.standard|parseada == a.name|parseada %}                                                           
-                                      <td  style="background-color: hsl({{slot.slot_subject.id | multiplicar }}, 71%, 82%);" >{{slot.slot_subject}}</td>                                                {%endif%}                                     
-                                  {% endif %}    
-                                {% endfor %}
-                                
-                              </tr>
-                            </table>
+                              {% endfor %}
+                            </tr>
+                            <tr>
+                              <th>Martes</th>
+                              {%for slot in subjectsAll%}
                             
-                      </div>
-                        
-                    </section>  {% endcomment %}
-
-                    <div style="width: 100%;" class="d-flex justify-content-center ">
-                      <table class="table table-hover">
-                        <thead>
-                          {% if user.is_superuser or user.userprofileinfo.user_type == 'teacher'  %}
-                            <tr>
+                                {%if slot.day.id == 2 %}  
                               
-                              <th style="width: 22%;" scope="col">Curso</th>
-                              <th style="width: 16%;" scope="col"></th>
-                              <th style="width: 7%;" scope="col">Horario</th>
-                              <th style="width: 5%;" scope="col">Cap</th>
-                              <th style="width: 20%;" scope="col">Nombre Capitulo</th>
-                              <th style="width: 30%;" scope="col">Acciones</th>
-                            </tr>
-                          {% else %}
-                            <tr>
-                                
-                              <th style="width: 30%;" scope="col">Curso</th>
-                              <th style="width: 10%;" scope="col">Horario</th>
-                              <th style="width: 5%;" scope="col">Cap</th>
-                              <th style="width: 30%;" scope="col">Nombre Capitulo</th>
-                              <th style="width: 25%;" scope="col">Acciones</th>
-                              
-                            </tr>
-                          {% endif %}
-                        </thead>
-                        <tbody style="width: 100%;">
-                          {% for subject in a.subjects.all %}                                                
-
-                              {% if subject.lessons.all.count == 0 %}
-                                {% if user.is_superuser or user.userprofileinfo.user_type == 'teacher'  %}
-                                  <tr style="width: 100%;">  
-                                    <td style="width: 22%;">{{subject.name}}</td>
-                                    <td style="width: 16%;" ><a  class="btn btn-success" href="{% url 'curriculum:lesson_create' standard=subject.standard.slug slug=subject.slug %}"  style="align-self: center;width: 100%;"class="dropdown-item" >agregar capitulo</a></td>
-                                    <td style="width: 7%;"><a  type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="{{subject.id|combinacion2}}" style="width: 100%;">horario</a> </td>
-                                    <td style="width: 5%;" >-</td>
-                                    <td style="width: 20%;">-</td>
-                                    <td style="width: 30%;">-</a>
-                                  </tr>     
-                                {% else %}
-                                  <tr style="width: 100%;">  
-                                    <td style="width: 30%;">{{subject.name}}</td>
-                                    <td style="width: 10%;"><a  type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="{{subject.id|combinacion2}}" style="width: 100%;">horario</a> </td>
-                                    <td style="width: 5%;" >-</td>
-                                    <td style="width: 30%;">-</td>
-                                    <td style="width: 25%;">-</a>
-                                  </tr> 
+                                    {%if slot.standard|parseada == a.name|parseada %}   
                                     
+                                
+                                    <td  style="background-color: hsl({{slot.slot_subject.id | multiplicar }}, 71%, 82%);" >{{slot.slot_subject}}</td>                                                {%endif%}                                     
+                                {% endif %}    
+                              {% endfor %}
+                            </tr>
+                            <tr>
+                              <th>Miercoles</th>
+                              {%for slot in subjectsAll%}
+                            
+                                {%if slot.day.id == 3 %}                          
+                                  {%if slot.standard|parseada == a.name|parseada %}                                                           
+                                    <td  style="background-color: hsl({{slot.slot_subject.id | multiplicar }}, 71%, 82%);" >{{slot.slot_subject}}</td>                                                {%endif%}                                     
+                                {% endif %}    
+                              {% endfor %}
+                            </tr>
+                            <tr>
+                              <th>Jueves</th>
+                              {%for slot in subjectsAll%}
+                            
+                                {%if slot.day.id == 4 %}                          
+                                  {%if slot.standard|parseada == a.name|parseada %}                                                           
+                                    <td  style="background-color: hsl({{slot.slot_subject.id | multiplicar }}, 71%, 82%);" >{{slot.slot_subject}}</td>                                                {%endif%}                                     
+                                {% endif %}    
+                              {% endfor %}
+                            </tr>
+                            <tr>
+                              <th>Viernes</th>
+                              {%for slot in subjectsAll%}
+                            
+                                {%if slot.day.id == 5 %}                          
+                                  {%if slot.standard|parseada == a.name|parseada %}                                                           
+                                    <td  style="background-color: hsl({{slot.slot_subject.id | multiplicar }}, 71%, 82%);" >{{slot.slot_subject}}</td>                                                {%endif%}                                     
+                                {% endif %}    
+                              {% endfor %}
+                              
+                            </tr>
+                          </table>
+                          
+                    </div>
+                      
+                  </section>  {% endcomment %}
+
+                  <div style="width: 100%;" class="d-flex justify-content-center ">
+                    <table class="table table-hover">
+                      <thead>
+                        {% if  user.userprofileinfo.user_type == 'teacher'  %}
+                          <tr>
+                            
+                            <th style="width: 22%;" scope="col">Curso</th>
+                            <th style="width: 16%;" scope="col"></th>
+                            <th style="width: 7%;" scope="col">Horario</th>
+                            <th style="width: 5%;" scope="col">Cap</th>
+                            <th style="width: 20%;" scope="col">Nombre Capitulo</th>
+                            <th style="width: 30%;" scope="col">Acciones</th>
+                          </tr>
+                        {% else %}
+                          <tr>
+                              
+                            <th style="width: 30%;" scope="col">Curso</th>
+                            <th style="width: 10%;" scope="col">Horario</th>
+                            <th style="width: 5%;" scope="col">Cap</th>
+                            <th style="width: 30%;" scope="col">Nombre Capitulo</th>
+                            <th style="width: 25%;" scope="col">Acciones</th>
+                            
+                          </tr>
+                        {% endif %}
+                      </thead>
+                      <tbody style="width: 100%;">
+                        {% for subject in a.subjects.all %}                                                
+
+                            {% if subject.lessons.all.count == 0 %}
+                              {% if  user.userprofileinfo.user_type == 'teacher'  %}
+                                <tr style="width: 100%;">  
+                                  <td style="width: 22%;">{{subject.name}}</td>
+                                  <td style="width: 16%;" ><a  class="btn btn-success" href="{% url 'curriculum:lesson_create' standard=subject.standard.slug slug=subject.slug %}"  style="align-self: center;width: 100%;"class="dropdown-item" >agregar capitulo</a></td>
+                                  <td style="width: 7%;"><a  type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="{{subject.id|combinacion2}}" style="width: 100%;">horario</a> </td>
+                                  <td style="width: 5%;" >-</td>
+                                  <td style="width: 20%;">-</td>
+                                  <td style="width: 30%;">-</a>
+                                </tr>     
+                              {% else %}
+                                <tr style="width: 100%;">  
+                                  <td style="width: 30%;">{{subject.name}}</td>
+                                  <td style="width: 10%;"><a  type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="{{subject.id|combinacion2}}" style="width: 100%;">horario</a> </td>
+                                  <td style="width: 5%;" >-</td>
+                                  <td style="width: 30%;">-</td>
+                                  <td style="width: 25%;">-</a>
+                                </tr> 
+                                  
+                              {% endif %}
+                            {% endif %}
+                            {% for lesson in subject.lessons.all  %}
+                              {% if forloop.first or subject.lessons.all.count == 1  %}
+                                {% if  user.userprofileinfo.user_type == 'teacher'  %}  
+                                  <tr style="width: 100%;">                    
+                                    <td rowspan="{{subject.lessons.all.count}}" style="width:22%;"  >{{subject.name}}</td>
+                                    <td style="width: 16%;" rowspan="{{subject.lessons.all.count}}" ><a  class="btn btn-success" href="{% url 'curriculum:lesson_create' standard=subject.standard.slug slug=subject.slug %}"  style="align-self: center;width: 100%;"class="dropdown-item" >agregar capitulo</a></td>
+                                    <td rowspan="{{subject.lessons.all.count}}" style="width: 7%;"><a  type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="{{subject.id|combinacion2}}" style="width: 100%;">horario</a></td>
+                                    <td style="width: 5%;" >{{lesson.position}}</td>
+                                    <td style="width: 20%;" >{{lesson.name}}</td>
+                                    <td style="width: 30%;" ><a style="width: 30%;"   href="{% url 'curriculum:lesson_detail' slug=lesson.slug subject=subject.slug standard=lesson.Standard.slug %}"  class="btn btn-outline-primary">Ver</a><span style="width: 4%;"></span> <a style="width: 30%;"   href="{% url 'curriculum:lesson_update' standard=subject.standard.slug subject=lesson.subject.slug slug=lesson.slug %}"  class="btn btn-outline-success">Editar</a><span style="width: 4%;"> </span><a style="width: 30%;" class="btn btn-outline-danger" href="{% url 'curriculum:lesson_delete' standard=subject.standard.slug subject=lesson.subject.slug slug=lesson.slug %}" >Eliminar</a></td>
+                                  </tr>
+                                {% else %}
+                                  <tr style="width: 100%;">                    
+                                    <td rowspan="{{subject.lessons.all.count}}" style="width:30%;"  >{{subject.name}}</td>
+                                    
+                                    <td rowspan="{{subject.lessons.all.count}}" style="width: 10%;"><a  type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="{{subject.id|combinacion2}}" style="width: 100%;">horario</a></td>
+                                    <td style="width: 5%;" >{{lesson.position}}</td>
+                                    <td style="width: 30%;" >{{lesson.name}}</td>
+                                    <td style="width: 25%;" ><a style="width: 30%;"   href="{% url 'curriculum:lesson_detail' slug=lesson.slug subject=subject.slug standard=lesson.Standard.slug %}"  class="btn btn-outline-primary">Ver</a></td>
+                                  </tr>
+                                {% endif %}
+                              {% else %}
+                                {% if  user.userprofileinfo.user_type == 'teacher'  %}  
+                                  <tr style="width: 100%;">                    
+                                    <td style="width: 5%;" >{{lesson.position}}</td>                          
+                                    <td style="width: 20%;" >{{lesson.name}}</td>
+                                    <td style="width: 30%;" ><a style="width: 30%;"   href="{% url 'curriculum:lesson_detail' slug=lesson.slug subject=subject.slug standard=lesson.Standard.slug %}"  class="btn btn-outline-primary">Ver</a><span style="width: 4%;"></span> <a style="width: 30%;" href="{% url 'curriculum:lesson_update' standard=subject.standard.slug subject=lesson.subject.slug slug=lesson.slug %}"     class="btn btn-outline-success">Editar</a><span style="width: 4%;"> </span><a style="width: 30%;" class="btn btn-outline-danger" href="{% url 'curriculum:lesson_delete' standard=subject.standard.slug subject=lesson.subject.slug slug=lesson.slug %}">Eliminar</a></td>
+                                  </tr>
+                                {% else %}
+                                  <tr style="width: 100%;">                    
+                                    <td style="width: 5%;" >{{lesson.position}}</td>                          
+                                    <td style="width: 30%;" >{{lesson.name}}</td>
+                                    <td style="width: 25%;" ><a style="width: 30%;"   href="{% url 'curriculum:lesson_detail' slug=lesson.slug subject=subject.slug standard=lesson.Standard.slug %}"  class="btn btn-outline-primary">Ver</a></td>
+                                  </tr>
                                 {% endif %}
                               {% endif %}
-                              {% for lesson in subject.lessons.all  %}
-                                {% if forloop.first or subject.lessons.all.count == 1  %}
-                                  {% if user.is_superuser or user.userprofileinfo.user_type == 'teacher'  %}  
-                                    <tr style="width: 100%;">                    
-                                      <td rowspan="{{subject.lessons.all.count}}" style="width:22%;"  >{{subject.name}}</td>
-                                      <td style="width: 16%;" rowspan="{{subject.lessons.all.count}}" ><a  class="btn btn-success" href="{% url 'curriculum:lesson_create' standard=subject.standard.slug slug=subject.slug %}"  style="align-self: center;width: 100%;"class="dropdown-item" >agregar capitulo</a></td>
-                                      <td rowspan="{{subject.lessons.all.count}}" style="width: 7%;"><a  type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="{{subject.id|combinacion2}}" style="width: 100%;">horario</a></td>
-                                      <td style="width: 5%;" >{{lesson.position}}</td>
-                                      <td style="width: 20%;" >{{lesson.name}}</td>
-                                      <td style="width: 30%;" ><a style="width: 30%;"   href="{% url 'curriculum:lesson_detail' slug=lesson.slug subject=subject.slug standard=lesson.Standard.slug %}"  class="btn btn-outline-primary">Ver</a><span style="width: 4%;"></span> <a style="width: 30%;"   href="{% url 'curriculum:lesson_update' standard=subject.standard.slug subject=lesson.subject.slug slug=lesson.slug %}"  class="btn btn-outline-success">Editar</a><span style="width: 4%;"> </span><a style="width: 30%;" class="btn btn-outline-danger" href="{% url 'curriculum:lesson_delete' standard=subject.standard.slug subject=lesson.subject.slug slug=lesson.slug %}" >Eliminar</a></td>
-                                    </tr>
-                                  {% else %}
-                                    <tr style="width: 100%;">                    
-                                      <td rowspan="{{subject.lessons.all.count}}" style="width:30%;"  >{{subject.name}}</td>
-                                      
-                                      <td rowspan="{{subject.lessons.all.count}}" style="width: 10%;"><a  type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="{{subject.id|combinacion2}}" style="width: 100%;">horario</a></td>
-                                      <td style="width: 5%;" >{{lesson.position}}</td>
-                                      <td style="width: 30%;" >{{lesson.name}}</td>
-                                      <td style="width: 25%;" ><a style="width: 30%;"   href="{% url 'curriculum:lesson_detail' slug=lesson.slug subject=subject.slug standard=lesson.Standard.slug %}"  class="btn btn-outline-primary">Ver</a></td>
-                                    </tr>
-                                  {% endif %}
-                                {% else %}
-                                  {% if user.is_superuser or user.userprofileinfo.user_type == 'teacher'  %}  
-                                    <tr style="width: 100%;">                    
-                                      <td style="width: 5%;" >{{lesson.position}}</td>                          
-                                      <td style="width: 20%;" >{{lesson.name}}</td>
-                                      <td style="width: 30%;" ><a style="width: 30%;"   href="{% url 'curriculum:lesson_detail' slug=lesson.slug subject=subject.slug standard=lesson.Standard.slug %}"  class="btn btn-outline-primary">Ver</a><span style="width: 4%;"></span> <a style="width: 30%;" href="{% url 'curriculum:lesson_update' standard=subject.standard.slug subject=lesson.subject.slug slug=lesson.slug %}"     class="btn btn-outline-success">Editar</a><span style="width: 4%;"> </span><a style="width: 30%;" class="btn btn-outline-danger" href="{% url 'curriculum:lesson_delete' standard=subject.standard.slug subject=lesson.subject.slug slug=lesson.slug %}">Eliminar</a></td>
-                                    </tr>
-                                  {% else %}
-                                    <tr style="width: 100%;">                    
-                                      <td style="width: 5%;" >{{lesson.position}}</td>                          
-                                      <td style="width: 30%;" >{{lesson.name}}</td>
-                                      <td style="width: 25%;" ><a style="width: 30%;"   href="{% url 'curriculum:lesson_detail' slug=lesson.slug subject=subject.slug standard=lesson.Standard.slug %}"  class="btn btn-outline-primary">Ver</a></td>
-                                    </tr>
-                                  {% endif %}
-                                {% endif %}
-                              {% endfor %}
-                                  <div class="d-flex justify-content-center">
-                                    <div class=" modal " id="{{subject.id|parseada2}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="{{subject.id|combinacionLabel}}" aria-hidden="true" style="justify-self: center; display: none; width: 100%;">
-                                      <div class="modal-dialog modal-dialog-centered">
-                                        <div class="modal-content">
-                                          <div class="modal-header bg-success-subtle">
-                                            <h1 class="modal-title fs-5" style="color:black ;" id="staticBackdropLabel">Horario del curso de {{subject.name}}</h1>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                          </div>
-                                          <div class="modal-body bg-warning-subtle">
-                                          
-                                            {% for day in subject.standard_slots_subject.all %}
-                                              {% if day.day.id == 1 %}
-                                                Lunes: {{day.slot.start_time|formatoHora}} - {{day.slot.end_time|formatoHora}}<p></p>
-                                              {% endif %}
-                                
-                                              {% if day.day.id == 2 %}
-                                                Martes: {{day.slot.start_time|formatoHora}} - {{day.slot.end_time|formatoHora}}<p></p>
-                                
-                                              {% endif %}
-                                
-                                              {% if day.day.id == 3 %}
-                                                Miercoles: {{day.slot.start_time|formatoHora}} - {{day.slot.end_time|formatoHora}}<p></p>
-                                
-                                              {% endif %}
-                                
-                                              {% if day.day.id == 4 %}
-                                                Jueves: {{day.slot.start_time|formatoHora}} - {{day.slot.end_time|formatoHora}}<p></p>
-                                
-                                              {% endif %}
-                                
-                                              {% if day.day.id == 5 %}
-                                                Viernes: {{day.slot.start_time|formatoHora}} - {{day.slot.end_time|formatoHora}}<p></p>
-                                              {% endif %}
-                                                              
-                                            {% endfor %}   
-                                          </div>
-                                          <div class="modal-footer">        
-                                          </div>
+                            {% endfor %}
+                                <div class="d-flex justify-content-center">
+                                  <div class=" modal " id="{{subject.id|parseada2}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="{{subject.id|combinacionLabel}}" aria-hidden="true" style="justify-self: center; display: none; width: 100%;">
+                                    <div class="modal-dialog modal-dialog-centered">
+                                      <div class="modal-content">
+                                        <div class="modal-header bg-success-subtle">
+                                          <h1 class="modal-title fs-5" style="color:black ;" id="staticBackdropLabel">Horario del curso de {{subject.name}}</h1>
+                                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body bg-warning-subtle">
+                                        
+                                          {% for day in subject.standard_slots_subject.all %}
+                                            {% if day.day.id == 1 %}
+                                              Lunes: {{day.slot.start_time|formatoHora}} - {{day.slot.end_time|formatoHora}}<p></p>
+                                            {% endif %}
+                              
+                                            {% if day.day.id == 2 %}
+                                              Martes: {{day.slot.start_time|formatoHora}} - {{day.slot.end_time|formatoHora}}<p></p>
+                              
+                                            {% endif %}
+                              
+                                            {% if day.day.id == 3 %}
+                                              Miercoles: {{day.slot.start_time|formatoHora}} - {{day.slot.end_time|formatoHora}}<p></p>
+                              
+                                            {% endif %}
+                              
+                                            {% if day.day.id == 4 %}
+                                              Jueves: {{day.slot.start_time|formatoHora}} - {{day.slot.end_time|formatoHora}}<p></p>
+                              
+                                            {% endif %}
+                              
+                                            {% if day.day.id == 5 %}
+                                              Viernes: {{day.slot.start_time|formatoHora}} - {{day.slot.end_time|formatoHora}}<p></p>
+                                            {% endif %}
+                                                            
+                                          {% endfor %}   
+                                        </div>
+                                        <div class="modal-footer">        
                                         </div>
                                       </div>
-                                    </div>   
-                                  </div>
-                                           
-                          {%endfor%} 
-                        </tbody>
-                      </table>
-                    </div>  
-                  </div>        
-                </div>         
+                                    </div>
+                                  </div>   
+                                </div>
+                                          
+                        {%endfor%} 
+                      </tbody>
+                    </table>
+                  </div>  
+                </div>        
+              </div>         
               <div style="margin-top: 1rem;">      
-            </div>        
+              </div>
+            {% else %}
+              {% for usuario in usersAll  %}
+              {% comment %} {{us.username}}
+              
+              {{usuario.user.username}} {% endcomment %}
+              
+                {% if user.username == usuario.user.username and  a.id|parseada == usuario.bio|parseada %}
+                {{usuario.user_type}}
+                  <p style="width: 90%;">
+                    <button class="btn btn-primary" style="width: 100%;" type="button" data-bs-toggle="collapse" data-bs-target={{a.slug|combinacion}} aria-expanded="false" aria-controls={{a.slug|parseada}}>
+                    {{a.slug}}
+                    </button>
+                  </p>
+                
+                  <div class="collapse " id="{{a.slug|parseada}}" style="margin-top: -1rem;width: 90%;">
+                    <div class="card card-body d-flex justify-content-center ">                  
+    
+                      <div style="width: 100%;" class="d-flex justify-content-center ">
+                        <table class="table table-hover">
+                          <thead>
+                            {% if user.userprofileinfo.user_type == 'teacher'  %}
+                              <tr>
+                                
+                                <th style="width: 22%;" scope="col">Curso</th>
+                                <th style="width: 16%;" scope="col"></th>
+                                <th style="width: 7%;" scope="col">Horario</th>
+                                <th style="width: 5%;" scope="col">Cap</th>
+                                <th style="width: 20%;" scope="col">Nombre Capitulo</th>
+                                <th style="width: 30%;" scope="col">Acciones</th>
+                              </tr>
+                            {% else %}
+                              <tr>
+                                  
+                                <th style="width: 30%;" scope="col">Curso</th>
+                                <th style="width: 10%;" scope="col">Horario</th>
+                                <th style="width: 5%;" scope="col">Cap</th>
+                                <th style="width: 30%;" scope="col">Nombre Capitulo</th>
+                                <th style="width: 25%;" scope="col">Acciones</th>
+                                
+                              </tr>
+                            {% endif %}
+                          </thead>
+                          <tbody style="width: 100%;">
+                            {% for subject in a.subjects.all %}                                                
+    
+                                {% if subject.lessons.all.count == 0 %}
+                                  {% if user.userprofileinfo.user_type == 'teacher'  %}
+                                    <tr style="width: 100%;">  
+                                      <td style="width: 22%;">{{subject.name}}</td>
+                                      <td style="width: 16%;" ><a  class="btn btn-success" href="{% url 'curriculum:lesson_create' standard=subject.standard.slug slug=subject.slug %}"  style="align-self: center;width: 100%;"class="dropdown-item" >agregar capitulo</a></td>
+                                      <td style="width: 7%;"><a  type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="{{subject.id|combinacion2}}" style="width: 100%;">horario</a> </td>
+                                      <td style="width: 5%;" >-</td>
+                                      <td style="width: 20%;">-</td>
+                                      <td style="width: 30%;">-</a>
+                                    </tr>     
+                                  {% else %}
+                                    <tr style="width: 100%;">  
+                                      <td style="width: 30%;">{{subject.name}}</td>
+                                      <td style="width: 10%;"><a  type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="{{subject.id|combinacion2}}" style="width: 100%;">horario</a> </td>
+                                      <td style="width: 5%;" >-</td>
+                                      <td style="width: 30%;">-</td>
+                                      <td style="width: 25%;">-</a>
+                                    </tr> 
+                                      
+                                  {% endif %}
+                                {% endif %}
+                                {% for lesson in subject.lessons.all  %}
+                                  {% if forloop.first or subject.lessons.all.count == 1  %}
+                                    {% if user.userprofileinfo.user_type == 'teacher'  %}  
+                                      <tr style="width: 100%;">                    
+                                        <td rowspan="{{subject.lessons.all.count}}" style="width:22%;"  >{{subject.name}}</td>
+                                        <td style="width: 16%;" rowspan="{{subject.lessons.all.count}}" ><a  class="btn btn-success" href="{% url 'curriculum:lesson_create' standard=subject.standard.slug slug=subject.slug %}"  style="align-self: center;width: 100%;"class="dropdown-item" >agregar capitulo</a></td>
+                                        <td rowspan="{{subject.lessons.all.count}}" style="width: 7%;"><a  type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="{{subject.id|combinacion2}}" style="width: 100%;">horario</a></td>
+                                        <td style="width: 5%;" >{{lesson.position}}</td>
+                                        <td style="width: 20%;" >{{lesson.name}}</td>
+                                        <td style="width: 30%;" ><a style="width: 30%;"   href="{% url 'curriculum:lesson_detail' slug=lesson.slug subject=subject.slug standard=lesson.Standard.slug %}"  class="btn btn-outline-primary">Ver</a><span style="width: 4%;"></span> <a style="width: 30%;"   href="{% url 'curriculum:lesson_update' standard=subject.standard.slug subject=lesson.subject.slug slug=lesson.slug %}"  class="btn btn-outline-success">Editar</a><span style="width: 4%;"> </span><a style="width: 30%;" class="btn btn-outline-danger" href="{% url 'curriculum:lesson_delete' standard=subject.standard.slug subject=lesson.subject.slug slug=lesson.slug %}" >Eliminar</a></td>
+                                      </tr>
+                                    {% else %}
+                                      <tr style="width: 100%;">                    
+                                        <td rowspan="{{subject.lessons.all.count}}" style="width:30%;"  >{{subject.name}}</td>
+                                        
+                                        <td rowspan="{{subject.lessons.all.count}}" style="width: 10%;"><a  type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="{{subject.id|combinacion2}}" style="width: 100%;">horario</a></td>
+                                        <td style="width: 5%;" >{{lesson.position}}</td>
+                                        <td style="width: 30%;" >{{lesson.name}}</td>
+                                        <td style="width: 25%;" ><a style="width: 30%;"   href="{% url 'curriculum:lesson_detail' slug=lesson.slug subject=subject.slug standard=lesson.Standard.slug %}"  class="btn btn-outline-primary">Ver</a></td>
+                                      </tr>
+                                    {% endif %}
+                                  {% else %}
+                                    {% if  user.userprofileinfo.user_type == 'teacher'  %}  
+                                      <tr style="width: 100%;">                    
+                                        <td style="width: 5%;" >{{lesson.position}}</td>                          
+                                        <td style="width: 20%;" >{{lesson.name}}</td>
+                                        <td style="width: 30%;" ><a style="width: 30%;"   href="{% url 'curriculum:lesson_detail' slug=lesson.slug subject=subject.slug standard=lesson.Standard.slug %}"  class="btn btn-outline-primary">Ver</a><span style="width: 4%;"></span> <a style="width: 30%;" href="{% url 'curriculum:lesson_update' standard=subject.standard.slug subject=lesson.subject.slug slug=lesson.slug %}"     class="btn btn-outline-success">Editar</a><span style="width: 4%;"> </span><a style="width: 30%;" class="btn btn-outline-danger" href="{% url 'curriculum:lesson_delete' standard=subject.standard.slug subject=lesson.subject.slug slug=lesson.slug %}">Eliminar</a></td>
+                                      </tr>
+                                    {% else %}
+                                      <tr style="width: 100%;">                    
+                                        <td style="width: 5%;" >{{lesson.position}}</td>                          
+                                        <td style="width: 30%;" >{{lesson.name}}</td>
+                                        <td style="width: 25%;" ><a style="width: 30%;"   href="{% url 'curriculum:lesson_detail' slug=lesson.slug subject=subject.slug standard=lesson.Standard.slug %}"  class="btn btn-outline-primary">Ver</a></td>
+                                      </tr>
+                                    {% endif %}
+                                  {% endif %}
+                                {% endfor %}
+                                    <div class="d-flex justify-content-center">
+                                      <div class=" modal " id="{{subject.id|parseada2}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="{{subject.id|combinacionLabel}}" aria-hidden="true" style="justify-self: center; display: none; width: 100%;">
+                                        <div class="modal-dialog modal-dialog-centered">
+                                          <div class="modal-content">
+                                            <div class="modal-header bg-success-subtle">
+                                              <h1 class="modal-title fs-5" style="color:black ;" id="staticBackdropLabel">Horario del curso de {{subject.name}}</h1>
+                                              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body bg-warning-subtle">
+                                            
+                                              {% for day in subject.standard_slots_subject.all %}
+                                                {% if day.day.id == 1 %}
+                                                  Lunes: {{day.slot.start_time|formatoHora}} - {{day.slot.end_time|formatoHora}}<p></p>
+                                                {% endif %}
+                                  
+                                                {% if day.day.id == 2 %}
+                                                  Martes: {{day.slot.start_time|formatoHora}} - {{day.slot.end_time|formatoHora}}<p></p>
+                                  
+                                                {% endif %}
+                                  
+                                                {% if day.day.id == 3 %}
+                                                  Miercoles: {{day.slot.start_time|formatoHora}} - {{day.slot.end_time|formatoHora}}<p></p>
+                                  
+                                                {% endif %}
+                                  
+                                                {% if day.day.id == 4 %}
+                                                  Jueves: {{day.slot.start_time|formatoHora}} - {{day.slot.end_time|formatoHora}}<p></p>
+                                  
+                                                {% endif %}
+                                  
+                                                {% if day.day.id == 5 %}
+                                                  Viernes: {{day.slot.start_time|formatoHora}} - {{day.slot.end_time|formatoHora}}<p></p>
+                                                {% endif %}
+                                                                
+                                              {% endfor %}   
+                                            </div>
+                                            <div class="modal-footer">        
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>   
+                                    </div>
+                                              
+                            {%endfor%} 
+                          </tbody>
+                        </table>
+                      </div>  
+                    </div>        
+                  </div>         
+                  <div style="margin-top: 1rem;">      
+                  </div>
+                {% endif %}
+              {% endfor %}
+            {% endif %}        
           {%endfor%}  
         </div>
       </div>

@@ -266,45 +266,75 @@ def user_update(request,id):
 
 
 def edit_user(request):
-    id = int(request.POST['id'])
-    username = request.POST['username']
-    first_name = request.POST['first_name']
-    last_name = request.POST['last_name']
-    email = request.POST['email']
-    bio = request.POST['bio']
-    user_type= request.POST['user_type']
-    # if (request.POST['profile_pic'] != ""):
+    # id = int(request.POST['id'])
+    # username = request.POST['username']
+    # first_name = request.POST['first_name']
+    # last_name = request.POST['last_name']
+    # email = request.POST['email']
+    # bio = request.POST['bio']
+    # user_type= request.POST['user_type']
+    # # if (request.POST['profile_pic'] != ""):
+    # #     profile_pic=request.FILES['profile_pic']
+    
+    # userprofile = UserProfileInfo.objects.get(id = id)  
+    
+    # us=User.objects.get(id=userprofile.user.id)
+    
+    # us.username = username
+    # us.first_name = first_name
+    # us.last_name = last_name
+    # us.email = email
+    
+    # us.save()
+    # userprofile.user=us
+    # userprofile.bio = bio
+    # userprofile.user_type = user_type
+    # # if (request.POST['profile_pic']):
+    # #     userprofile.save()
+    # # userprofile.profile_pic = "fdfd.png"
+    # if (request.FILES['profile_pic']):
     #     profile_pic=request.FILES['profile_pic']
-    
-   
-    userprofile = UserProfileInfo.objects.get(id = id)  
-    
-    print(userprofile.profile_pic)  
-    
-    us=User.objects.get(id=userprofile.user.id)
-    
-    us.username = username
-    us.first_name = first_name
-    us.last_name = last_name
-    us.email = email
-    
-    us.save()
-    
-    userprofile.user=us
-    
-    if (request.POST['profile_pic'] != ""):
-        profile_pic=request.FILES['profile_pic']
-        userprofile.profile_pic = profile_pic 
-   
-    
-    userprofile.bio = bio
-    userprofile.user_type = user_type
-    
-    userprofile.save()
+    #     userprofile.profile_pic = profile_pic 
 
- 
+            
+    # userprofile.save()
+        
+    # next = request.POST.get('next', '/')
+    # return HttpResponseRedirect(next)
+    try :
+        id = int(request.POST['id'])
+        username = request.POST['username']
+        first_name = request.POST['first_name']
+        last_name = request.POST['last_name']
+        email = request.POST['email']
+        bio = request.POST['bio']
+        user_type= request.POST['user_type']
+        
+        userprofile = UserProfileInfo.objects.get(id = id)  
+        
+        us=User.objects.get(id=userprofile.user.id)
+        try :
+            profile_pic =request.FILES['profile_pic']
+        except:
+            
 
-    
+            profile_pic=request.FILES['profile_pic']
+            profile_pic = userprofile.profile_pic 
+
+                
+        us.username = username
+        us.first_name = first_name
+        us.last_name = last_name
+        us.email = email        
+        us.save()
+        userprofile.profile_pic =profile_pic
+        userprofile.user=us
+        userprofile.bio = bio
+        userprofile.user_type = user_type        
+        userprofile.save()
+    except :
+        pass
+            
     next = request.POST.get('next', '/')
     return HttpResponseRedirect(next)
 

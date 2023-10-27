@@ -149,8 +149,8 @@
                   <p><strong>nombre:</strong>{{user.first_name}}</p>
                   <p><strong>apellido:</strong> {{user.last_name}}</p>
                   <p><strong>correo:</strong> {{user.email}}</p>
-                  <p><strong>tipo de usuario:</strong> {{user.userprofileinfo.user_type | default:"admin"}}</p>
-                  <p><strong>informacion:</strong> {{user.userprofileinfo.bio | default:"soy sadministrador"}}</p>
+                  <p><strong>tipo de usuario:</strong> {{user.userprofileinfo.user_type|renombrar|default:"admin"}}</p>
+                  <p><strong>Nivel:</strong> {{user.userprofileinfo.bio | default:"soy sadministrador"}}</p>
   
                 </div>
                 <div >

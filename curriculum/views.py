@@ -272,7 +272,9 @@ def edit_user(request):
     last_name = request.POST['last_name']
     email = request.POST['email']
     bio = request.POST['bio']
-    profile_pic=request.FILES['profile_pic']
+    user_type= request.POST['user_type']
+    # if (request.POST['profile_pic'] != ""):
+    #     profile_pic=request.FILES['profile_pic']
     
    
     userprofile = UserProfileInfo.objects.get(id = id)  
@@ -289,12 +291,14 @@ def edit_user(request):
     us.save()
     
     userprofile.user=us
-    if profile_pic == "" :
-       userprofile.profile_pic = userprofile.profile_pic 
-    else: 
-       userprofile.profile_pic = profile_pic 
+    
+    if (request.POST['profile_pic'] != ""):
+        profile_pic=request.FILES['profile_pic']
+        userprofile.profile_pic = profile_pic 
+   
     
     userprofile.bio = bio
+    userprofile.user_type = user_type
     
     userprofile.save()
 

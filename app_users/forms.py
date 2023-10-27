@@ -36,7 +36,8 @@ class UserUpdateForm(forms.ModelForm):
 
 #Formulario perfil usuario
 class UserProfileInfoForm(forms.ModelForm):
-    bio = forms.CharField(label="Detalles",required=False)
+    # bio = forms.CharField(label="Detalles",required=False)
+  
     teacher = 'teacher'
     student = 'student'
     parent = 'parent'
@@ -44,7 +45,23 @@ class UserProfileInfoForm(forms.ModelForm):
         (student, 'estudiante'),
         (teacher, 'profesor'),
     ]
+    
+    nivel1 = '1'
+    nivel2 = '2'
+    nivel3 = '3'
+    nivel4 = '4'
+    nivel5 = '5'
+    
+    bio_types = [
+        (nivel1, '1'),
+        (nivel2, '2'),
+        (nivel3, '3'),
+        (nivel4, '4'),
+        (nivel5, '5'),        
+    ]
     user_type = forms.ChoiceField(label="Tipo de usuario",required=True, choices=user_types)
+    
+    bio = forms.ChoiceField(label="Nivel",required=True, choices=bio_types)
 
     class Meta():
         model = UserProfileInfo

@@ -106,6 +106,21 @@ def formatoDia(n):
 
 register.filter("formatoDia",formatoDia)
 
+def formatoArea(n): 
+    n=str(n)   
+    if n == '1':               
+        return 'Ingenieria'  
+    if n == '2':               
+        return 'Humanidades'
+    if n == '3':               
+        return 'Medicina' 
+    if n == '4':               
+        return 'Ciencias economicas'
+    if n == '5':               
+        return 'Militar'
+
+register.filter("formatoArea",formatoArea)
+
 def idDia(n): 
   
     if n == 1:               

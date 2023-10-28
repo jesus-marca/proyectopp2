@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 {% load operation %}
-{% block title %} Niveles {% endblock %}
+{% block title %} Areas {% endblock %}
 
 
 {% block image_block %}
@@ -58,12 +58,12 @@
 
 {% block content %}
   <div class="d-flex row justify-content-center"  style="width: 100% ;margin-left: 0.2%;">
-      <h2 class="text-center mt-5 mb-4" style="font-size: 3rem;">Nuestros niveles de educacion</h2>
+      <h2 class="text-center mt-5 mb-4" style="font-size: 3rem;">Nuestras areas de educacion</h2>
       <div class="d-flex row justify-content-center" style="height: auto">
         <div class=" d-flex  justify-content-center align-items-center" style="width: 73%;">
           <div  class="tablero bg-info d-flex flex-column justify-content-center align-items-center ">
             <div>
-              <p class="letras">niveles</p>
+              <p class="letras">Areas</p>
               {%for numero in numeroNiveles.all %}
                 {%if forloop.last %} 
                   <p class="numero">{{forloop.counter}}</p>
@@ -73,7 +73,7 @@
           </div>
           <div  class="bg-success tablero d-flex flex-column justify-content-center align-items-center">
             <div>
-              <p class="letras" >cursos</p>
+              <p class="letras" >Cursos</p>
               {%for numero in numeroCursos.all %}
                 {%if forloop.last %} 
                   <p class="numero">{{forloop.counter}}</p>
@@ -83,7 +83,7 @@
           </div>
           <div  class="bg-danger tablero d-flex flex-column justify-content-center align-items-center">
             <div>
-              <p class="letras">capitulos</p>
+              <p class="letras">Capitulos</p>
               {%for numero in numeroCapitulos.all %}
                 {%if forloop.last %} 
                   <p class="numero">{{forloop.counter}}</p>

@@ -50,12 +50,12 @@
                 {% comment %} <label for="">detalles</label><textarea  id="bio" name="bio"  cols="30" rows="6" >{{usuario.bio}}</textarea> {% endcomment %}
                 <label for="">Nivel</label><br>
                 <select id="bio" name="bio"  style="width: 30%;" >
-                  <option value="{{usuario.bio}}" selected >valor actual : {{usuario.bio}}</option>
-                  <option value="1">Nivel 1</option>
-                  <option value="2" >Nivel 2</option>                
-                  <option value="3" >Nivel 3</option>                
-                  <option value="4" >Nivel 4</option>                
-                  <option value="5">Nivel 5</option>                
+                  <option value="{{usuario.bio}}" selected >area actual : {{usuario.bio|formatoArea}}</option>
+                  <option value="1">Ingenieria</option>
+                  <option value="2" >Humanidades</option>                
+                  <option value="3" >Medicina</option>                
+                  <option value="4" >Ciencias economicas</option>                
+                  <option value="5">Militar</option>                
                 </select>
             </div> 
 
@@ -124,6 +124,6 @@
         }
        
         document.getElementById('profile_pic').addEventListener('change', archivo, false);
-</script>
+    </script>
   </div>
 {% endblock %}

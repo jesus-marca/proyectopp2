@@ -93,15 +93,15 @@ register.filter("renombrar",renombrar)
 
 def formatoDia(n): 
     n=str(n)   
-    if n == 'Monday':               
+    if n == 'Monday' or n== "Lunes":               
         return 'Lunes'  
-    if n == 'Tuesday':               
+    if n == 'Tuesday' or n== 'Martes':               
         return 'Martes'
-    if n == 'Wednesday':               
+    if n == 'Wednesday' or n== 'Miercoles':               
         return 'Miercoles' 
-    if n == 'Thursday':               
+    if n == 'Thursday' or n== 'Jueves':               
         return 'Jueves'
-    if n == 'Friday':               
+    if n == 'Friday' or n== 'Viernes':               
         return 'Viernes'
 
 register.filter("formatoDia",formatoDia)

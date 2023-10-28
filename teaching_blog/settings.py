@@ -126,14 +126,33 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
+
 STATICFILES_DIRS = [
     STATIC_DIR,
 ]
 
 MEDIA_ROOT = os.path.join(BASE_DIR,'media')
 MEDIA_URL = '/media/'
+# STATIC_ROOT
+
+# DEFAULT_FILE_STORAGE = 'storages.backends.gcloud.GoogleCloudStorage'
+# GS_BUCKET_NAME = 'pack-djangopp2'
+# STATICFILES_STORAGE = 'storages.backends.gcloud.GoogleCloudStorage'
+# bucket
+# GS_CREDENTIALS = service_account.Credentials.from_service_account_file(
+#     "path/to/credentials.json"
+# )
+
+# DEFAULT_FILE_STORAGE = 'storages.backends.gcloud.GoogleCloudStorage'
+# GS_BUCKET_NAME = 'pack-djangopp2'
+# STATICFILES_STORAGE = 'storages.backends.gcloud.GoogleCloudStorage'
 
 LOGIN_URL = '/app_users/user_login'
+
+
+
+#------------
 
 # DEFAULT_AUTO_FIELD='django.db.models'
 
@@ -195,7 +214,7 @@ JAZZMIN_SETTINGS = {
 
         # external url that opens in a new window (Permissions can be added)
         # {"name": "Support", "url": "https://github.com/farridav/django-jazzmin/issues", "new_window": True},
-        {"name": "Pagina Escuela", "url": "../", "new_window": True},
+        {"name": "Pagina Escuela", "url": "../", "new_window": False},
 
         # model admin to link to (Permissions checked against model)
         {"model": "auth.User"},

@@ -170,7 +170,8 @@ class LessonCreateView(CreateView):
         #regresar a la normalidad si no se puede
         # return reverse_lazy('curriculum:lesson_list',kwargs={'standard':standard.slug,
         #                                                      'slug':self.object.slug}) 
-        return reverse_lazy('curriculum:lesson_detail', kwargs={'slug':self.slug, 'standard':self.Standard.slug,'subject':self.subject.slug})
+        # return reverse_lazy('curriculum:lesson_detail', kwargs={'slug':self.slug, 'standard':self.Standard.slug,'subject':self.subject.slug})
+        return reverse_lazy('curriculum:standard_list')
  
  
     def form_valid(self, form, *args, **kwargs):

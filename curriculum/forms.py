@@ -7,9 +7,10 @@ class LessonForm(forms.ModelForm):
         fields = ('lesson_id','name','position','video','ppt','Notes')
         
         labels = {
-        'lesson_id':'numero de capitulo',
+        'lesson_id':'id del capitulo',
         'name':"nombre del capitulo",
         'position':"numero de capitulo",
+        # 'slug':"identificador",
         'video':"video sobre el capitulo",      
         'ppt':'pdf',
         'Notes':'anotacionesss'        

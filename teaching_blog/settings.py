@@ -88,16 +88,28 @@ WSGI_APPLICATION = 'teaching_blog.wsgi.application'
 #     }
 # }
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'cursos',
+#         'USER':'postgres',
+#         'PASSWORD':'root1234',
+#         'HOST':'localhost',
+#         'PORT':'5432',
+#     }
+# }
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'cursos',
+        'NAME': 'railway',
         'USER':'postgres',
-        'PASSWORD':'root1234',
-        'HOST':'localhost',
-        'PORT':'5432',
+        'PASSWORD':'-C1d35-2G*F*-E*EA2-FAgBfC3aDbFg1',
+        'HOST':'viaduct.proxy.rlwy.net',
+        'PORT':'43920',
     }
 }
+
 
 
 # Password validation
